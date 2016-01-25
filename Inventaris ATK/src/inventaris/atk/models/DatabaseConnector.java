@@ -15,7 +15,7 @@ import java.sql.*;
 public class DatabaseConnector {
     // JDBC driver name and database URL
     private static final String driver = "org.sqlite.JDBC";
-    private static final String database = "jdbc:sqlite:gomoku.db";
+    private static final String database = "jdbc:sqlite:inventaris_ATK.db";
     
     
     public static Connection connect() {
