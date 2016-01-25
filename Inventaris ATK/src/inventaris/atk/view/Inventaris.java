@@ -5,17 +5,21 @@
  */
 package inventaris.atk.view;
 
+import inventaris.atk.controllers.InventarisController;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author FiqieUlya
  */
 public class Inventaris extends javax.swing.JFrame {
-
+    private final InventarisController inventarisController;
     /**
      * Creates new form Inventaris
      */
     public Inventaris() {
         initComponents();
+        inventarisController = new InventarisController(this);
     }
 
     /**
@@ -29,10 +33,12 @@ public class Inventaris extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         inventaris = new javax.swing.JPanel();
-        ATKpage = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         Userpage = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        ATKpage = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        atkTable = new javax.swing.JTable();
         Supplier = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         atk = new javax.swing.JButton();
@@ -45,28 +51,6 @@ public class Inventaris extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1366, 769));
 
         inventaris.setLayout(new java.awt.CardLayout());
-
-        jLabel1.setText("ATK ");
-
-        javax.swing.GroupLayout ATKpageLayout = new javax.swing.GroupLayout(ATKpage);
-        ATKpage.setLayout(ATKpageLayout);
-        ATKpageLayout.setHorizontalGroup(
-            ATKpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ATKpageLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel1)
-                .addContainerGap(1105, Short.MAX_VALUE))
-        );
-        ATKpageLayout.setVerticalGroup(
-            ATKpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ATKpageLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1)
-                .addContainerGap(586, Short.MAX_VALUE))
-        );
-
-        inventaris.add(ATKpage, "ATK");
-        ATKpage.getAccessibleContext().setAccessibleName("");
 
         jLabel2.setText("USER");
 
@@ -88,6 +72,48 @@ public class Inventaris extends javax.swing.JFrame {
         );
 
         inventaris.add(Userpage, "user");
+
+        jLabel1.setText("ATK ");
+
+        atkTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(atkTable);
+
+        javax.swing.GroupLayout ATKpageLayout = new javax.swing.GroupLayout(ATKpage);
+        ATKpage.setLayout(ATKpageLayout);
+        ATKpageLayout.setHorizontalGroup(
+            ATKpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ATKpageLayout.createSequentialGroup()
+                .addGroup(ATKpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ATKpageLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel1))
+                    .addGroup(ATKpageLayout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(225, Short.MAX_VALUE))
+        );
+        ATKpageLayout.setVerticalGroup(
+            ATKpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ATKpageLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addGap(125, 125, 125)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
+        );
+
+        inventaris.add(ATKpage, "ATK");
+        ATKpage.getAccessibleContext().setAccessibleName("");
 
         jLabel3.setText("Supplier");
 
@@ -178,15 +204,15 @@ public class Inventaris extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void atkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atkActionPerformed
-        changeScreen("ATK");
+        inventarisController.openAtk();
     }//GEN-LAST:event_atkActionPerformed
 
     private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
-        changeScreen("user");
+        inventarisController.openUser();
     }//GEN-LAST:event_userActionPerformed
 
     private void supplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplierActionPerformed
-        changeScreen("supplier");
+        inventarisController.openSupplier();
     }//GEN-LAST:event_supplierActionPerformed
 
     /**
@@ -226,16 +252,24 @@ public class Inventaris extends javax.swing.JFrame {
     public void changeScreen(String screenName) {
         ((java.awt.CardLayout)inventaris.getLayout()).show(inventaris,screenName);
     }
+    public void initAtkTable(DefaultTableModel model) {
+        atkTable.setModel(model);
+        atkTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+        atkTable.getColumnModel().getColumn(1).setPreferredWidth(500);
+        atkTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ATKpage;
     private javax.swing.JPanel Supplier;
     private javax.swing.JPanel Userpage;
     private javax.swing.JButton atk;
+    private javax.swing.JTable atkTable;
     private javax.swing.JPanel inventaris;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton supplier;
     private javax.swing.JButton user;
     // End of variables declaration//GEN-END:variables
