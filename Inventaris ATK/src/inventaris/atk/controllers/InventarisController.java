@@ -43,4 +43,11 @@ public class InventarisController {
         supplierModel.initModel();
         frame.changeScreen("supplier");
     }
+    public void addUser(String nama, String id, String kategori){
+        if(userModel.addUser(nama, kategori, id))
+        userModel.initModel();
+        else{
+            System.out.println("Input user gagal");
+        }
+    }
 }

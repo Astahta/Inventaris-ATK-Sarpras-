@@ -46,4 +46,19 @@ public class InventarisUserModel {
              Logger.getLogger(InventarisAtkModel.class.getName()).log(Level.SEVERE, null, ex);
          }
     }
+    
+    public boolean addUser(String nama, String kategori, String id ){
+        try {
+            String sql = "INSERT INTO Pengguna (id_pengguna, nama_pengguna, Kategori) VALUES (?, ?, ?)";
+            PreparedStatement dbStatement = conn.prepareStatement(sql);
+            dbStatement.setString(1, id);
+            dbStatement.setString(2, nama);
+            dbStatement.setString(3, kategori);
+            dbStatement.executeUpdate();
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
