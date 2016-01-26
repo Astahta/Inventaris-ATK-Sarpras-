@@ -35,18 +35,32 @@ public class Inventaris extends javax.swing.JFrame {
         inventaris = new javax.swing.JPanel();
         Userpage = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        userTable = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        userName = new javax.swing.JTextField();
+        Category = new javax.swing.JComboBox();
+        idUser = new javax.swing.JTextField();
+        addButton = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
         ATKpage = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         atkTable = new javax.swing.JTable();
         Supplier = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        supplierTable = new javax.swing.JTable();
         atk = new javax.swing.JButton();
         user = new javax.swing.JButton();
         supplier = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1366, 769));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1366, 769));
 
@@ -54,21 +68,124 @@ public class Inventaris extends javax.swing.JFrame {
 
         jLabel2.setText("USER");
 
+        userTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(userTable);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setText("FORM INPUT USER");
+
+        jLabel5.setText("Nama Pengguna");
+
+        jLabel6.setText("Kategori");
+
+        jLabel7.setText("Nomor Identitas");
+
+        userName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNameActionPerformed(evt);
+            }
+        });
+
+        Category.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tata Usaha", "Dosen", "Lain-lain", " " }));
+        Category.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CategoryActionPerformed(evt);
+            }
+        });
+
+        addButton.setText("Tambah");
+
+        editButton.setText("Ubah");
+
+        deleteButton.setText("Hapus");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(idUser))
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addButton)
+                    .addComponent(editButton)
+                    .addComponent(deleteButton))
+                .addGap(27, 27, 27))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(Category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(idUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteButton))
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout UserpageLayout = new javax.swing.GroupLayout(Userpage);
         Userpage.setLayout(UserpageLayout);
         UserpageLayout.setHorizontalGroup(
             UserpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UserpageLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jLabel2)
-                .addContainerGap(1085, Short.MAX_VALUE))
+                .addGroup(UserpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(UserpageLayout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel2))
+                    .addGroup(UserpageLayout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addGroup(UserpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(634, Short.MAX_VALUE))
         );
         UserpageLayout.setVerticalGroup(
             UserpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UserpageLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel2)
-                .addContainerGap(585, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         inventaris.add(Userpage, "user");
@@ -117,21 +234,41 @@ public class Inventaris extends javax.swing.JFrame {
 
         jLabel3.setText("Supplier");
 
+        supplierTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(supplierTable);
+
         javax.swing.GroupLayout SupplierLayout = new javax.swing.GroupLayout(Supplier);
         Supplier.setLayout(SupplierLayout);
         SupplierLayout.setHorizontalGroup(
             SupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SupplierLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jLabel3)
-                .addContainerGap(1073, Short.MAX_VALUE))
+                .addGroup(SupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SupplierLayout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel3))
+                    .addGroup(SupplierLayout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(629, Short.MAX_VALUE))
         );
         SupplierLayout.setVerticalGroup(
             SupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SupplierLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel3)
-                .addContainerGap(581, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         inventaris.add(Supplier, "supplier");
@@ -215,6 +352,14 @@ public class Inventaris extends javax.swing.JFrame {
         inventarisController.openSupplier();
     }//GEN-LAST:event_supplierActionPerformed
 
+    private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userNameActionPerformed
+
+    private void CategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CategoryActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -255,22 +400,53 @@ public class Inventaris extends javax.swing.JFrame {
     public void initAtkTable(DefaultTableModel model) {
         atkTable.setModel(model);
         atkTable.getColumnModel().getColumn(0).setPreferredWidth(100);
-        atkTable.getColumnModel().getColumn(1).setPreferredWidth(500);
+        atkTable.getColumnModel().getColumn(1).setPreferredWidth(100);
         atkTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+        atkTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+    }
+    public void initUserTable(DefaultTableModel model) {
+        userTable.setModel(model);
+        userTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+        userTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        userTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+        userTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+    }
+    public void initSupplierTable(DefaultTableModel model) {
+        supplierTable.setModel(model);
+        supplierTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+        supplierTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        supplierTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+        supplierTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+        supplierTable.getColumnModel().getColumn(4).setPreferredWidth(100);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ATKpage;
+    private javax.swing.JComboBox Category;
     private javax.swing.JPanel Supplier;
     private javax.swing.JPanel Userpage;
+    private javax.swing.JButton addButton;
     private javax.swing.JButton atk;
     private javax.swing.JTable atkTable;
+    private javax.swing.JButton deleteButton;
+    private javax.swing.JButton editButton;
+    private javax.swing.JTextField idUser;
     private javax.swing.JPanel inventaris;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton supplier;
+    private javax.swing.JTable supplierTable;
     private javax.swing.JButton user;
+    private javax.swing.JTextField userName;
+    private javax.swing.JTable userTable;
     // End of variables declaration//GEN-END:variables
 }

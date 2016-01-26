@@ -5,7 +5,6 @@
  */
 package inventaris.atk.models;
 
-import inventaris.atk.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,37 +17,33 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author FiqieUlya
  */
-public class InventarisAtkModel {
-
-    /**
-     * @param args the command line arguments
-     */
+public class InventarisSupplierModel {
      private static Connection conn = DatabaseConnector.connect();
-     private DefaultTableModel atk = new DefaultTableModel(new Object[]{"No","ID ATK", "Nama ATK", "Stok"},0);
+     private DefaultTableModel supplier = new DefaultTableModel(new Object[]{"No","ID Pemasok", "Nama Pemasok", "Alamat", "Nomor Telpon"},0);
      public DefaultTableModel getTableModel() {
-        return atk;
+        return supplier;
     }
     
     public void initModel() {
          try {
-             atk.setRowCount(0);
-             String sql = "SELECT * FROM ATK";
+             supplier.setRowCount(0);
+             String sql = "SELECT * FROM Pemasok";
              PreparedStatement dbStatement = conn.prepareStatement(sql);
              ResultSet rs = dbStatement.executeQuery();
              int i=1;
              while (rs.next()) {
-                 Object[] o = new Object[4];
+                 Object[] o = new Object[5];
                  o[0]=i;
-                 o[1]=rs.getInt("id_atk");
-                 o[2]=rs.getString("nama_atk");
-                 o[3]=rs.getInt("stok");
+                 o[1]=rs.getString("id_pemasok");
+                 o[2]=rs.getString("nama_pemasok");
+                 o[3]=rs.getString("alamat");
+                 o[4]=rs.getString("no_telpon");
                  i++;
-                 atk.addRow(o); 
+                 supplier.addRow(o); 
              }
 
          } catch (SQLException ex) {
              Logger.getLogger(InventarisAtkModel.class.getName()).log(Level.SEVERE, null, ex);
          }
     }
-
 }
