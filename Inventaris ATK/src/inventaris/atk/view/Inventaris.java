@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Inventaris extends javax.swing.JFrame {
     private final InventarisController inventarisController;
+    private int idTemp=0;
     /**
      * Creates new form Inventaris
      */
@@ -56,8 +57,8 @@ public class Inventaris extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
+        namaAtk = new javax.swing.JTextField();
+        stok = new javax.swing.JSpinner();
         addATK = new javax.swing.JButton();
         editATK = new javax.swing.JButton();
         HapusATK = new javax.swing.JButton();
@@ -70,9 +71,9 @@ public class Inventaris extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        namaPemasok = new javax.swing.JTextField();
+        alamat = new javax.swing.JTextField();
+        noTelp = new javax.swing.JTextField();
         addSupplier = new javax.swing.JButton();
         editSupplier = new javax.swing.JButton();
         deleteSupplier = new javax.swing.JButton();
@@ -243,6 +244,11 @@ public class Inventaris extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        atkTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                atkTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(atkTable);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -254,10 +260,25 @@ public class Inventaris extends javax.swing.JFrame {
         jLabel10.setText("Stok");
 
         addATK.setText("Tambah");
+        addATK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addATKActionPerformed(evt);
+            }
+        });
 
         editATK.setText("Ubah");
+        editATK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editATKActionPerformed(evt);
+            }
+        });
 
         HapusATK.setText("Hapus");
+        HapusATK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HapusATKActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -279,11 +300,11 @@ public class Inventaris extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(namaAtk, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(81, 81, 81)
                                         .addComponent(addATK))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(stok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(editATK)))))))
                 .addContainerGap(92, Short.MAX_VALUE))
@@ -296,12 +317,12 @@ public class Inventaris extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(namaAtk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addATK))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editATK))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(HapusATK)
@@ -353,6 +374,11 @@ public class Inventaris extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        supplierTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                supplierTableMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(supplierTable);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -366,10 +392,25 @@ public class Inventaris extends javax.swing.JFrame {
         jLabel14.setText("Nomor Telpon");
 
         addSupplier.setText("Tambah");
+        addSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSupplierActionPerformed(evt);
+            }
+        });
 
         editSupplier.setText("Ubah");
+        editSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editSupplierActionPerformed(evt);
+            }
+        });
 
         deleteSupplier.setText("Hapus");
+        deleteSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteSupplierActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -387,9 +428,9 @@ public class Inventaris extends javax.swing.JFrame {
                             .addComponent(jLabel14))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
+                            .addComponent(namaPemasok)
+                            .addComponent(alamat)
+                            .addComponent(noTelp, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
                         .addGap(39, 39, 39)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(addSupplier)
@@ -405,17 +446,17 @@ public class Inventaris extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(namaPemasok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addSupplier))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(alamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editSupplier))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(noTelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteSupplier))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
@@ -561,6 +602,53 @@ public class Inventaris extends javax.swing.JFrame {
         String id = idUser.getText();
         inventarisController.deleteUser(id);
     }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void addATKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addATKActionPerformed
+        String nama= namaAtk.getText();
+        int jml= (Integer)stok.getValue();
+        inventarisController.addAtk(nama, jml);
+    }//GEN-LAST:event_addATKActionPerformed
+
+    private void editATKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editATKActionPerformed
+        String nama= namaAtk.getText();
+        int jml= (Integer)stok.getValue();
+        inventarisController.updateAtk(nama, jml, idTemp);
+    }//GEN-LAST:event_editATKActionPerformed
+
+    private void HapusATKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusATKActionPerformed
+        inventarisController.deleteAtk(idTemp);
+    }//GEN-LAST:event_HapusATKActionPerformed
+
+    private void atkTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atkTableMouseClicked
+        namaAtk.setText((String)getAtkNameFromTable(atkTable.getSelectedRow()));
+        stok.setValue(getAtkStockFromTable(atkTable.getSelectedRow()));
+        idTemp=atkTable.getSelectedRow()+1;
+    }//GEN-LAST:event_atkTableMouseClicked
+
+    private void addSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSupplierActionPerformed
+        String nama= namaPemasok.getText();
+        String almt= alamat.getText();
+        String no = noTelp.getText();
+        inventarisController.addSupplier(nama, almt, no);
+    }//GEN-LAST:event_addSupplierActionPerformed
+
+    private void editSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSupplierActionPerformed
+        String nama= namaPemasok.getText();
+        String almt= alamat.getText();
+        String no = noTelp.getText();
+        inventarisController.updateSupplier(nama, almt, idTemp, no);
+    }//GEN-LAST:event_editSupplierActionPerformed
+
+    private void deleteSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSupplierActionPerformed
+        inventarisController.deleteSupplier(idTemp);
+    }//GEN-LAST:event_deleteSupplierActionPerformed
+
+    private void supplierTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_supplierTableMouseClicked
+        namaPemasok.setText((String)getSupplierNameFromTable(supplierTable.getSelectedRow()));
+        alamat.setText((String)getSupplierAddressFromTable(supplierTable.getSelectedRow()));
+        noTelp.setText((String)getSupplierPhoneFromTable(supplierTable.getSelectedRow()));
+        idTemp=supplierTable.getSelectedRow()+1;
+    }//GEN-LAST:event_supplierTableMouseClicked
     
     public Object getUserNameFromTable(int row){
         return userTable.getValueAt(row,2 );
@@ -570,6 +658,24 @@ public class Inventaris extends javax.swing.JFrame {
     }
     public Object getUserCategoryFromTable(int row){
         return userTable.getValueAt(row,3 );
+    }
+    public Object getAtkNameFromTable(int row){
+        return atkTable.getValueAt(row, 2);
+    }
+    public Object getAtkStockFromTable(int row){
+        return atkTable.getValueAt(row, 3);
+    }
+    public Object getAtkIdFromTable(int row){
+        return atkTable.getValueAt(row, 1);
+    }
+    public Object getSupplierNameFromTable(int row){
+        return supplierTable.getValueAt(row, 2);
+    }
+    public Object getSupplierAddressFromTable(int row){
+        return supplierTable.getValueAt(row, 3);
+    }
+    public Object getSupplierPhoneFromTable(int row){
+        return supplierTable.getValueAt(row, 4);
     }
     /**
      * @param args the command line arguments
@@ -638,6 +744,7 @@ public class Inventaris extends javax.swing.JFrame {
     private javax.swing.JButton addATK;
     private javax.swing.JButton addButton;
     private javax.swing.JButton addSupplier;
+    private javax.swing.JTextField alamat;
     private javax.swing.JButton atk;
     private javax.swing.JTable atkTable;
     private javax.swing.JComboBox category;
@@ -669,11 +776,10 @@ public class Inventaris extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField namaAtk;
+    private javax.swing.JTextField namaPemasok;
+    private javax.swing.JTextField noTelp;
+    private javax.swing.JSpinner stok;
     private javax.swing.JButton supplier;
     private javax.swing.JTable supplierTable;
     private javax.swing.JButton user;
