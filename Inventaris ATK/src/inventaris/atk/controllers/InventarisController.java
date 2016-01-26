@@ -64,4 +64,46 @@ public class InventarisController {
             System.out.println("Delete gagal");
         }
     }
+    public void addSupplier(String nama, String alamat, String telpon){
+        if(supplierModel.addSupplier(nama, alamat, telpon))
+            supplierModel.initModel();
+        else{
+            System.out.println("Input supplier gagal");
+        }
+    }
+    public void updateSupplier(String nama,String alamat, int id, String telpon){
+        if(supplierModel.editSupplier(nama, alamat, id, telpon)){
+            supplierModel.initModel();
+        }else{
+            System.out.println("Edit supplier gagal");
+        }
+    }
+    public void deleteSupplier(int id){
+        if(supplierModel.deleteSupplier(id)){
+            supplierModel.initModel();
+        }else{
+            System.out.println("Delete gagal");
+        }
+    }
+    public void addAtk(String nama, int stok){
+        if(atkModel.addAtk(nama, stok))
+            atkModel.initModel();
+        else{
+            System.out.println("Input atk gagal");
+        }
+    }
+    public void updateAtk(String nama, int stok, int id){
+        if(atkModel.editAtk(nama, stok, id)){
+            atkModel.initModel();
+        }else{
+            System.out.println("Edit atk gagal");
+        }
+    }
+    public void deleteAtk(int id){
+        if(atkModel.deleteAtk(id)){
+            atkModel.initModel();
+        }else{
+            System.out.println("Delete gagal");
+        }
+    }
 }

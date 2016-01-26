@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -45,5 +46,48 @@ public class InventarisSupplierModel {
          } catch (SQLException ex) {
              Logger.getLogger(InventarisAtkModel.class.getName()).log(Level.SEVERE, null, ex);
          }
+    }
+    public boolean addSupplier(String nama, String alamat, String telpon ){
+        try {
+            String sql = "INSERT INTO Pemasok (nama_pemasok, alamat, no_telpon) VALUES (?, ?, ?)";
+            PreparedStatement dbStatement = conn.prepareStatement(sql);
+            dbStatement.setString(1, nama);
+            dbStatement.setString(2, alamat);
+            dbStatement.setString(3, telpon);
+            dbStatement.executeUpdate();
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean editSupplier(String nama, String alamat, int id, String telpon ){
+        try {
+            Statement stmt = conn.createStatement();
+            String sql = "UPDATE Pemasok SET  nama_pemasok = ?, alamat = ?, no_telpon= ? WHERE id_pemasok=?";
+            PreparedStatement dbStatement = conn.prepareStatement(sql);
+            dbStatement.setString(1, nama);
+            dbStatement.setString(2, alamat);
+            dbStatement.setString(3, telpon);
+            dbStatement.setInt(4, id);
+            dbStatement.executeUpdate();
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }  
+    }
+    public boolean deleteSupplier(int id ){
+        try {
+            Statement stmt = conn.createStatement();
+            String sql = "DELETE FROM Pemasok WHERE id_pemasok=?";
+            PreparedStatement dbStatement = conn.prepareStatement(sql);
+            dbStatement.setInt(1, id);
+            dbStatement.executeUpdate();
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }  
     }
 }
