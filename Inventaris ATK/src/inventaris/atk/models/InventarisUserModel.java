@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -60,5 +61,33 @@ public class InventarisUserModel {
             e.printStackTrace();
             return false;
         }
+    }
+    public boolean editUser(String nama, String kategori, String id ){
+        try {
+            Statement stmt = conn.createStatement();
+            String sql = "UPDATE Pengguna SET  nama_pengguna = ?, Kategori = ? WHERE id_pengguna=?";
+            PreparedStatement dbStatement = conn.prepareStatement(sql);
+            dbStatement.setString(1, nama);
+            dbStatement.setString(2, kategori);
+            dbStatement.setString(3, id);
+            dbStatement.executeUpdate();
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }  
+    }
+    public boolean deleteUser(String id ){
+        try {
+            Statement stmt = conn.createStatement();
+            String sql = "DELETE FROM Pengguna WHERE id_pengguna=?";
+            PreparedStatement dbStatement = conn.prepareStatement(sql);
+            dbStatement.setString(1, id);
+            dbStatement.executeUpdate();
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }  
     }
 }

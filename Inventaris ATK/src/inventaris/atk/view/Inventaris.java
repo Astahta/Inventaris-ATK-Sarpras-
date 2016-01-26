@@ -137,8 +137,18 @@ public class Inventaris extends javax.swing.JFrame {
         });
 
         editButton.setText("Ubah");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
 
         deleteButton.setText("Hapus");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -539,6 +549,18 @@ public class Inventaris extends javax.swing.JFrame {
         category.setSelectedItem(getUserCategoryFromTable(userTable.getSelectedRow() ));
         idUser.setText((String)getUserIdFromTable(userTable.getSelectedRow()));
     }//GEN-LAST:event_userTableMouseClicked
+        
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        String nama= userName.getText();
+        String kategori= (String) category.getSelectedItem();
+        String id = idUser.getText();
+        inventarisController.updateUser(nama, id, kategori);
+    }//GEN-LAST:event_editButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        String id = idUser.getText();
+        inventarisController.deleteUser(id);
+    }//GEN-LAST:event_deleteButtonActionPerformed
     
     public Object getUserNameFromTable(int row){
         return userTable.getValueAt(row,2 );

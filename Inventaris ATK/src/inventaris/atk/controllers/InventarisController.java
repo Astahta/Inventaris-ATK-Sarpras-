@@ -45,9 +45,23 @@ public class InventarisController {
     }
     public void addUser(String nama, String id, String kategori){
         if(userModel.addUser(nama, kategori, id))
-        userModel.initModel();
+            userModel.initModel();
         else{
             System.out.println("Input user gagal");
+        }
+    }
+    public void updateUser(String nama,String id, String kategori){
+        if(userModel.editUser(nama, kategori, id)){
+            userModel.initModel();
+        }else{
+            System.out.println("Edit user gagal");
+        }
+    }
+    public void deleteUser(String id){
+        if(userModel.deleteUser(id)){
+            userModel.initModel();
+        }else{
+            System.out.println("Delete gagal");
         }
     }
 }
