@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -91,6 +92,14 @@ public class InventarisAtkModel {
             e.printStackTrace();
             return false;
         }  
+    }
+    
+       public Vector<String> getATKName(){
+        Vector<String> atkname = new Vector<String>();
+        for(int i=0; i<atk.getRowCount(); i++) {
+            atkname.add((String) atk.getValueAt(i,2));
+        }
+        return atkname;  
     }
 
 }

@@ -5,17 +5,26 @@
  */
 package inventaris.atk.view;
 
+import inventaris.atk.controllers.PemakaianController;
+import java.awt.*;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author FiqieUlya
  */
 public class Pemakaian extends javax.swing.JFrame {
 
+    private final PemakaianController pemakaianController;
     /**
      * Creates new form Pemakaian
      */
     public Pemakaian() {
         initComponents();
+        okButton1.setVisible(false);
+        okButton2.setVisible(false);
+        pemakaianController = new PemakaianController(this);
+        
     }
 
     /**
@@ -33,12 +42,14 @@ public class Pemakaian extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         formBooking = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        nip = new javax.swing.JTextField();
+        userIdBooking = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        proses = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jumlahBooking = new javax.swing.JSpinner();
+        prosesBooking = new javax.swing.JButton();
+        tanggalBooking = new com.toedter.calendar.JDateChooser();
+        atkOrders1 = new javax.swing.JPanel();
+        okButton1 = new javax.swing.JButton();
         viewBooking = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -49,16 +60,18 @@ public class Pemakaian extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jenisAtkPemakaian = new javax.swing.JSpinner();
+        jumlahPemakaian = new javax.swing.JSpinner();
         nipPemakain = new javax.swing.JTextField();
         prosesPemakaian = new javax.swing.JButton();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        atkOrders2 = new javax.swing.JPanel();
+        okButton2 = new javax.swing.JButton();
         viewPemakaian = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bookingButton = new javax.swing.JButton();
+        pemakaianButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,10 +88,21 @@ public class Pemakaian extends javax.swing.JFrame {
 
         jLabel3.setText("Jumlah Jenis ATK");
 
-        proses.setText("Proses");
-        proses.addActionListener(new java.awt.event.ActionListener() {
+        jumlahBooking.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
+
+        prosesBooking.setText("Proses");
+        prosesBooking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                prosesActionPerformed(evt);
+                prosesBookingActionPerformed(evt);
+            }
+        });
+
+        tanggalBooking.setDateFormatString("YYYY-MM-DD");
+
+        okButton1.setText("OK");
+        okButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButton1ActionPerformed(evt);
             }
         });
 
@@ -87,22 +111,25 @@ public class Pemakaian extends javax.swing.JFrame {
         formBookingLayout.setHorizontalGroup(
             formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formBookingLayout.createSequentialGroup()
-                .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(39, 39, 39)
+                .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(formBookingLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
                         .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addGap(50, 50, 50)
                         .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nip)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)))
-                    .addGroup(formBookingLayout.createSequentialGroup()
-                        .addGap(329, 329, 329)
-                        .addComponent(proses)))
-                .addContainerGap(674, Short.MAX_VALUE))
+                            .addComponent(userIdBooking)
+                            .addComponent(jumlahBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tanggalBooking, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)))
+                    .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(okButton1)
+                        .addGroup(formBookingLayout.createSequentialGroup()
+                            .addGap(290, 290, 290)
+                            .addComponent(prosesBooking)))
+                    .addComponent(atkOrders1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(638, Short.MAX_VALUE))
         );
         formBookingLayout.setVerticalGroup(
             formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,18 +137,22 @@ public class Pemakaian extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(nip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userIdBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tanggalBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jumlahBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(proses)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addComponent(prosesBooking)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(atkOrders1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(okButton1)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Form", formBooking);
@@ -183,7 +214,7 @@ public class Pemakaian extends javax.swing.JFrame {
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
-        penggunaan.add(booking, "booking_card");
+        penggunaan.add(booking, "booking");
 
         jLabel4.setText("NIM/NIP");
 
@@ -198,27 +229,45 @@ public class Pemakaian extends javax.swing.JFrame {
             }
         });
 
+        jDateChooser2.setDateFormatString("YYYY-MM-DD");
+
+        javax.swing.GroupLayout atkOrders2Layout = new javax.swing.GroupLayout(atkOrders2);
+        atkOrders2.setLayout(atkOrders2Layout);
+        atkOrders2Layout.setHorizontalGroup(
+            atkOrders2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 358, Short.MAX_VALUE)
+        );
+        atkOrders2Layout.setVerticalGroup(
+            atkOrders2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 278, Short.MAX_VALUE)
+        );
+
+        okButton2.setText("OK");
+
         javax.swing.GroupLayout formPemakaianLayout = new javax.swing.GroupLayout(formPemakaian);
         formPemakaian.setLayout(formPemakaianLayout);
         formPemakaianLayout.setHorizontalGroup(
             formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formPemakaianLayout.createSequentialGroup()
-                .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(formPemakaianLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(42, 42, 42)
-                        .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jenisAtkPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nipPemakain)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))
-                    .addGroup(formPemakaianLayout.createSequentialGroup()
-                        .addGap(292, 292, 292)
-                        .addComponent(prosesPemakaian)))
-                .addContainerGap(734, Short.MAX_VALUE))
+                .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(okButton2)
+                    .addComponent(atkOrders2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(formPemakaianLayout.createSequentialGroup()
+                            .addGap(33, 33, 33)
+                            .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5))
+                            .addGap(42, 42, 42)
+                            .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jumlahPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nipPemakain)
+                                .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))
+                        .addGroup(formPemakaianLayout.createSequentialGroup()
+                            .addGap(292, 292, 292)
+                            .addComponent(prosesPemakaian))))
+                .addContainerGap(698, Short.MAX_VALUE))
         );
         formPemakaianLayout.setVerticalGroup(
             formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,10 +283,14 @@ public class Pemakaian extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jenisAtkPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jumlahPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(prosesPemakaian)
-                .addContainerGap(390, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(atkOrders2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(okButton2)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("formPemakaian", formPemakaian);
@@ -299,27 +352,32 @@ public class Pemakaian extends javax.swing.JFrame {
 
         penggunaan.add(pemakaian, "pemakaian");
 
-        jButton1.setText("Booking");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bookingButton.setText("Booking");
+        bookingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bookingButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Pemakaian");
+        pemakaianButton.setText("Pemakaian");
+        pemakaianButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pemakaianButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(bookingButton)
                         .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(pemakaianButton)
                         .addGap(18, 18, 18)))
                 .addComponent(penggunaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -327,12 +385,12 @@ public class Pemakaian extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(201, 201, 201)
-                .addComponent(jButton1)
+                .addComponent(bookingButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(pemakaianButton)
                 .addContainerGap(504, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 145, Short.MAX_VALUE)
                 .addComponent(penggunaan, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -354,20 +412,77 @@ public class Pemakaian extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void bookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingButtonActionPerformed
+        pemakaianController.openBooking();
+    }//GEN-LAST:event_bookingButtonActionPerformed
 
-    private void prosesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prosesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_prosesActionPerformed
+    private void prosesBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prosesBookingActionPerformed
+        atkOrders1.removeAll();
+        
+        int count= (Integer)jumlahBooking.getValue();
+        Vector<String> atkName = pemakaianController.getATKName(); 
+        createOrders(count, atkName,1);
+        
+        booking.revalidate();
+        booking.repaint();
+        okButton1.setVisible(true);
+    }//GEN-LAST:event_prosesBookingActionPerformed
 
     private void prosesPemakaianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prosesPemakaianActionPerformed
-        // TODO add your handling code here:
+        atkOrders2.removeAll();
+        
+        int count= (Integer)jumlahPemakaian.getValue();
+        Vector<String> atkName = pemakaianController.getATKName(); 
+        createOrders(count, atkName, 2);
+        
+        booking.revalidate();
+        booking.repaint();
+        okButton2.setVisible(true);
     }//GEN-LAST:event_prosesPemakaianActionPerformed
+
+    private void okButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButton1ActionPerformed
+        String userId= userIdBooking.getText();
+        String date= tanggalBooking.getDateFormatString();
+   
+    }//GEN-LAST:event_okButton1ActionPerformed
+
+    private void pemakaianButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pemakaianButtonActionPerformed
+       pemakaianController.openPemakaian();
+    }//GEN-LAST:event_pemakaianButtonActionPerformed
     
     public void changeScreen(String screenName) {
         ((java.awt.CardLayout)penggunaan.getLayout()).show(penggunaan,screenName);
+    }
+    
+    private void createOrders(int count, Vector<String> atkName, int state){
+        atkOrders1.setLayout(new GridLayout(10,1));
+        atkOrders2.setLayout(new GridLayout(10,1));
+        
+        for(int i=1; i<=count; i++){
+            javax.swing.JPanel panel = new javax.swing.JPanel(new GridLayout(0,4));
+            
+            
+            String itemname = "item" + i;
+            String jumlahname = "jumlah" +i;
+            javax.swing.JComboBox item = new javax.swing.JComboBox(atkName);
+            javax.swing.JSpinner jumlah = new javax.swing.JSpinner();
+            javax.swing.JLabel itemLabel = new javax.swing.JLabel("Item: ");
+            javax.swing.JLabel jumlahLabel = new javax.swing.JLabel("Jumlah: ");
+            
+            panel.add(itemLabel, BorderLayout.EAST);
+            panel.add(item);
+            panel.add(jumlahLabel, BorderLayout.EAST);
+            panel.add(jumlah);
+            
+            item.setName(itemname);
+            jumlah.setName(jumlahname);
+            itemLabel.setHorizontalTextPosition(javax.swing.JLabel.RIGHT);
+            jumlahLabel.setHorizontalTextPosition(javax.swing.JLabel.RIGHT);
+            if(state==1)
+                atkOrders1.add(panel);
+            else
+                atkOrders2.add(panel);
+        }
     }
     /**
      * @param args the command line arguments
@@ -405,14 +520,14 @@ public class Pemakaian extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel atkOrders1;
+    private javax.swing.JPanel atkOrders2;
     private javax.swing.JPanel booking;
+    private javax.swing.JButton bookingButton;
     private javax.swing.JPanel formBooking;
     private javax.swing.JPanel formPemakaian;
     private javax.swing.JButton hapus;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -423,18 +538,22 @@ public class Pemakaian extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JSpinner jenisAtkPemakaian;
-    private javax.swing.JTextField nip;
+    private javax.swing.JSpinner jumlahBooking;
+    private javax.swing.JSpinner jumlahPemakaian;
     private javax.swing.JTextField nipPemakain;
+    private javax.swing.JButton okButton1;
+    private javax.swing.JButton okButton2;
     private javax.swing.JPanel pemakaian;
+    private javax.swing.JButton pemakaianButton;
     private javax.swing.JPanel penggunaan;
-    private javax.swing.JButton proses;
+    private javax.swing.JButton prosesBooking;
     private javax.swing.JButton prosesPemakaian;
+    private com.toedter.calendar.JDateChooser tanggalBooking;
+    private javax.swing.JTextField userIdBooking;
     private javax.swing.JPanel viewBooking;
     private javax.swing.JPanel viewPemakaian;
     // End of variables declaration//GEN-END:variables
