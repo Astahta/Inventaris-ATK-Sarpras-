@@ -97,7 +97,7 @@ public class Pemakaian extends javax.swing.JFrame {
             }
         });
 
-        tanggalBooking.setDateFormatString("YYYY-MM-DD");
+        tanggalBooking.setDateFormatString("yyyy-MM-dd");
 
         okButton1.setText("OK");
         okButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -123,10 +123,10 @@ public class Pemakaian extends javax.swing.JFrame {
                             .addComponent(userIdBooking)
                             .addComponent(jumlahBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tanggalBooking, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)))
-                    .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(okButton1)
-                        .addGroup(formBookingLayout.createSequentialGroup()
-                            .addGap(290, 290, 290)
+                    .addGroup(formBookingLayout.createSequentialGroup()
+                        .addGap(290, 290, 290)
+                        .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(okButton1)
                             .addComponent(prosesBooking)))
                     .addComponent(atkOrders1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(638, Short.MAX_VALUE))
@@ -441,8 +441,27 @@ public class Pemakaian extends javax.swing.JFrame {
     }//GEN-LAST:event_prosesPemakaianActionPerformed
 
     private void okButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButton1ActionPerformed
+        int count= (Integer)jumlahBooking.getValue();
+        Component[] components = atkOrders1.getComponents();
+       
+        
         String userId= userIdBooking.getText();
-        String date= tanggalBooking.getDateFormatString();
+        java.util.Date date= (java.util.Date) tanggalBooking.getDate();
+        
+        
+        
+        
+        
+        for(int i=0; i<count; i++) {
+            javax.swing.JPanel panel = (javax.swing.JPanel) components[i];
+            javax.swing.JComboBox itemComp = (javax.swing.JComboBox) panel.getComponent(1);
+            javax.swing.JSpinner jumlahComp = (javax.swing.JSpinner) panel.getComponent(3);
+            
+            String ATKname = (String) itemComp.getSelectedItem();
+            int sum = (Integer) jumlahComp.getValue(); 
+            
+            pemakaianController.addBooking(userId,date,ATKname, sum);      
+        }
    
     }//GEN-LAST:event_okButton1ActionPerformed
 

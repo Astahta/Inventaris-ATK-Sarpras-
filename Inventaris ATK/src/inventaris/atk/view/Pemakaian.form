@@ -154,10 +154,10 @@
                                               <Component id="tanggalBooking" alignment="0" pref="192" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Component id="okButton1" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="290" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="290" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="okButton1" min="-2" max="-2" attributes="0"/>
                                               <Component id="prosesBooking" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -231,7 +231,7 @@
                         </Component>
                         <Component class="com.toedter.calendar.JDateChooser" name="tanggalBooking">
                           <Properties>
-                            <Property name="dateFormatString" type="java.lang.String" value="YYYY-MM-DD"/>
+                            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
                           </Properties>
                         </Component>
                         <Container class="javax.swing.JPanel" name="atkOrders1">

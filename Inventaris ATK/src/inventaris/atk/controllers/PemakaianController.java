@@ -42,8 +42,8 @@ public class PemakaianController {
         }
     }
     
-    public void addBooking(String userId, String date, int atkId, int jumlah){
-        if(bookingModel.addBooking(userId, date, atkId, jumlah)){
+    public void addBooking(String userId, java.util.Date date, String atkName, int sum){
+        if(bookingModel.addBooking(userId, date, atkName, sum)){
         }
         else{
             System.out.println("Input pemakaian gagal");
