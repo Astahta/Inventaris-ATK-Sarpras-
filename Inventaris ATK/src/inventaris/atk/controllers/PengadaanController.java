@@ -5,10 +5,54 @@
  */
 package inventaris.atk.controllers;
 
+import inventaris.atk.models.BookingModel;
+import inventaris.atk.models.InventarisAtkModel;
+import inventaris.atk.models.PemakaianModel;
+import inventaris.atk.view.Pemakaian;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author FiqieUlya
  */
 public class PengadaanController {
+    private final Pengadaad frame;
+    private final BookingModel bookingModel = new BookingModel();
+    private final PemakaianModel pemakaianModel = new PemakaianModel();
+    private final InventarisAtkModel atkModel = new InventarisAtkModel();
+    private DefaultTableModel atkTable = new DefaultTableModel(new Object[]{"No","ID ATK", "Nama ATK", "Stok"},0);
     
+    public PemakaianController(Pemakaian frame) {
+        this.frame = frame;
+    }
+    
+    public void openPemakaian() {
+        frame.changeScreen("pemakaian");
+    }
+    
+    public void openBooking(){
+        frame.changeScreen("booking");
+    }
+    
+    public void addPemakaian(String userId, String date, int atkId, int jumlah){
+        if(pemakaianModel.addPemakaian(userId, date, atkId, jumlah)){
+        }
+        else{
+            System.out.println("Input pemakaian gagal");
+        }
+    }
+    
+    public void addBooking(String userId, String date, int atkId, int jumlah){
+        if(bookingModel.addBooking(userId, date, atkId, jumlah)){
+        }
+        else{
+            System.out.println("Input pemakaian gagal");
+        }
+    }
+    
+    public Vector<String> getATKName(){      
+        atkModel.initModel();
+        return atkModel.getATKName();  
+    }
 }
