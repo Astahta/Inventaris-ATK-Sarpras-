@@ -29,11 +29,16 @@ public class PengadaanModel {
     [id_pemasok] INTEGER REFERENCES Pemasok([id_pemasok]) ON DELETE CASCADE ON UPDATE CASCADE, 
     [id_atk] INTEGER REFERENCES ATK([id_atk]) ON DELETE CASCADE ON UPDATE CASCADE,*/
     private DefaultTableModel pengadaan = new DefaultTableModel(new Object[]{"No","Jumlah", "Status", "Tanggal Pesan", "Tanggal Datang", "ID Pemasok", "ID ATK"},0);
-    public DefaultTableModel getTableModel() {
+    private DefaultTableModel kedatangan = new DefaultTableModel(new Object[]{"No","Jumlah", "Tanggal Pesan", "ID Pemasok", "ID ATK"},0);
+    public DefaultTableModel getPengadaanTableModel() {
         return pengadaan;
     }
     
-    public void initModel() {
+    public DefaultTableModel getKedatanganTableModel() {
+        return kedatangan;
+    }
+    
+    public void initPengadaanModel() {
          try {
              pengadaan.setRowCount(0);
              String sql = "SELECT * FROM pengadaan";
@@ -51,6 +56,29 @@ public class PengadaanModel {
                  object[6]=rs.getInt("id_atk");
                  i++;
                  pengadaan.addRow(object); 
+             }
+
+         } catch (SQLException ex) {
+             Logger.getLogger(PengadaanModel.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }
+    
+    public void initKedatanganModel() {
+         try {
+             kedatangan.setRowCount(0);
+             String sql = "SELECT stok, tanggal_pesan, id_pemasok, id_atk FROM pengadaan WHERE status = 0";
+             PreparedStatement dbStatement = conn.prepareStatement(sql);
+             ResultSet rs = dbStatement.executeQuery();
+             int i=1;
+             while (rs.next()) {
+                 Object[] object = new Object[5];
+                 object[0]=i;
+                 object[1]=rs.getInt("stok");
+                 object[2]=rs.getString("tanggal_pesan");
+                 object[3]=rs.getInt("id_pemasok");
+                 object[4]=rs.getInt("id_atk");
+                 i++;
+                 kedatangan.addRow(object); 
              }
 
          } catch (SQLException ex) {

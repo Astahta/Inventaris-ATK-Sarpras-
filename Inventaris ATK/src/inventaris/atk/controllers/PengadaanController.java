@@ -29,6 +29,8 @@ public class PengadaanController {
     
     public PengadaanController(Pengadaan frame) {
         this.frame = frame;
+        frame.initPengadaanTable(pengadaanModel.getPengadaanTableModel());
+        frame.initKedatanganTable(pengadaanModel.getKedatanganTableModel());
     }
     
     public void openForm() {

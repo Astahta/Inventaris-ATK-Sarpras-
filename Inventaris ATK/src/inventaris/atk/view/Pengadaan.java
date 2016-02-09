@@ -7,6 +7,7 @@ package inventaris.atk.view;
 
 import inventaris.atk.controllers.PengadaanController;
 import java.awt.CardLayout;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -44,13 +45,13 @@ public class Pengadaan extends javax.swing.JFrame {
         kedatanganPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        kedatanganTable = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         viewPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        pengadaanTable = new javax.swing.JTable();
         menuPanel = new javax.swing.JPanel();
         formMenuButton = new javax.swing.JButton();
         kedatanganMenuButton = new javax.swing.JButton();
@@ -67,6 +68,11 @@ public class Pengadaan extends javax.swing.JFrame {
         jumlahJenisAtkLabel.setText("Jumlah Jenis ATK");
 
         namaPemasokComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        namaPemasokComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                namaPemasokComboBoxActionPerformed(evt);
+            }
+        });
 
         prosesButton.setText("jButton1");
 
@@ -112,7 +118,7 @@ public class Pengadaan extends javax.swing.JFrame {
 
         jLabel2.setText("Kedatangan");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        kedatanganTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -123,7 +129,7 @@ public class Pengadaan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(kedatanganTable);
 
         jButton2.setLabel("Validasi Kedatangan");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +176,7 @@ public class Pengadaan extends javax.swing.JFrame {
 
         jLabel3.setText("View");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        pengadaanTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -181,7 +187,7 @@ public class Pengadaan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(pengadaanTable);
 
         javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
         viewPanel.setLayout(viewPanelLayout);
@@ -296,10 +302,42 @@ public class Pengadaan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void namaPemasokComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaPemasokComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_namaPemasokComboBoxActionPerformed
+
     public void changeScreen(String panel){
         CardLayout card = (CardLayout)kedatanganMainPanel.getLayout();
         card.show(kedatanganMainPanel, panel);
     }
+    
+    public void initKedatanganTable(DefaultTableModel model) {
+        kedatanganTable.setModel(model);
+        kedatanganTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+        kedatanganTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        kedatanganTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+        kedatanganTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+        kedatanganTable.getColumnModel().getColumn(4).setPreferredWidth(100);
+    }
+    
+    public void initPengadaanTable(DefaultTableModel model) {
+        pengadaanTable.setModel(model);
+        pengadaanTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+        pengadaanTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        pengadaanTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+        pengadaanTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+        pengadaanTable.getColumnModel().getColumn(4).setPreferredWidth(100);
+        pengadaanTable.getColumnModel().getColumn(5).setPreferredWidth(100);
+        pengadaanTable.getColumnModel().getColumn(6).setPreferredWidth(100);
+    }
+    
+    namaPemasokComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tata Usaha", "Dosen", "Lain-lain", " " }));
+        category.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoryActionPerformed(evt);
+            }
+        });
+    
     /**
      * @param args the command line arguments
      */
@@ -345,16 +383,16 @@ public class Pengadaan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel jumlahJenisAtkLabel;
     private javax.swing.JSpinner jumlahJenisAtkSpinner;
     private javax.swing.JPanel kedatanganMainPanel;
     private javax.swing.JButton kedatanganMenuButton;
     private javax.swing.JPanel kedatanganPanel;
+    private javax.swing.JTable kedatanganTable;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JComboBox<String> namaPemasokComboBox;
     private javax.swing.JLabel namaPemasokLabel;
+    private javax.swing.JTable pengadaanTable;
     private javax.swing.JButton prosesButton;
     private javax.swing.JButton viewMenuButton;
     private javax.swing.JPanel viewPanel;
