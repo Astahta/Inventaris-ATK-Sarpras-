@@ -1,21 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package inventaris.atk.view;
+import inventaris.atk.controllers.StatistikController;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author FiqieUlya
- */
 public class Statistik extends javax.swing.JFrame {
+    
+    private final StatistikController statistikController;
 
-    /**
-     * Creates new form Statistik
-     */
     public Statistik() {
         initComponents();
+        statistikController = new StatistikController(this);
+    }
+    
+    public void changeScreen(String screenName) {
+        ((java.awt.CardLayout)statistik.getLayout()).show(statistik,screenName);
+    }
+    
+    public void initPeriodeTable(DefaultTableModel model) {
+        periodeTable.setModel(model);
+        periodeTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+        periodeTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        periodeTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+    }
+    
+    public void initUserTable(DefaultTableModel model) {
+        userTable.setModel(model);
+        userTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+        userTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        userTable.getColumnModel().getColumn(2).setPreferredWidth(100);
     }
 
     /**
@@ -27,21 +38,265 @@ public class Statistik extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        statistik = new javax.swing.JPanel();
+        Periode = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        year = new com.toedter.calendar.JYearChooser();
+        month = new com.toedter.calendar.JMonthChooser();
+        periodeShow = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        periodeTable = new javax.swing.JTable();
+        User = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        year_user = new com.toedter.calendar.JYearChooser();
+        userShow = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        userTable = new javax.swing.JTable();
+        username = new javax.swing.JComboBox();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(10, 10));
+
+        statistik.setLayout(new java.awt.CardLayout());
+
+        jLabel1.setText("Tahun");
+
+        jLabel2.setText("Bulan");
+
+        periodeShow.setText("Tampilkan");
+        periodeShow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                periodeShowActionPerformed(evt);
+            }
+        });
+
+        periodeTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Bulan", "ATK", "Pemakaian"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(periodeTable);
+
+        javax.swing.GroupLayout PeriodeLayout = new javax.swing.GroupLayout(Periode);
+        Periode.setLayout(PeriodeLayout);
+        PeriodeLayout.setHorizontalGroup(
+            PeriodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PeriodeLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(PeriodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PeriodeLayout.createSequentialGroup()
+                        .addGroup(PeriodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(PeriodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PeriodeLayout.createSequentialGroup()
+                                .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(90, 90, 90)
+                                .addComponent(periodeShow))
+                            .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        PeriodeLayout.setVerticalGroup(
+            PeriodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PeriodeLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(PeriodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(periodeShow)
+                    .addGroup(PeriodeLayout.createSequentialGroup()
+                        .addGroup(PeriodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PeriodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        statistik.add(Periode, "Periode");
+
+        jLabel3.setText("Tahun");
+
+        jLabel4.setText("Pengguna");
+
+        userShow.setText("Tampilkan");
+        userShow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userShowActionPerformed(evt);
+            }
+        });
+
+        userTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Bulan", "ATK", "Pemakaian"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(userTable);
+
+        username.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tata Usaha", "Dosen", "Lain-lain" }));
+
+        javax.swing.GroupLayout UserLayout = new javax.swing.GroupLayout(User);
+        User.setLayout(UserLayout);
+        UserLayout.setHorizontalGroup(
+            UserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UserLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(UserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(UserLayout.createSequentialGroup()
+                        .addGroup(UserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(UserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(year_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(UserLayout.createSequentialGroup()
+                                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(89, 89, 89)
+                                .addComponent(userShow)))))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        UserLayout.setVerticalGroup(
+            UserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UserLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(UserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(userShow)
+                    .addGroup(UserLayout.createSequentialGroup()
+                        .addGroup(UserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(year_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(UserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        statistik.add(User, "User");
+
+        jButton1.setText("Pemakaian ATK per Periode");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Pemakaian ATK per User");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(statistik, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(79, Short.MAX_VALUE)
+                .addComponent(statistik, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void periodeShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodeShowActionPerformed
+        // TODO add your handling code here:
+        int selectedYear = (int) year.getYear();
+        int selectedMonth = (int) month.getMonth();
+        statistikController.showAtSpesificTime(selectedMonth, selectedYear);
+    }//GEN-LAST:event_periodeShowActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int selectedYear = (int) year.getYear();
+        int selectedMonth = (int) month.getMonth();
+        statistikController.openPeriode(selectedMonth, selectedYear);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void userShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userShowActionPerformed
+        // TODO add your handling code here:
+        int selectedYear = (int) year_user.getYear();
+        String selectedKategori = (String) username.getSelectedItem();
+        statistikController.showAtSpesificUser(selectedKategori, selectedYear);
+    }//GEN-LAST:event_userShowActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int selectedYear = (int) year_user.getYear();
+        String selectedKategori = (String) username.getSelectedItem();
+        statistikController.openUser(selectedKategori, selectedYear);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -60,13 +315,13 @@ public class Statistik extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Statistik.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inventaris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Statistik.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inventaris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Statistik.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inventaris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Statistik.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inventaris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -79,5 +334,25 @@ public class Statistik extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Periode;
+    private javax.swing.JPanel User;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private com.toedter.calendar.JMonthChooser month;
+    private javax.swing.JButton periodeShow;
+    private javax.swing.JTable periodeTable;
+    private javax.swing.JPanel statistik;
+    private javax.swing.JButton userShow;
+    private javax.swing.JTable userTable;
+    private javax.swing.JComboBox username;
+    private com.toedter.calendar.JYearChooser year;
+    private com.toedter.calendar.JYearChooser year_user;
     // End of variables declaration//GEN-END:variables
 }
