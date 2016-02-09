@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <Component id="menuPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="88" max="32767" attributes="0"/>
               <Component id="kedatanganMainPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="698" max="32767" attributes="0"/>
@@ -41,7 +41,7 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="12" max="32767" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <Component id="menuPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="545" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -52,10 +52,10 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="panelForm">
+        <Container class="javax.swing.JPanel" name="formPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="panelForm"/>
+              <CardConstraints cardName="formPanel"/>
             </Constraint>
           </Constraints>
 
@@ -65,19 +65,19 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="formLabel" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jumlahJenisAtkLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="namaPemasokLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jComboBox1" min="-2" pref="159" max="-2" attributes="0"/>
+                                  <Component id="namaPemasokComboBox" min="-2" pref="159" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="jSpinner1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jumlahJenisAtkSpinner" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="prosesButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -90,17 +90,17 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="formLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="namaPemasokLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="namaPemasokComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jumlahJenisAtkLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jumlahJenisAtkSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="prosesButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="169" max="32767" attributes="0"/>
                   </Group>
@@ -108,22 +108,22 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="formLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Form"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
+            <Component class="javax.swing.JLabel" name="namaPemasokLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nama Pemasok"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
+            <Component class="javax.swing.JLabel" name="jumlahJenisAtkLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Jumlah Jenis ATK"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="namaPemasokComboBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -138,19 +138,19 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JSpinner" name="jSpinner1">
+            <Component class="javax.swing.JSpinner" name="jumlahJenisAtkSpinner">
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="prosesButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jButton1"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="panelKedatangan">
+        <Container class="javax.swing.JPanel" name="kedatanganPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="panelKedatangan"/>
+              <CardConstraints cardName="kedatanganPanel"/>
             </Constraint>
           </Constraints>
 
@@ -233,10 +233,10 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="panelView">
+        <Container class="javax.swing.JPanel" name="viewPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="panelView"/>
+              <CardConstraints cardName="viewPanel"/>
             </Constraint>
           </Constraints>
 
@@ -298,7 +298,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="menuPanel">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -307,10 +307,8 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="viewMenuButton" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="kedatanganMenuButton" max="32767" attributes="0"/>
-                          <Component id="formMenuButton" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="kedatanganMenuButton" max="32767" attributes="0"/>
+                      <Component id="formMenuButton" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>

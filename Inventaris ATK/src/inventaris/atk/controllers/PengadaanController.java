@@ -7,52 +7,52 @@ package inventaris.atk.controllers;
 
 import inventaris.atk.models.BookingModel;
 import inventaris.atk.models.InventarisAtkModel;
+import inventaris.atk.models.InventarisSupplierModel;
 import inventaris.atk.models.PemakaianModel;
+import inventaris.atk.models.PengadaanModel;
 import inventaris.atk.view.Pemakaian;
+import inventaris.atk.view.Pengadaan;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author FiqieUlya
  */
 public class PengadaanController {
-    private final Pengadaad frame;
-    private final BookingModel bookingModel = new BookingModel();
-    private final PemakaianModel pemakaianModel = new PemakaianModel();
+    private final Pengadaan frame;
+    private final PengadaanModel pengadaanModel = new PengadaanModel();
     private final InventarisAtkModel atkModel = new InventarisAtkModel();
+    private final InventarisSupplierModel supplierModel = new InventarisSupplierModel();
     private DefaultTableModel atkTable = new DefaultTableModel(new Object[]{"No","ID ATK", "Nama ATK", "Stok"},0);
     
-    public PemakaianController(Pemakaian frame) {
+    public PengadaanController(Pengadaan frame) {
         this.frame = frame;
     }
     
-    public void openPemakaian() {
-        frame.changeScreen("pemakaian");
+    public void openForm() {
+        frame.changeScreen("formPanel");
     }
     
-    public void openBooking(){
-        frame.changeScreen("booking");
+    public void openKedatangan(){
+        frame.changeScreen("kedatanganPanel");
     }
     
-    public void addPemakaian(String userId, String date, int atkId, int jumlah){
-        if(pemakaianModel.addPemakaian(userId, date, atkId, jumlah)){
+    public void openView(){
+        frame.changeScreen("viewPanel");
+    }
+    
+    public void createPengadaan(int stok, int status, String tanggal_pesan, int id_pemasok, int id_atk) {
+        if(pengadaanModel.createPengadaan(stok, status, tanggal_pesan, id_pemasok, id_atk)){
         }
         else{
-            System.out.println("Input pemakaian gagal");
+            System.out.println("Input pengadaan gagal");
         }
     }
-    
-    public void addBooking(String userId, String date, int atkId, int jumlah){
-        if(bookingModel.addBooking(userId, date, atkId, jumlah)){
-        }
-        else{
-            System.out.println("Input pemakaian gagal");
-        }
-    }
-    
-    public Vector<String> getATKName(){      
+       
+    /*public Vector<String> getATKName(){      
         atkModel.initModel();
         return atkModel.getATKName();  
-    }
+    }*/
 }
