@@ -283,7 +283,8 @@ public class Pengadaan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formMenuButtonActionPerformed
-        pengadaanController.openForm();
+        int n = (int) jumlahJenisAtkSpinner.getValue();
+        pengadaanController.openForm(n);
     }//GEN-LAST:event_formMenuButtonActionPerformed
 
     private void kedatanganMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kedatanganMenuButtonActionPerformed
@@ -303,7 +304,8 @@ public class Pengadaan extends javax.swing.JFrame {
     }//GEN-LAST:event_namaPemasokComboBoxActionPerformed
 
     private void prosesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prosesButtonActionPerformed
-        
+        int n = (int) jumlahJenisAtkSpinner.getValue();
+        pengadaanController.prosesForm(n);
     }//GEN-LAST:event_prosesButtonActionPerformed
     
     public void updatePemasokComboBox(){

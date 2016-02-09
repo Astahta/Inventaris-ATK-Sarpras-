@@ -34,8 +34,13 @@ public class PengadaanController {
         frame.initKedatanganTable(pengadaanModel.getKedatanganTableModel());
     }
     
-    public void openForm() {
-        pengadaanModel.initFormModel(3);//!TODO
+    public void prosesForm(int n){
+        pengadaanModel.initFormModel(n);
+        frame.initFormTable(pengadaanModel.getFormTableModel());
+    }
+    
+    public void openForm(int n) {
+        pengadaanModel.initFormModel(n);
         frame.changeScreen("formPanel");
     }
     
