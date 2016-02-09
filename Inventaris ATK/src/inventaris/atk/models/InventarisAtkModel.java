@@ -94,7 +94,7 @@ public class InventarisAtkModel {
         }  
     }
     
-       public Vector<String> getATKName(){
+    public Vector<String> getATKName(){
         Vector<String> atkname = new Vector<String>();
         for(int i=0; i<atk.getRowCount(); i++) {
             atkname.add((String) atk.getValueAt(i,2));

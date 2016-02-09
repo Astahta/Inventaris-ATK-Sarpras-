@@ -7,7 +7,10 @@ package inventaris.atk.view;
 
 import inventaris.atk.controllers.PengadaanController;
 import java.awt.CardLayout;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JPanel;
+
 
 /**
  *
@@ -23,6 +26,7 @@ public class Pengadaan extends javax.swing.JFrame {
     public Pengadaan() {
         initComponents();
         pengadaanController = new PengadaanController(this);
+        updatePemasokComboBox();
     }
 
     /**
@@ -305,7 +309,14 @@ public class Pengadaan extends javax.swing.JFrame {
     private void namaPemasokComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaPemasokComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_namaPemasokComboBoxActionPerformed
-
+    
+    public void updatePemasokComboBox(){
+        Vector<String> namaPemasok = pengadaanController.getSupplierName();
+        namaPemasokComboBox.removeAllItems();
+        for(String nama: namaPemasok)
+            namaPemasokComboBox.addItem(nama);
+    }
+    
     public void changeScreen(String panel){
         CardLayout card = (CardLayout)kedatanganMainPanel.getLayout();
         card.show(kedatanganMainPanel, panel);
@@ -330,13 +341,12 @@ public class Pengadaan extends javax.swing.JFrame {
         pengadaanTable.getColumnModel().getColumn(5).setPreferredWidth(100);
         pengadaanTable.getColumnModel().getColumn(6).setPreferredWidth(100);
     }
-    
-    namaPemasokComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tata Usaha", "Dosen", "Lain-lain", " " }));
-        category.addActionListener(new java.awt.event.ActionListener() {
+    //DefaultComboBoxModel(Vector<E> v)!TODO BIKIN INI PAKE VVECTOR
+        /*category.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 categoryActionPerformed(evt);
             }
-        });
+        });*/
     
     /**
      * @param args the command line arguments

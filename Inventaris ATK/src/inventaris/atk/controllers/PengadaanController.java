@@ -52,9 +52,16 @@ public class PengadaanController {
             System.out.println("Input pengadaan gagal");
         }
     }
-       
-    /*public Vector<String> getATKName(){      
+     
+    public Vector<String> getATKName(){      
         atkModel.initModel();
         return atkModel.getATKName();  
-    }*/
+    }
+    
+    public Vector<String> getSupplierName(){      
+        supplierModel.initModel();
+        return supplierModel.getSupplierName();  
+    }
+    
+    
 }
