@@ -28,14 +28,36 @@ public class PengadaanModel {
     [tanggal_kedatangan] DATETIME, 
     [id_pemasok] INTEGER REFERENCES Pemasok([id_pemasok]) ON DELETE CASCADE ON UPDATE CASCADE, 
     [id_atk] INTEGER REFERENCES ATK([id_atk]) ON DELETE CASCADE ON UPDATE CASCADE,*/
+    private DefaultTableModel form = new DefaultTableModel(new Object[]{"No", "Nama ATK", "Jumlah"},0);
     private DefaultTableModel pengadaan = new DefaultTableModel(new Object[]{"No","Jumlah", "Status", "Tanggal Pesan", "Tanggal Datang", "ID Pemasok", "ID ATK"},0);
     private DefaultTableModel kedatangan = new DefaultTableModel(new Object[]{"No","Jumlah", "Tanggal Pesan", "ID Pemasok", "ID ATK"},0);
+    public DefaultTableModel getFormTableModel() {
+        return form;
+    }
+    
     public DefaultTableModel getPengadaanTableModel() {
         return pengadaan;
     }
     
     public DefaultTableModel getKedatanganTableModel() {
         return kedatangan;
+    }
+    
+    public void initFormModel(int n) {
+         try {
+             form.setRowCount(0);
+             int i=1;
+             while (i <= n) {
+                 Object[] object = new Object[3];
+                 object[0]=i;
+                 object[1]="";
+                 object[2]="";
+                 i++;
+                 form.addRow(object); 
+             }
+
+         } catch (Exception ex) {
+         }
     }
     
     public void initPengadaanModel() {

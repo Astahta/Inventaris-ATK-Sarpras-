@@ -29,19 +29,23 @@ public class PengadaanController {
     
     public PengadaanController(Pengadaan frame) {
         this.frame = frame;
+        frame.initFormTable(pengadaanModel.getFormTableModel());
         frame.initPengadaanTable(pengadaanModel.getPengadaanTableModel());
         frame.initKedatanganTable(pengadaanModel.getKedatanganTableModel());
     }
     
     public void openForm() {
+        pengadaanModel.initFormModel(3);//!TODO
         frame.changeScreen("formPanel");
     }
     
     public void openKedatangan(){
+        pengadaanModel.initKedatanganModel();
         frame.changeScreen("kedatanganPanel");
     }
     
     public void openView(){
+        pengadaanModel.initPengadaanModel();
         frame.changeScreen("viewPanel");
     }
     
