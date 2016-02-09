@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Container class="javax.swing.JDialog" name="jDialog1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+    <Container class="javax.swing.JDialog" name="jDialog4">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -376,8 +408,8 @@
                                               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Component id="jumlahPemakaian" min="-2" pref="68" max="-2" attributes="0"/>
-                                                  <Component id="nipPemakain" max="32767" attributes="0"/>
-                                                  <Component id="jDateChooser2" alignment="0" pref="183" max="32767" attributes="0"/>
+                                                  <Component id="userIdPemakaian" max="32767" attributes="0"/>
+                                                  <Component id="tanggalPemakaian" alignment="0" pref="183" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
@@ -396,12 +428,12 @@
                                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="nipPemakain" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="userIdPemakaian" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jDateChooser2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tanggalPemakaian" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -437,7 +469,7 @@
                         </Component>
                         <Component class="javax.swing.JSpinner" name="jumlahPemakaian">
                         </Component>
-                        <Component class="javax.swing.JTextField" name="nipPemakain">
+                        <Component class="javax.swing.JTextField" name="userIdPemakaian">
                         </Component>
                         <Component class="javax.swing.JButton" name="prosesPemakaian">
                           <Properties>
@@ -447,9 +479,9 @@
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="prosesPemakaianActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+                        <Component class="com.toedter.calendar.JDateChooser" name="tanggalPemakaian">
                           <Properties>
-                            <Property name="dateFormatString" type="java.lang.String" value="YYYY-MM-DD"/>
+                            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
                           </Properties>
                         </Component>
                         <Container class="javax.swing.JPanel" name="atkOrders2">
@@ -471,6 +503,9 @@
                           <Properties>
                             <Property name="text" type="java.lang.String" value="OK"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="okButton2ActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>

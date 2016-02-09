@@ -34,8 +34,8 @@ public class PemakaianController {
         frame.changeScreen("booking");
     }
     
-    public void addPemakaian(String userId, String date, int atkId, int jumlah){
-        if(pemakaianModel.addPemakaian(userId, date, atkId, jumlah)){
+    public void addPemakaian(String userId, java.util.Date date, String atkName, int jumlah){
+        if(pemakaianModel.addPemakaian(userId, date, atkName, jumlah)){
         }
         else{
             System.out.println("Input pemakaian gagal");
@@ -53,6 +53,15 @@ public class PemakaianController {
     public Vector<String> getATKName(){      
         atkModel.initModel();
         return atkModel.getATKName();  
+    }
+
+    public boolean isPemakaianAvailable(String atkName, int sum) {
+        if(pemakaianModel.isAvailable(atkName, sum)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
         

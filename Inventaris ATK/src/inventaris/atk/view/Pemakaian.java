@@ -36,6 +36,8 @@ public class Pemakaian extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
+        jDialog4 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         penggunaan = new javax.swing.JPanel();
         booking = new javax.swing.JPanel();
@@ -61,9 +63,9 @@ public class Pemakaian extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jumlahPemakaian = new javax.swing.JSpinner();
-        nipPemakain = new javax.swing.JTextField();
+        userIdPemakaian = new javax.swing.JTextField();
         prosesPemakaian = new javax.swing.JButton();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        tanggalPemakaian = new com.toedter.calendar.JDateChooser();
         atkOrders2 = new javax.swing.JPanel();
         okButton2 = new javax.swing.JButton();
         viewPemakaian = new javax.swing.JPanel();
@@ -72,6 +74,28 @@ public class Pemakaian extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         bookingButton = new javax.swing.JButton();
         pemakaianButton = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jDialog4Layout = new javax.swing.GroupLayout(jDialog4.getContentPane());
+        jDialog4.getContentPane().setLayout(jDialog4Layout);
+        jDialog4Layout.setHorizontalGroup(
+            jDialog4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog4Layout.setVerticalGroup(
+            jDialog4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -229,7 +253,7 @@ public class Pemakaian extends javax.swing.JFrame {
             }
         });
 
-        jDateChooser2.setDateFormatString("YYYY-MM-DD");
+        tanggalPemakaian.setDateFormatString("yyyy-MM-dd");
 
         javax.swing.GroupLayout atkOrders2Layout = new javax.swing.GroupLayout(atkOrders2);
         atkOrders2.setLayout(atkOrders2Layout);
@@ -243,6 +267,11 @@ public class Pemakaian extends javax.swing.JFrame {
         );
 
         okButton2.setText("OK");
+        okButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout formPemakaianLayout = new javax.swing.GroupLayout(formPemakaian);
         formPemakaian.setLayout(formPemakaianLayout);
@@ -262,8 +291,8 @@ public class Pemakaian extends javax.swing.JFrame {
                             .addGap(42, 42, 42)
                             .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jumlahPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nipPemakain)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))
+                                .addComponent(userIdPemakaian)
+                                .addComponent(tanggalPemakaian, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))
                         .addGroup(formPemakaianLayout.createSequentialGroup()
                             .addGap(292, 292, 292)
                             .addComponent(prosesPemakaian))))
@@ -275,11 +304,11 @@ public class Pemakaian extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(nipPemakain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userIdPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tanggalPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -447,11 +476,7 @@ public class Pemakaian extends javax.swing.JFrame {
         
         String userId= userIdBooking.getText();
         java.util.Date date= (java.util.Date) tanggalBooking.getDate();
-        
-        
-        
-        
-        
+      
         for(int i=0; i<count; i++) {
             javax.swing.JPanel panel = (javax.swing.JPanel) components[i];
             javax.swing.JComboBox itemComp = (javax.swing.JComboBox) panel.getComponent(1);
@@ -460,14 +485,62 @@ public class Pemakaian extends javax.swing.JFrame {
             String ATKname = (String) itemComp.getSelectedItem();
             int sum = (Integer) jumlahComp.getValue(); 
             
-            pemakaianController.addBooking(userId,date,ATKname, sum);      
+            pemakaianController.addBooking(userId,date,ATKname, sum);       
         }
+        
+        javax.swing.JOptionPane.showMessageDialog(this, "Booking Berhasil Dimasukkan", "Success!", javax.swing.JOptionPane.PLAIN_MESSAGE);
    
     }//GEN-LAST:event_okButton1ActionPerformed
 
     private void pemakaianButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pemakaianButtonActionPerformed
        pemakaianController.openPemakaian();
     }//GEN-LAST:event_pemakaianButtonActionPerformed
+
+    private void okButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButton2ActionPerformed
+        int count= (Integer)jumlahPemakaian.getValue();
+        Component[] components = atkOrders2.getComponents();
+       
+        int j=0;
+        boolean available=true;
+        
+        while(j<count && available) {
+            javax.swing.JPanel panel = (javax.swing.JPanel) components[j];
+            javax.swing.JComboBox itemComp = (javax.swing.JComboBox) panel.getComponent(1);
+            javax.swing.JSpinner jumlahComp = (javax.swing.JSpinner) panel.getComponent(3);
+            
+            String ATKname = (String) itemComp.getSelectedItem();
+            int sum = (Integer) jumlahComp.getValue(); 
+            
+            if(pemakaianController.isPemakaianAvailable(ATKname,sum)) {
+                j++;
+            }
+            else {  
+                available=false;
+            }
+        }
+      
+        if(!available) {
+                 javax.swing.JOptionPane.showMessageDialog(this, "Jumlah pemakaian melebih stok tersedia",
+                "Pemakaian Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);  
+        }
+        else {
+            String userId= userIdPemakaian.getText();
+            java.util.Date date= (java.util.Date) tanggalPemakaian.getDate();
+
+            for(int i=0; i<count; i++) {
+                javax.swing.JPanel panel = (javax.swing.JPanel) components[i];
+                javax.swing.JComboBox itemComp = (javax.swing.JComboBox) panel.getComponent(1);
+                javax.swing.JSpinner jumlahComp = (javax.swing.JSpinner) panel.getComponent(3);
+
+                String ATKname = (String) itemComp.getSelectedItem();
+                int sum = (Integer) jumlahComp.getValue(); 
+
+                pemakaianController.addPemakaian(userId,date,ATKname, sum); 
+            }
+            javax.swing.JOptionPane.showMessageDialog(this, "Pemakain Berhasil Dimasukkan", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+
+        }
+    }//GEN-LAST:event_okButton2ActionPerformed
     
     public void changeScreen(String screenName) {
         ((java.awt.CardLayout)penggunaan.getLayout()).show(penggunaan,screenName);
@@ -547,7 +620,8 @@ public class Pemakaian extends javax.swing.JFrame {
     private javax.swing.JPanel formPemakaian;
     private javax.swing.JButton hapus;
     private javax.swing.JButton jButton3;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog jDialog4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -563,7 +637,6 @@ public class Pemakaian extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JSpinner jumlahBooking;
     private javax.swing.JSpinner jumlahPemakaian;
-    private javax.swing.JTextField nipPemakain;
     private javax.swing.JButton okButton1;
     private javax.swing.JButton okButton2;
     private javax.swing.JPanel pemakaian;
@@ -572,7 +645,9 @@ public class Pemakaian extends javax.swing.JFrame {
     private javax.swing.JButton prosesBooking;
     private javax.swing.JButton prosesPemakaian;
     private com.toedter.calendar.JDateChooser tanggalBooking;
+    private com.toedter.calendar.JDateChooser tanggalPemakaian;
     private javax.swing.JTextField userIdBooking;
+    private javax.swing.JTextField userIdPemakaian;
     private javax.swing.JPanel viewBooking;
     private javax.swing.JPanel viewPemakaian;
     // End of variables declaration//GEN-END:variables
