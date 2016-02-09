@@ -16,6 +16,10 @@ import javax.swing.table.DefaultTableModel;
 public class Pemakaian extends javax.swing.JFrame {
 
     private final PemakaianController pemakaianController;
+    private String nPemakaian;
+    private String nBooking;
+    private String tPemakaian;
+    private String tBooking;
     /**
      * Creates new form Pemakaian
      */
@@ -54,8 +58,10 @@ public class Pemakaian extends javax.swing.JFrame {
         okButton1 = new javax.swing.JButton();
         viewBooking = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelBooking = new javax.swing.JTable();
         hapus = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        detailBooking = new javax.swing.JTable();
         pemakaian = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         formPemakaian = new javax.swing.JPanel();
@@ -70,8 +76,12 @@ public class Pemakaian extends javax.swing.JFrame {
         okButton2 = new javax.swing.JButton();
         viewPemakaian = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tabelPemakaian = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        detailPemakaian = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         bookingButton = new javax.swing.JButton();
         pemakaianButton = new javax.swing.JButton();
 
@@ -181,7 +191,7 @@ public class Pemakaian extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Form", formBooking);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelBooking.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -192,28 +202,58 @@ public class Pemakaian extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tabelBooking.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelBookingMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabelBooking);
 
         hapus.setText("Hapus");
+
+        detailBooking.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        detailBooking.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                detailBookingMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(detailBooking);
 
         javax.swing.GroupLayout viewBookingLayout = new javax.swing.GroupLayout(viewBooking);
         viewBooking.setLayout(viewBookingLayout);
         viewBookingLayout.setHorizontalGroup(
             viewBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewBookingLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(414, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewBookingLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(603, Short.MAX_VALUE)
                 .addComponent(hapus)
                 .addGap(402, 402, 402))
+            .addGroup(viewBookingLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         viewBookingLayout.setVerticalGroup(
             viewBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewBookingLayout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(viewBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewBookingLayout.createSequentialGroup()
+                        .addContainerGap(67, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(viewBookingLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addGap(35, 35, 35)
                 .addComponent(hapus)
                 .addGap(102, 102, 102))
@@ -324,7 +364,7 @@ public class Pemakaian extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("formPemakaian", formPemakaian);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tabelPemakaian.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -335,29 +375,72 @@ public class Pemakaian extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        tabelPemakaian.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelPemakaianMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tabelPemakaian);
 
         jButton3.setText("Hapus");
+
+        detailPemakaian.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(detailPemakaian);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel7.setText("Detail Pemakaian");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel8.setText("Daftar Pemakaian");
 
         javax.swing.GroupLayout viewPemakaianLayout = new javax.swing.GroupLayout(viewPemakaian);
         viewPemakaian.setLayout(viewPemakaianLayout);
         viewPemakaianLayout.setHorizontalGroup(
             viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewPemakaianLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 777, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(274, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPemakaianLayout.createSequentialGroup()
+                .addGroup(viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewPemakaianLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3))
+                    .addGroup(viewPemakaianLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addGroup(viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(viewPemakaianLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(viewPemakaianLayout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49))
         );
         viewPemakaianLayout.setVerticalGroup(
             viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewPemakaianLayout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73)
+                .addGap(70, 70, 70)
+                .addGroup(viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
+                .addGroup(viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addGap(438, 438, 438))
         );
 
         jTabbedPane2.addTab("viewPemakaian", viewPemakaian);
@@ -400,7 +483,7 @@ public class Pemakaian extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(bookingButton)
@@ -541,11 +624,64 @@ public class Pemakaian extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_okButton2ActionPerformed
-    
+
+    private void tabelPemakaianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelPemakaianMouseClicked
+        nPemakaian= getNameFromTable(tabelPemakaian.getSelectedRow());
+        tPemakaian= getDateFromTable(tabelPemakaian.getSelectedRow());
+        pemakaianController.viewDetailPemakaian(nPemakaian, tPemakaian);
+    }//GEN-LAST:event_tabelPemakaianMouseClicked
+
+    private void detailBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailBookingMouseClicked
+        
+    }//GEN-LAST:event_detailBookingMouseClicked
+
+    private void tabelBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelBookingMouseClicked
+        nBooking= getNameFromBookingTable(tabelBooking.getSelectedRow());
+        tBooking= getDateFromBookingTable(tabelBooking.getSelectedRow());
+        pemakaianController.viewDetailBooking(nBooking, tBooking);
+    }//GEN-LAST:event_tabelBookingMouseClicked
+    public String getNameFromTable(int row){
+        return (String) tabelPemakaian.getValueAt(row,1 );
+    }
+    public String getDateFromTable(int row){
+        return (String) tabelPemakaian.getValueAt(row,2 );
+    }
+    public String getNameFromBookingTable(int row){
+        return (String) tabelBooking.getValueAt(row,1 );
+    }
+    public String getDateFromBookingTable(int row){
+        return (String) tabelBooking.getValueAt(row,2 );
+    }
     public void changeScreen(String screenName) {
         ((java.awt.CardLayout)penggunaan.getLayout()).show(penggunaan,screenName);
     }
     
+    public void initBookingTable(DefaultTableModel model) {
+        tabelBooking.setModel(model);
+        tabelBooking.getColumnModel().getColumn(0).setPreferredWidth(20);
+        tabelBooking.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tabelBooking.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tabelBooking.getColumnModel().getColumn(3).setPreferredWidth(100);
+    }
+    public void initPemakaianTable(DefaultTableModel model) {
+        tabelPemakaian.setModel(model);
+        tabelPemakaian.getColumnModel().getColumn(0).setPreferredWidth(20);
+        tabelPemakaian.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tabelPemakaian.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tabelPemakaian.getColumnModel().getColumn(3).setPreferredWidth(100);
+    }
+    public void initDetailPemakaianTable(DefaultTableModel model) {
+        detailPemakaian.setModel(model);
+        detailPemakaian.getColumnModel().getColumn(0).setPreferredWidth(100);
+        detailPemakaian.getColumnModel().getColumn(1).setPreferredWidth(100);
+        detailPemakaian.getColumnModel().getColumn(2).setPreferredWidth(100);
+    }
+    public void initDetailBookingTable(DefaultTableModel model) {
+        detailBooking.setModel(model);
+        detailBooking.getColumnModel().getColumn(0).setPreferredWidth(100);
+        detailBooking.getColumnModel().getColumn(1).setPreferredWidth(100);
+        detailBooking.getColumnModel().getColumn(2).setPreferredWidth(100);
+    }
     private void createOrders(int count, Vector<String> atkName, int state){
         atkOrders1.setLayout(new GridLayout(10,1));
         atkOrders2.setLayout(new GridLayout(10,1));
@@ -616,6 +752,8 @@ public class Pemakaian extends javax.swing.JFrame {
     private javax.swing.JPanel atkOrders2;
     private javax.swing.JPanel booking;
     private javax.swing.JButton bookingButton;
+    private javax.swing.JTable detailBooking;
+    private javax.swing.JTable detailPemakaian;
     private javax.swing.JPanel formBooking;
     private javax.swing.JPanel formPemakaian;
     private javax.swing.JButton hapus;
@@ -628,13 +766,15 @@ public class Pemakaian extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JSpinner jumlahBooking;
     private javax.swing.JSpinner jumlahPemakaian;
     private javax.swing.JButton okButton1;
@@ -644,6 +784,8 @@ public class Pemakaian extends javax.swing.JFrame {
     private javax.swing.JPanel penggunaan;
     private javax.swing.JButton prosesBooking;
     private javax.swing.JButton prosesPemakaian;
+    private javax.swing.JTable tabelBooking;
+    private javax.swing.JTable tabelPemakaian;
     private com.toedter.calendar.JDateChooser tanggalBooking;
     private com.toedter.calendar.JDateChooser tanggalPemakaian;
     private javax.swing.JTextField userIdBooking;

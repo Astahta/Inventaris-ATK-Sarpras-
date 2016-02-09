@@ -24,18 +24,33 @@ public class PemakaianController {
     
     public PemakaianController(Pemakaian frame) {
         this.frame = frame;
+        frame.initBookingTable(bookingModel.getTableModel());
+        frame.initPemakaianTable(pemakaianModel.getTableModel());
+        frame.initDetailPemakaianTable(pemakaianModel.getDetailModel());
+        frame.initDetailBookingTable(bookingModel.getDetailModel());
+    }
+    
+    public void viewDetailPemakaian(String nama, String tanggal){
+        pemakaianModel.initDetail(nama, tanggal);
+    }
+    
+    public void viewDetailBooking(String nama, String tanggal){
+        bookingModel.initDetail(nama, tanggal);
     }
     
     public void openPemakaian() {
         frame.changeScreen("pemakaian");
+        pemakaianModel.initModel();
     }
     
     public void openBooking(){
         frame.changeScreen("booking");
+        bookingModel.initModel();
     }
     
     public void addPemakaian(String userId, java.util.Date date, String atkName, int jumlah){
         if(pemakaianModel.addPemakaian(userId, date, atkName, jumlah)){
+            pemakaianModel.initModel();
         }
         else{
             System.out.println("Input pemakaian gagal");
@@ -44,6 +59,7 @@ public class PemakaianController {
     
     public void addBooking(String userId, java.util.Date date, String atkName, int sum){
         if(bookingModel.addBooking(userId, date, atkName, sum)){
+            bookingModel.initModel();
         }
         else{
             System.out.println("Input pemakaian gagal");

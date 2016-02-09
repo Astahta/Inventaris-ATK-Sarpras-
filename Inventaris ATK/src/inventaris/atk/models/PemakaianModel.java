@@ -7,6 +7,10 @@ package inventaris.atk.models;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,7 +18,60 @@ import java.sql.ResultSet;
  */
 public class PemakaianModel {
     private static Connection conn = DatabaseConnector.connect();
+    private DefaultTableModel pemakaian = new DefaultTableModel(new Object[]{"No","Nama Pengguna", "Tanggal Pemakain", "Banyak Jenis"},0);
+    private DefaultTableModel detail = new DefaultTableModel(new Object[]{"No", "Jenis ATK", "Jumlah"},0);
+    public DefaultTableModel getTableModel() {
+        return pemakaian;
+    }
+    public DefaultTableModel getDetailModel() {
+        return detail;
+    }
+    
+    public void initDetail(String nama, String tanggal){
+        try {
+            detail.setRowCount(0);
+            String sql ="SELECT a.nama_atk as atk,  p.jumlah as jumlah  FROM Pemakaian p NATURAL JOIN ATK a NATURAL JOIN Pengguna p WHERE p.nama_pengguna= ? AND p.tanggal_pemakaian = ? ";
+            PreparedStatement dbStatement = conn.prepareStatement(sql);
+            dbStatement.setString(1, nama);
+            dbStatement.setString(2, tanggal);
+            ResultSet rs = dbStatement.executeQuery();
+            int i=1;
+            
+            while (rs.next()) {
+                 Object[] o = new Object[3];
+                 o[0]=i;
+                 o[1]=rs.getString("atk");
+                 o[2]=rs.getInt("jumlah");
+                 detail.addRow(o); 
+                 i++;
+             }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PemakaianModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void initModel() {
+         try {
+             pemakaian.setRowCount(0);
+             String sql = "SELECT p.nama_pengguna as pengguna,  p.tanggal_pemakaian as tanggal, count(*) as jumlah  FROM Pemakaian p NATURAL JOIN ATK a NATURAL JOIN Pengguna p GROUP BY pengguna, tanggal ";
+             PreparedStatement dbStatement = conn.prepareStatement(sql);
+             ResultSet rs = dbStatement.executeQuery();
+             int i=1;
+             while (rs.next()) {
+                 Object[] o = new Object[4];
+                 o[0]=i;
+                 o[1]=rs.getString("pengguna");
+                 o[2]=rs.getString("tanggal");
+                 o[3]=rs.getInt("jumlah");
+                 pemakaian.addRow(o); 
+                 i++;
+             }
 
+         } catch (SQLException ex) {
+             Logger.getLogger(InventarisAtkModel.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }
+    
     public boolean addPemakaian(String userId, java.util.Date date, String namaATK, int jumlah) {
         try {
             int atkId=0;
