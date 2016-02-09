@@ -2,8 +2,13 @@ package inventaris.atk.models;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,7 +28,87 @@ public class PengadaanModel {
     [tanggal_kedatangan] DATETIME, 
     [id_pemasok] INTEGER REFERENCES Pemasok([id_pemasok]) ON DELETE CASCADE ON UPDATE CASCADE, 
     [id_atk] INTEGER REFERENCES ATK([id_atk]) ON DELETE CASCADE ON UPDATE CASCADE,*/
-    public boolean addPengadaan(int stok, int status, String tanggal_pesan, int id_pemasok, int id_atk) {
+    private DefaultTableModel form = new DefaultTableModel(new Object[]{"No", "Nama ATK", "Jumlah"},0);
+    private DefaultTableModel pengadaan = new DefaultTableModel(new Object[]{"No","Jumlah", "Status", "Tanggal Pesan", "Tanggal Datang", "ID Pemasok", "ID ATK"},0);
+    private DefaultTableModel kedatangan = new DefaultTableModel(new Object[]{"No","Jumlah", "Tanggal Pesan", "ID Pemasok", "ID ATK"},0);
+    public DefaultTableModel getFormTableModel() {
+        return form;
+    }
+    
+    public DefaultTableModel getPengadaanTableModel() {
+        return pengadaan;
+    }
+    
+    public DefaultTableModel getKedatanganTableModel() {
+        return kedatangan;
+    }
+    
+    public void initFormModel(int n) {
+         try {
+             form.setRowCount(0);
+             int i=1;
+             while (i <= n) {
+                 Object[] object = new Object[3];
+                 object[0]=i;
+                 object[1]="";
+                 object[2]="";
+                 i++;
+                 form.addRow(object); 
+             }
+
+         } catch (Exception ex) {
+         }
+    }
+    
+    public void initPengadaanModel() {
+         try {
+             pengadaan.setRowCount(0);
+             String sql = "SELECT * FROM pengadaan";
+             PreparedStatement dbStatement = conn.prepareStatement(sql);
+             ResultSet rs = dbStatement.executeQuery();
+             int i=1;
+             while (rs.next()) {
+                 Object[] object = new Object[7];
+                 object[0]=i;
+                 object[1]=rs.getInt("stok");
+                 object[2]=rs.getInt("status");
+                 object[3]=rs.getString("tanggal_pesan");
+                 object[4]=rs.getString("tanggal_kedatangan");
+                 object[5]=rs.getInt("id_pemasok");
+                 object[6]=rs.getInt("id_atk");
+                 i++;
+                 pengadaan.addRow(object); 
+             }
+
+         } catch (SQLException ex) {
+             Logger.getLogger(PengadaanModel.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }
+    
+    public void initKedatanganModel() {
+         try {
+             kedatangan.setRowCount(0);
+             String sql = "SELECT stok, tanggal_pesan, id_pemasok, id_atk FROM pengadaan WHERE status = 0";
+             PreparedStatement dbStatement = conn.prepareStatement(sql);
+             ResultSet rs = dbStatement.executeQuery();
+             int i=1;
+             while (rs.next()) {
+                 Object[] object = new Object[5];
+                 object[0]=i;
+                 object[1]=rs.getInt("stok");
+                 object[2]=rs.getString("tanggal_pesan");
+                 object[3]=rs.getInt("id_pemasok");
+                 object[4]=rs.getInt("id_atk");
+                 i++;
+                 kedatangan.addRow(object); 
+             }
+
+         } catch (SQLException ex) {
+             Logger.getLogger(PengadaanModel.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }
+    
+    public boolean createPengadaan(int stok, int status, String tanggal_pesan, int id_pemasok, int id_atk) {
         try {
             String sql = "INSERT INTO Pengadaan (stok, tanggal_pesan, id_pemasok, id_atk) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement dbStatement = conn.prepareStatement(sql);
@@ -40,27 +125,16 @@ public class PengadaanModel {
         }
     }
     
-    public boolean addKedatangan(int id_atk, String tanggal_pesan, int id_pemasok, int stok){
+    public boolean updatePengadaanAddKedatangan(int id_atk, String tanggal_pesan, int id_pemasok, int stok){
         try {
             Statement stmt = conn.createStatement();
             String sql = "UPDATE ATK SET  tanggal_kedatangan = ?, status = ?, stok = ? WHERE id_atk=?, tanggal_pesan=?";
             PreparedStatement dbStatement = conn.prepareStatement(sql);
-            dbStatement.setString(1, ta);
-            dbStatement.setInt(2, stok);
-            dbStatement.setInt(3, id);
-            dbStatement.executeUpdate();
-            return true;
-        } catch(Exception e) {
-            e.printStackTrace();
-            return false;
-        }  
-    }
-    public boolean deleteAtk(int id ){
-        try {
-            Statement stmt = conn.createStatement();
-            String sql = "DELETE FROM ATK WHERE id_atk=?";
-            PreparedStatement dbStatement = conn.prepareStatement(sql);
-            dbStatement.setInt(1, id);
+            dbStatement.setString(1, "now");
+            dbStatement.setInt(2, 1);
+            dbStatement.setInt(3, stok);
+            dbStatement.setInt(4, id_atk);
+            dbStatement.setString(5, tanggal_pesan);
             dbStatement.executeUpdate();
             return true;
         } catch(Exception e) {
@@ -69,28 +143,48 @@ public class PengadaanModel {
         }  
     }
     
-       public Vector<String> getATKName(){
+    /*public boolean updatePengadaan(int id_atk, String tanggal_pesan, int id_pemasok, int stok){
+        try {
+            Statement stmt = conn.createStatement();
+            String sql = "UPDATE ATK SET  tanggal_kedatangan = ?, status = ?, stok = ? WHERE id_atk=?, tanggal_pesan=?";
+            PreparedStatement dbStatement = conn.prepareStatement(sql);
+            dbStatement.setString(1, "now");
+            dbStatement.setInt(2, 1);
+            dbStatement.setInt(3, stok);
+            dbStatement.setInt(4, id_atk);
+            dbStatement.setString(5, tanggal_pesan);
+            dbStatement.executeUpdate();
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }  
+    }*/
+    
+    public boolean deleteKedatangan(int id_atk, String tanggal_pesan, int id_pemasok){
+        try {
+            Statement stmt = conn.createStatement();
+            String sql = "DELETE FROM ATK WHERE id_atk=?, tanggal_pesan=?, id_pemasok=?";
+            PreparedStatement dbStatement = conn.prepareStatement(sql);
+            dbStatement.setInt(1, id_atk);
+            dbStatement.setString(2, tanggal_pesan);
+            dbStatement.setInt(3, id_pemasok);
+            dbStatement.executeUpdate();
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }  
+    }
+    
+    /*public Vector<String> getATKName(){
         Vector<String> atkname = new Vector<String>();
         for(int i=0; i<atk.getRowCount(); i++) {
             atkname.add((String) atk.getValueAt(i,2));
         }
         return atkname;  
-    }
+    }*/
     
-    public boolean getPengadaan(int id_atk, String tanggal_pesan, int id_pemasok){
-        try {
-            String sql = "SELECT (askcdhasjkdh Pengadaan (stok, status, date, id_pemasok, id_atk) VALUES (?, ?, ?, ?, ?)";
-            PreparedStatement dbStatement = conn.prepareStatement(sql);
-            dbStatement.setInt(1, stok);
-            dbStatement.setInt(2, status);
-            dbStatement.setString(3, date);
-            dbStatement.setInt(4, id_pemasok);
-            dbStatement.setInt(5, id_atk);
-            dbStatement.executeUpdate();
-            return true;
-        } catch(Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+    
+    
 }

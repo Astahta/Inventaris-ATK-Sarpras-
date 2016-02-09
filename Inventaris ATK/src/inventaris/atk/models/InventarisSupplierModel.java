@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -89,5 +90,13 @@ public class InventarisSupplierModel {
             e.printStackTrace();
             return false;
         }  
+    }
+    
+    public Vector<String> getSupplierName(){
+        Vector<String> suppliername = new Vector<String>();
+        for(int i=0; i<supplier.getRowCount(); i++) {
+            suppliername.add((String) supplier.getValueAt(i,2));
+        }
+        return suppliername;  
     }
 }

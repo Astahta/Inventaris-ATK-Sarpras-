@@ -5,7 +5,12 @@
  */
 package inventaris.atk.view;
 
+import inventaris.atk.controllers.PengadaanController;
 import java.awt.CardLayout;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JPanel;
+
 
 /**
  *
@@ -13,11 +18,15 @@ import java.awt.CardLayout;
  */
 public class Pengadaan extends javax.swing.JFrame {
 
+    private final PengadaanController pengadaanController;
+    private int idTemp = 0;
     /**
      * Creates new form Pengadaan
      */
     public Pengadaan() {
         initComponents();
+        pengadaanController = new PengadaanController(this);
+        updatePemasokComboBox();
     }
 
     /**
@@ -30,24 +39,23 @@ public class Pengadaan extends javax.swing.JFrame {
     private void initComponents() {
 
         kedatanganMainPanel = new javax.swing.JPanel();
-        panelForm = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jSpinner1 = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
-        panelKedatangan = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        formPanel = new javax.swing.JPanel();
+        namaPemasokLabel = new javax.swing.JLabel();
+        jumlahJenisAtkLabel = new javax.swing.JLabel();
+        namaPemasokComboBox = new javax.swing.JComboBox<>();
+        jumlahJenisAtkSpinner = new javax.swing.JSpinner();
+        prosesButton = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        formTable = new javax.swing.JTable();
+        kedatanganPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        kedatanganTable = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        panelView = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        viewPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        pengadaanTable = new javax.swing.JTable();
+        menuPanel = new javax.swing.JPanel();
         formMenuButton = new javax.swing.JButton();
         kedatanganMenuButton = new javax.swing.JButton();
         viewMenuButton = new javax.swing.JButton();
@@ -56,59 +64,25 @@ public class Pengadaan extends javax.swing.JFrame {
 
         kedatanganMainPanel.setLayout(new java.awt.CardLayout());
 
-        jLabel1.setText("Form");
+        namaPemasokLabel.setText("Nama Pemasok");
 
-        jLabel4.setText("Nama Pemasok");
+        jumlahJenisAtkLabel.setText("Jumlah Jenis ATK");
 
-        jLabel5.setText("Jumlah Jenis ATK");
+        namaPemasokComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        namaPemasokComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                namaPemasokComboBoxActionPerformed(evt);
+            }
+        });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        prosesButton.setText("Proses");
+        prosesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prosesButtonActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("jButton1");
-
-        javax.swing.GroupLayout panelFormLayout = new javax.swing.GroupLayout(panelForm);
-        panelForm.setLayout(panelFormLayout);
-        panelFormLayout.setHorizontalGroup(
-            panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFormLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(panelFormLayout.createSequentialGroup()
-                        .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelFormLayout.createSequentialGroup()
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1)))))
-                .addContainerGap(283, Short.MAX_VALUE))
-        );
-        panelFormLayout.setVerticalGroup(
-            panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFormLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(37, 37, 37)
-                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(169, Short.MAX_VALUE))
-        );
-
-        kedatanganMainPanel.add(panelForm, "panelForm");
-
-        jLabel2.setText("Kedatangan");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        formTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -119,7 +93,58 @@ public class Pengadaan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane3.setViewportView(formTable);
+
+        javax.swing.GroupLayout formPanelLayout = new javax.swing.GroupLayout(formPanel);
+        formPanel.setLayout(formPanelLayout);
+        formPanelLayout.setHorizontalGroup(
+            formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(formPanelLayout.createSequentialGroup()
+                .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(formPanelLayout.createSequentialGroup()
+                        .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(namaPemasokLabel)
+                            .addComponent(jumlahJenisAtkLabel))
+                        .addGap(29, 29, 29)
+                        .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(formPanelLayout.createSequentialGroup()
+                                .addComponent(jumlahJenisAtkSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(prosesButton))
+                            .addComponent(namaPemasokComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 85, Short.MAX_VALUE))
+        );
+        formPanelLayout.setVerticalGroup(
+            formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(formPanelLayout.createSequentialGroup()
+                .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(namaPemasokLabel)
+                    .addComponent(namaPemasokComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jumlahJenisAtkLabel)
+                    .addComponent(jumlahJenisAtkSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prosesButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        kedatanganMainPanel.add(formPanel, "formPanel");
+
+        kedatanganTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(kedatanganTable);
 
         jButton2.setLabel("Validasi Kedatangan");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -130,43 +155,33 @@ public class Pengadaan extends javax.swing.JFrame {
 
         jButton3.setLabel("Hapus");
 
-        javax.swing.GroupLayout panelKedatanganLayout = new javax.swing.GroupLayout(panelKedatangan);
-        panelKedatangan.setLayout(panelKedatanganLayout);
-        panelKedatanganLayout.setHorizontalGroup(
-            panelKedatanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelKedatanganLayout.createSequentialGroup()
-                .addGroup(panelKedatanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelKedatanganLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(panelKedatanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addGroup(panelKedatanganLayout.createSequentialGroup()
-                        .addGap(228, 228, 228)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)))
-                .addContainerGap(74, Short.MAX_VALUE))
+        javax.swing.GroupLayout kedatanganPanelLayout = new javax.swing.GroupLayout(kedatanganPanel);
+        kedatanganPanel.setLayout(kedatanganPanelLayout);
+        kedatanganPanelLayout.setHorizontalGroup(
+            kedatanganPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kedatanganPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addGap(89, 89, 89))
+            .addGroup(kedatanganPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 85, Short.MAX_VALUE))
         );
-        panelKedatanganLayout.setVerticalGroup(
-            panelKedatanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelKedatanganLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel2)
+        kedatanganPanelLayout.setVerticalGroup(
+            kedatanganPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kedatanganPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(panelKedatanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(kedatanganPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addGap(32, 32, 32))
+                    .addComponent(jButton3)))
         );
 
-        kedatanganMainPanel.add(panelKedatangan, "panelKedatangan");
+        kedatanganMainPanel.add(kedatanganPanel, "kedatanganPanel");
 
-        jLabel3.setText("View");
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        pengadaanTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -177,33 +192,24 @@ public class Pengadaan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(pengadaanTable);
 
-        javax.swing.GroupLayout panelViewLayout = new javax.swing.GroupLayout(panelView);
-        panelView.setLayout(panelViewLayout);
-        panelViewLayout.setHorizontalGroup(
-            panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelViewLayout.createSequentialGroup()
-                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelViewLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel3))
-                    .addGroup(panelViewLayout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+        javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
+        viewPanel.setLayout(viewPanelLayout);
+        viewPanelLayout.setHorizontalGroup(
+            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 85, Short.MAX_VALUE))
         );
-        panelViewLayout.setVerticalGroup(
-            panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelViewLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel3)
-                .addGap(46, 46, 46)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+        viewPanelLayout.setVerticalGroup(
+            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
-        kedatanganMainPanel.add(panelView, "panelView");
+        kedatanganMainPanel.add(viewPanel, "viewPanel");
 
         formMenuButton.setLabel("Form");
         formMenuButton.addActionListener(new java.awt.event.ActionListener() {
@@ -226,22 +232,21 @@ public class Pengadaan extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
+        menuPanel.setLayout(menuPanelLayout);
+        menuPanelLayout.setHorizontalGroup(
+            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(viewMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(kedatanganMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(formMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(kedatanganMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(formMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        menuPanelLayout.setVerticalGroup(
+            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(formMenuButton)
                 .addGap(28, 28, 28)
@@ -257,7 +262,7 @@ public class Pengadaan extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(129, 129, 129)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(kedatanganMainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(698, Short.MAX_VALUE))
@@ -270,7 +275,7 @@ public class Pengadaan extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(545, 545, 545))
         );
 
@@ -278,24 +283,76 @@ public class Pengadaan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formMenuButtonActionPerformed
-        CardLayout card = (CardLayout)kedatanganMainPanel.getLayout();
-        card.show(kedatanganMainPanel, "panelForm");
+        int n = (int) jumlahJenisAtkSpinner.getValue();
+        pengadaanController.openForm(n);
     }//GEN-LAST:event_formMenuButtonActionPerformed
 
     private void kedatanganMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kedatanganMenuButtonActionPerformed
-        CardLayout card = (CardLayout)kedatanganMainPanel.getLayout();
-        card.show(kedatanganMainPanel, "panelKedatangan");
+        pengadaanController.openKedatangan();
     }//GEN-LAST:event_kedatanganMenuButtonActionPerformed
 
     private void viewMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMenuButtonActionPerformed
-        CardLayout card = (CardLayout)kedatanganMainPanel.getLayout();
-        card.show(kedatanganMainPanel, "panelView");
+        pengadaanController.openView();
     }//GEN-LAST:event_viewMenuButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void namaPemasokComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaPemasokComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_namaPemasokComboBoxActionPerformed
+
+    private void prosesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prosesButtonActionPerformed
+        int n = (int) jumlahJenisAtkSpinner.getValue();
+        pengadaanController.prosesForm(n);
+    }//GEN-LAST:event_prosesButtonActionPerformed
+    
+    public void updatePemasokComboBox(){
+        Vector<String> namaPemasok = pengadaanController.getSupplierName();
+        namaPemasokComboBox.removeAllItems();
+        for(String nama: namaPemasok)
+            namaPemasokComboBox.addItem(nama);
+    }
+    
+    public void changeScreen(String panel){
+        CardLayout card = (CardLayout)kedatanganMainPanel.getLayout();
+        card.show(kedatanganMainPanel, panel);
+    }
+    
+    public void initFormTable(DefaultTableModel model) {
+        formTable.setModel(model);
+        formTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+        formTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        formTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+    }
+    
+    public void initKedatanganTable(DefaultTableModel model) {
+        kedatanganTable.setModel(model);
+        kedatanganTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+        kedatanganTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        kedatanganTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+        kedatanganTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+        kedatanganTable.getColumnModel().getColumn(4).setPreferredWidth(100);
+    }
+    
+    public void initPengadaanTable(DefaultTableModel model) {
+        pengadaanTable.setModel(model);
+        pengadaanTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+        pengadaanTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        pengadaanTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+        pengadaanTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+        pengadaanTable.getColumnModel().getColumn(4).setPreferredWidth(100);
+        pengadaanTable.getColumnModel().getColumn(5).setPreferredWidth(100);
+        pengadaanTable.getColumnModel().getColumn(6).setPreferredWidth(100);
+    }
+    //DefaultComboBoxModel(Vector<E> v)!TODO BIKIN INI PAKE VVECTOR
+        /*category.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoryActionPerformed(evt);
+            }
+        });*/
+    
     /**
      * @param args the command line arguments
      */
@@ -333,26 +390,25 @@ public class Pengadaan extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton formMenuButton;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel formPanel;
+    private javax.swing.JTable formTable;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel jumlahJenisAtkLabel;
+    private javax.swing.JSpinner jumlahJenisAtkSpinner;
     private javax.swing.JPanel kedatanganMainPanel;
     private javax.swing.JButton kedatanganMenuButton;
-    private javax.swing.JPanel panelForm;
-    private javax.swing.JPanel panelKedatangan;
-    private javax.swing.JPanel panelView;
+    private javax.swing.JPanel kedatanganPanel;
+    private javax.swing.JTable kedatanganTable;
+    private javax.swing.JPanel menuPanel;
+    private javax.swing.JComboBox<String> namaPemasokComboBox;
+    private javax.swing.JLabel namaPemasokLabel;
+    private javax.swing.JTable pengadaanTable;
+    private javax.swing.JButton prosesButton;
     private javax.swing.JButton viewMenuButton;
+    private javax.swing.JPanel viewPanel;
     // End of variables declaration//GEN-END:variables
 }
