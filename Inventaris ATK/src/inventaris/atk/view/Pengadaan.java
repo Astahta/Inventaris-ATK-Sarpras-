@@ -337,6 +337,7 @@ public class Pengadaan extends javax.swing.JFrame {
         System.out.println(id_pemasok);
         System.out.println(id_atk);
         pengadaanController.updatePengadaanAddKedatangan(id_atk, tanggal_pesan, id_pemasok);
+        
         /*String kategori= (String) category.getSelectedItem();
         String id = idUser.getText();
         inventarisController.updateUser(nama, id, kategori);
