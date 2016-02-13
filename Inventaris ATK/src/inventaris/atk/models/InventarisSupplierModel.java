@@ -99,4 +99,11 @@ public class InventarisSupplierModel {
         }
         return suppliername;  
     }
+    public Vector<String> getSupplierIdName(){
+        Vector<String> supplierIdName = new Vector<String>();
+        for(int i=0; i<supplier.getRowCount(); i++) {
+            supplierIdName.add((String) supplier.getValueAt(i,1) + " - " + (String) supplier.getValueAt(i,2));
+        }
+        return supplierIdName;
+    }
 }

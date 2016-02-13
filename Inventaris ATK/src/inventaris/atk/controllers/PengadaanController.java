@@ -29,14 +29,14 @@ public class PengadaanController {
     
     public PengadaanController(Pengadaan frame) {
         this.frame = frame;
-        frame.initFormTable(pengadaanModel.getFormTableModel());
+        //frame.initFormTable(pengadaanModel.getFormTableModel());
         frame.initPengadaanTable(pengadaanModel.getPengadaanTableModel());
         frame.initKedatanganTable(pengadaanModel.getKedatanganTableModel());
     }
     
     public void prosesForm(int n){
         pengadaanModel.initFormModel(n);
-        frame.initFormTable(pengadaanModel.getFormTableModel());
+        //frame.initFormTable(pengadaanModel.getFormTableModel());
     }
     
     public void openForm(int n) {
@@ -54,22 +54,39 @@ public class PengadaanController {
         frame.changeScreen("viewPanel");
     }
     
-    public void createPengadaan(int stok, int status, String tanggal_pesan, int id_pemasok, int id_atk) {
-        if(pengadaanModel.createPengadaan(stok, status, tanggal_pesan, id_pemasok, id_atk)){
+    public void createPengadaan(int stok, String tanggal_pesan, int id_pemasok, int id_atk) {
+        if(pengadaanModel.createPengadaan(stok, tanggal_pesan, id_pemasok, id_atk)){
         }
         else{
-            System.out.println("Input pengadaan gagal");
+            System.out.println("Input pengadaan gagal" + "- stok: -" + stok + "- id_pemasok: -" + id_pemasok + "- id_atk: -" + id_atk + "-");
         }
     }
-     
-    public Vector<String> getATKName(){      
+    
+    public void updatePengadaanAddKedatangan(int id_atk, String tanggal_pesan, int id_pemasok){
+        if(pengadaanModel.updatePengadaanAddKedatangan(id_atk, tanggal_pesan, id_pemasok)){
+        }
+        else{
+            System.out.println("Gagal update");
+        }
+    }
+    public Vector<String> getATKName(){
         atkModel.initModel();
         return atkModel.getATKName();  
+    }
+    
+    public Vector<String> getATKIdName(){
+        atkModel.initModel();
+        return atkModel.getATKIdName();  
     }
     
     public Vector<String> getSupplierName(){      
         supplierModel.initModel();
         return supplierModel.getSupplierName();  
+    }
+    
+    public Vector<String> getSupplierIdName(){      
+        supplierModel.initModel();
+        return supplierModel.getSupplierIdName();  
     }
     
     

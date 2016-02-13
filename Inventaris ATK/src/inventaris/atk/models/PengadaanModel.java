@@ -108,16 +108,18 @@ public class PengadaanModel {
          }
     }
     
-    public boolean createPengadaan(int stok, int status, String tanggal_pesan, int id_pemasok, int id_atk) {
+    public boolean createPengadaan(int stok, String tanggal_pesan, int id_pemasok, int id_atk) {
         try {
-            String sql = "INSERT INTO Pengadaan (stok, tanggal_pesan, id_pemasok, id_atk) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Pengadaan (stok, status, tanggal_pesan, id_pemasok, id_atk) VALUES (?, ?, "+tanggal_pesan+", ?, ?)";
+            System.out.println("sql: " + sql);
+            
+            
             PreparedStatement dbStatement = conn.prepareStatement(sql);
-            dbStatement.setInt(1, stok);
-            dbStatement.setInt(2, 0);
-            dbStatement.setString(3, tanggal_pesan);
-            dbStatement.setInt(4, id_pemasok);
-            dbStatement.setInt(5, id_atk);
-            dbStatement.executeUpdate();
+            dbStatement.setInt(1, stok); System.out.println("stok: " + stok);
+            dbStatement.setInt(2, 0); System.out.println("status: " + "0");
+            dbStatement.setInt(3, id_pemasok); System.out.println("id_pemasok: " + id_pemasok);
+            dbStatement.setInt(4, id_atk); System.out.println("id_atk: " + id_atk);
+            dbStatement.executeUpdate(); System.out.println("jalankan");
             return true;
         } catch(Exception e) {
             e.printStackTrace();
@@ -125,16 +127,22 @@ public class PengadaanModel {
         }
     }
     
-    public boolean updatePengadaanAddKedatangan(int id_atk, String tanggal_pesan, int id_pemasok, int stok){
+    public boolean updatePengadaanAddKedatangan(int id_atk, String tanggal_pesan, int id_pemasok){
         try {
             Statement stmt = conn.createStatement();
-            String sql = "UPDATE ATK SET  tanggal_kedatangan = ?, status = ?, stok = ? WHERE id_atk=?, tanggal_pesan=?";
+            String sql = "UPDATE Pengadaan SET tanggal_kedatangan = ?, status = ? WHERE id_atk=? AND tanggal_pesan=? AND id_pemasok = ?";
+            System.out.println("sql: " + sql);
+            /*
+            UPDATE ATK SET  tanggal_kedatangan = DATETIME('now'), status = 1 WHERE id_atk=2, tanggal_pesan=2016-02-13 06:46:06;
+            UPDATE Pengadaan SET tanggal_kedatangan = DATETIME('now'), status = 1 WHERE tanggal_pesan='2016-02-13 06:46:06' AND id_atk = 3 AND id_pemasok = 2
+            */
+            
             PreparedStatement dbStatement = conn.prepareStatement(sql);
-            dbStatement.setString(1, "now");
+            dbStatement.setString(1, "DATETIME('now')");
             dbStatement.setInt(2, 1);
-            dbStatement.setInt(3, stok);
-            dbStatement.setInt(4, id_atk);
-            dbStatement.setString(5, tanggal_pesan);
+            dbStatement.setInt(3, id_atk);
+            dbStatement.setString(4, tanggal_pesan);
+            dbStatement.setInt(3, id_pemasok);
             dbStatement.executeUpdate();
             return true;
         } catch(Exception e) {

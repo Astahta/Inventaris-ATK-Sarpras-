@@ -101,5 +101,23 @@ public class InventarisAtkModel {
         }
         return atkname;  
     }
+    
+    public Vector<String> getATKIdName(){
+        Vector<String> atkidname = new Vector<String>();
+        for(int i=0; i<atk.getRowCount(); i++) {
+            atkidname.add(Integer.toString((Integer) atk.getValueAt(i, 1)) + " - " + (String) atk.getValueAt(i,2));
+            //atkidname.add("bismillah");
+        }
+        return atkidname;  
+    }
+    
+    /*public Vector<String> getATKIdName(){
+        Vector<String> ATKIdName = new Vector<String>();
+        for(int i=0; i<atk.getRowCount(); i++) {
+            //Integer.toString((Integer) atk.getValueAt(i,1)) +  + (String) atk.getValueAt(i,2)
+            ATKIdName.add(" - ");
+        }
+        return ATKIdName;
+    }*/
 
 }
