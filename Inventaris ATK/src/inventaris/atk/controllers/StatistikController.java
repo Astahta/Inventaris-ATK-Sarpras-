@@ -3,6 +3,7 @@ package inventaris.atk.controllers;
 import inventaris.atk.models.StatistikPeriodeModel;
 import inventaris.atk.models.StatistikUserModel;
 import inventaris.atk.view.Statistik;
+import javax.swing.JFrame;
 
 public class StatistikController {
     private final Statistik frame;
@@ -14,7 +15,10 @@ public class StatistikController {
         frame.initPeriodeTable(periodeModel.getTableModel());
         frame.initUserTable(userModel.getTableModel());
     }
-    
+    public void changeFrame(JFrame frame){
+        this.frame.setVisible(false);
+        frame.setVisible(true);
+    }
     public void openPeriode(int month, int year) {
         periodeModel.getAtSpesificTime(month, year);
         frame.changeScreen("Periode");

@@ -80,6 +80,7 @@ public class Inventaris extends javax.swing.JFrame {
         atk = new javax.swing.JButton();
         user = new javax.swing.JButton();
         supplier = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -512,6 +513,13 @@ public class Inventaris extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Home");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -524,6 +532,10 @@ public class Inventaris extends javax.swing.JFrame {
                     .addComponent(supplier))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addComponent(inventaris, javax.swing.GroupLayout.PREFERRED_SIZE, 1173, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(jButton1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -531,7 +543,9 @@ public class Inventaris extends javax.swing.JFrame {
                 .addGap(0, 144, Short.MAX_VALUE)
                 .addComponent(inventaris, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(172, 172, 172)
+                .addGap(33, 33, 33)
+                .addComponent(jButton1)
+                .addGap(116, 116, 116)
                 .addComponent(atk)
                 .addGap(37, 37, 37)
                 .addComponent(user)
@@ -649,6 +663,11 @@ public class Inventaris extends javax.swing.JFrame {
         noTelp.setText((String)getSupplierPhoneFromTable(supplierTable.getSelectedRow()));
         idTemp=supplierTable.getSelectedRow()+1;
     }//GEN-LAST:event_supplierTableMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MainMenu main = new MainMenu();
+        inventarisController.changeFrame(main);
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     public Object getUserNameFromTable(int row){
         return userTable.getValueAt(row,2 );
@@ -755,6 +774,7 @@ public class Inventaris extends javax.swing.JFrame {
     private javax.swing.JButton editSupplier;
     private javax.swing.JTextField idUser;
     private javax.swing.JPanel inventaris;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -5,12 +5,14 @@
  */
 package inventaris.atk.view;
 
+import inventaris.atk.controllers.MainController;
+
 /**
  *
  * @author FiqieUlya
  */
 public class MainMenu extends javax.swing.JFrame {
-
+    private MainController controller = new MainController(this);
     /**
      * Creates new form MainMenu
      */
@@ -27,22 +29,118 @@ public class MainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Login = new javax.swing.JFrame();
+        jLabel1 = new javax.swing.JLabel();
+        tombolInventaris = new javax.swing.JButton();
+        tombolPemakaian = new javax.swing.JButton();
+        tombolPengadaan = new javax.swing.JButton();
+        tombolStatistik = new javax.swing.JButton();
+
+        javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login.getContentPane());
+        Login.getContentPane().setLayout(LoginLayout);
+        LoginLayout.setHorizontalGroup(
+            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        LoginLayout.setVerticalGroup(
+            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1366, 769));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setText("JUDUL");
+
+        tombolInventaris.setText("INVENTARIS");
+        tombolInventaris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolInventarisActionPerformed(evt);
+            }
+        });
+
+        tombolPemakaian.setText("PEMAKAIAN");
+        tombolPemakaian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolPemakaianActionPerformed(evt);
+            }
+        });
+
+        tombolPengadaan.setText("PENGADAAN");
+        tombolPengadaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolPengadaanActionPerformed(evt);
+            }
+        });
+
+        tombolStatistik.setText("STATISTIK");
+        tombolStatistik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolStatistikActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 769, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(611, 611, 611)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(411, 411, 411)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tombolPengadaan)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tombolStatistik))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tombolInventaris)
+                                .addGap(361, 361, 361)
+                                .addComponent(tombolPemakaian)))))
+                .addContainerGap(410, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 469, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(108, 108, 108)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tombolInventaris)
+                    .addComponent(tombolPemakaian))
+                .addGap(89, 89, 89)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tombolPengadaan)
+                    .addComponent(tombolStatistik))
+                .addContainerGap(388, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tombolStatistikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolStatistikActionPerformed
+        Statistik statistik = new Statistik();
+        controller.changeFrame(statistik);
+    }//GEN-LAST:event_tombolStatistikActionPerformed
+
+    private void tombolInventarisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolInventarisActionPerformed
+        Inventaris inventaris = new Inventaris();
+        controller.changeFrame(inventaris);
+    }//GEN-LAST:event_tombolInventarisActionPerformed
+
+    private void tombolPengadaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolPengadaanActionPerformed
+        Pengadaan pengadaan = new Pengadaan();
+        controller.changeFrame(pengadaan);
+    }//GEN-LAST:event_tombolPengadaanActionPerformed
+
+    private void tombolPemakaianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolPemakaianActionPerformed
+        Pemakaian pemakaian = new Pemakaian();
+        controller.changeFrame(pemakaian);
+    }//GEN-LAST:event_tombolPemakaianActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +178,11 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame Login;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton tombolInventaris;
+    private javax.swing.JButton tombolPemakaian;
+    private javax.swing.JButton tombolPengadaan;
+    private javax.swing.JButton tombolStatistik;
     // End of variables declaration//GEN-END:variables
 }

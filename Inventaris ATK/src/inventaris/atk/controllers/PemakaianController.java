@@ -9,6 +9,7 @@ import inventaris.atk.models.InventarisAtkModel;
 import inventaris.atk.models.PemakaianModel;
 import inventaris.atk.view.Pemakaian;
 import java.util.*;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,6 +29,10 @@ public class PemakaianController {
         frame.initPemakaianTable(pemakaianModel.getTableModel());
         frame.initDetailPemakaianTable(pemakaianModel.getDetailModel());
         frame.initDetailBookingTable(bookingModel.getDetailModel());
+    }
+    public void changeFrame(JFrame frame){
+        this.frame.setVisible(false);
+        frame.setVisible(true);
     }
     
     public void viewDetailPemakaian(String nama, String tanggal){

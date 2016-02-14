@@ -6,6 +6,7 @@ import inventaris.atk.models.InventarisAtkModel;
 import inventaris.atk.models.InventarisSupplierModel;
 import inventaris.atk.models.InventarisUserModel;
 import inventaris.atk.view.Inventaris;
+import javax.swing.JFrame;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,6 +30,10 @@ public class InventarisController {
         frame.initAtkTable(atkModel.getTableModel());
         frame.initSupplierTable(supplierModel.getTableModel());
         frame.initUserTable(userModel.getTableModel());
+    }
+    public void changeFrame(JFrame frame){
+        this.frame.setVisible(false);
+        frame.setVisible(true);
     }
    
     public void openAtk() {

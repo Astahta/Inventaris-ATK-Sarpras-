@@ -84,6 +84,7 @@ public class Pemakaian extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         bookingButton = new javax.swing.JButton();
         pemakaianButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -478,6 +479,13 @@ public class Pemakaian extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Home");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -489,14 +497,18 @@ public class Pemakaian extends javax.swing.JFrame {
                         .addComponent(bookingButton)
                         .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(pemakaianButton)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addComponent(pemakaianButton))
                         .addGap(18, 18, 18)))
                 .addComponent(penggunaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(201, 201, 201)
+                .addGap(46, 46, 46)
+                .addComponent(jButton1)
+                .addGap(132, 132, 132)
                 .addComponent(bookingButton)
                 .addGap(18, 18, 18)
                 .addComponent(pemakaianButton)
@@ -640,6 +652,11 @@ public class Pemakaian extends javax.swing.JFrame {
         tBooking= getDateFromBookingTable(tabelBooking.getSelectedRow());
         pemakaianController.viewDetailBooking(nBooking, tBooking);
     }//GEN-LAST:event_tabelBookingMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MainMenu main = new MainMenu();
+        pemakaianController.changeFrame(main);
+    }//GEN-LAST:event_jButton1ActionPerformed
     public String getNameFromTable(int row){
         return (String) tabelPemakaian.getValueAt(row,1 );
     }
@@ -757,6 +774,7 @@ public class Pemakaian extends javax.swing.JFrame {
     private javax.swing.JPanel formBooking;
     private javax.swing.JPanel formPemakaian;
     private javax.swing.JButton hapus;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog4;
