@@ -763,6 +763,7 @@ public class Inventaris extends javax.swing.JFrame {
         userName.setText((String)getUserNameFromTable(userTable.getSelectedRow()));
         category.setSelectedItem(getUserCategoryFromTable(userTable.getSelectedRow() ));
         idUser.setText((String)getUserIdFromTable(userTable.getSelectedRow()));
+        //idTemp=(String)getUserIdFromTable(userTable.getSelectedRow()+1);
     }//GEN-LAST:event_userTableMouseClicked
         
     private void addATKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addATKActionPerformed
@@ -784,7 +785,7 @@ public class Inventaris extends javax.swing.JFrame {
     private void atkTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atkTableMouseClicked
         namaAtk.setText((String)getAtkNameFromTable(atkTable.getSelectedRow()));
         stok.setValue(getAtkStockFromTable(atkTable.getSelectedRow()));
-        idTemp=atkTable.getSelectedRow()+1;
+        idTemp=(int)getAtkIdFromTable(atkTable.getSelectedRow());
     }//GEN-LAST:event_atkTableMouseClicked
 
     private void addSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSupplierActionPerformed
@@ -809,7 +810,9 @@ public class Inventaris extends javax.swing.JFrame {
         namaPemasok.setText((String)getSupplierNameFromTable(supplierTable.getSelectedRow()));
         alamat.setText((String)getSupplierAddressFromTable(supplierTable.getSelectedRow()));
         noTelp.setText((String)getSupplierPhoneFromTable(supplierTable.getSelectedRow()));
-        idTemp=supplierTable.getSelectedRow()+1;
+        String temp=(String)getSupplierIdFromTable(supplierTable.getSelectedRow());
+        idTemp = Integer.parseInt(temp);
+       
     }//GEN-LAST:event_supplierTableMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -861,6 +864,9 @@ public class Inventaris extends javax.swing.JFrame {
     }
     public Object getAtkIdFromTable(int row){
         return atkTable.getValueAt(row, 1);
+    }
+    public Object getSupplierIdFromTable(int row){
+        return supplierTable.getValueAt(row, 1);
     }
     public Object getSupplierNameFromTable(int row){
         return supplierTable.getValueAt(row, 2);
