@@ -8,6 +8,7 @@ package inventaris.atk.view;
 import inventaris.atk.controllers.PemakaianController;
 import java.awt.*;
 import java.util.Vector;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -28,7 +29,8 @@ public class Pemakaian extends javax.swing.JFrame {
         okButton1.setVisible(false);
         okButton2.setVisible(false);
         pemakaianController = new PemakaianController(this);
-        
+        pemakaianController.openBooking();
+        prosesBooking.setOpaque(true);
     }
 
     /**
@@ -52,16 +54,18 @@ public class Pemakaian extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jumlahBooking = new javax.swing.JSpinner();
-        prosesBooking = new javax.swing.JButton();
         tanggalBooking = new com.toedter.calendar.JDateChooser();
         atkOrders1 = new javax.swing.JPanel();
         okButton1 = new javax.swing.JButton();
+        prosesBooking = new javax.swing.JButton();
         viewBooking = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelBooking = new javax.swing.JTable();
         hapus = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         detailBooking = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         pemakaian = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         formPemakaian = new javax.swing.JPanel();
@@ -82,9 +86,10 @@ public class Pemakaian extends javax.swing.JFrame {
         detailPemakaian = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        submenu = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         bookingButton = new javax.swing.JButton();
         pemakaianButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -116,28 +121,46 @@ public class Pemakaian extends javax.swing.JFrame {
         penggunaan.setLayout(new java.awt.CardLayout());
 
         jTabbedPane1.setToolTipText("");
+        jTabbedPane1.setFont(new java.awt.Font("Meiryo", 0, 18)); // NOI18N
 
+        formBooking.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Vrinda", 0, 18)); // NOI18N
         jLabel1.setText("NIM/NIP");
 
+        jLabel2.setFont(new java.awt.Font("Vrinda", 0, 18)); // NOI18N
         jLabel2.setText("Tanggal Pesan");
 
+        jLabel3.setFont(new java.awt.Font("Vrinda", 0, 18)); // NOI18N
         jLabel3.setText("Jumlah Jenis ATK");
 
         jumlahBooking.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
 
-        prosesBooking.setText("Proses");
-        prosesBooking.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                prosesBookingActionPerformed(evt);
-            }
-        });
-
         tanggalBooking.setDateFormatString("yyyy-MM-dd");
 
+        okButton1.setBackground(new java.awt.Color(112, 112, 255));
+        okButton1.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
+        okButton1.setForeground(new java.awt.Color(255, 255, 255));
         okButton1.setText("OK");
+        okButton1.setContentAreaFilled(false);
+        okButton1.setFocusPainted(false);
         okButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okButton1ActionPerformed(evt);
+            }
+        });
+
+        prosesBooking.setBackground(new java.awt.Color(112, 112, 255));
+        prosesBooking.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
+        prosesBooking.setForeground(new java.awt.Color(255, 255, 255));
+        prosesBooking.setText("Proses");
+        prosesBooking.setBorder(null);
+        prosesBooking.setBorderPainted(false);
+        prosesBooking.setContentAreaFilled(false);
+        prosesBooking.setFocusPainted(false);
+        prosesBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prosesBookingActionPerformed(evt);
             }
         });
 
@@ -145,52 +168,57 @@ public class Pemakaian extends javax.swing.JFrame {
         formBooking.setLayout(formBookingLayout);
         formBookingLayout.setHorizontalGroup(
             formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(formBookingLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(formBookingLayout.createSequentialGroup()
-                        .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(50, 50, 50)
-                        .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(userIdBooking)
-                            .addComponent(jumlahBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tanggalBooking, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)))
-                    .addGroup(formBookingLayout.createSequentialGroup()
-                        .addGap(290, 290, 290)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBookingLayout.createSequentialGroup()
+                .addContainerGap(45, Short.MAX_VALUE)
+                .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBookingLayout.createSequentialGroup()
                         .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(okButton1)
-                            .addComponent(prosesBooking)))
-                    .addComponent(atkOrders1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(638, Short.MAX_VALUE))
+                            .addGroup(formBookingLayout.createSequentialGroup()
+                                .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tanggalBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(userIdBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jumlahBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(prosesBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addComponent(atkOrders1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(okButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58))
         );
         formBookingLayout.setVerticalGroup(
             formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formBookingLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(userIdBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(tanggalBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jumlahBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(prosesBooking)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(atkOrders1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(okButton1)
-                .addContainerGap())
+                .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(formBookingLayout.createSequentialGroup()
+                        .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(userIdBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tanggalBooking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(formBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3)
+                            .addGroup(formBookingLayout.createSequentialGroup()
+                                .addComponent(jumlahBooking)
+                                .addGap(2, 2, 2)))
+                        .addGap(22, 22, 22)
+                        .addComponent(prosesBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(atkOrders1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(okButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Form", formBooking);
+        jTabbedPane1.addTab("  Form  ", formBooking);
+
+        viewBooking.setBackground(new java.awt.Color(255, 255, 255));
 
         tabelBooking.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -210,7 +238,19 @@ public class Pemakaian extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelBooking);
 
+        hapus.setBackground(new java.awt.Color(112, 112, 255));
+        hapus.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
+        hapus.setForeground(new java.awt.Color(255, 255, 255));
         hapus.setText("Hapus");
+        hapus.setBorderPainted(false);
+        hapus.setContentAreaFilled(false);
+        hapus.setFocusPainted(false);
+        hapus.setOpaque(true);
+        hapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hapusActionPerformed(evt);
+            }
+        });
 
         detailBooking.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -230,64 +270,92 @@ public class Pemakaian extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(detailBooking);
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel9.setText("Daftar Booking");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel10.setText("Detail Booking");
+
         javax.swing.GroupLayout viewBookingLayout = new javax.swing.GroupLayout(viewBooking);
         viewBooking.setLayout(viewBookingLayout);
         viewBookingLayout.setHorizontalGroup(
             viewBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewBookingLayout.createSequentialGroup()
-                .addContainerGap(603, Short.MAX_VALUE)
-                .addComponent(hapus)
-                .addGap(402, 402, 402))
-            .addGroup(viewBookingLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(viewBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewBookingLayout.createSequentialGroup()
+                        .addGroup(viewBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(viewBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewBookingLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(405, 405, 405)))
+                .addGap(22, 22, 22))
         );
         viewBookingLayout.setVerticalGroup(
             viewBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewBookingLayout.createSequentialGroup()
-                .addGroup(viewBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(viewBookingLayout.createSequentialGroup()
-                        .addContainerGap(67, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(viewBookingLayout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addGap(35, 35, 35)
-                .addComponent(hapus)
-                .addGap(102, 102, 102))
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addGroup(viewBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addGroup(viewBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
         );
 
-        jTabbedPane1.addTab("View", viewBooking);
+        jTabbedPane1.addTab("  View  ", viewBooking);
 
         javax.swing.GroupLayout bookingLayout = new javax.swing.GroupLayout(booking);
         booking.setLayout(bookingLayout);
         bookingLayout.setHorizontalGroup(
             bookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bookingLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1073, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         bookingLayout.setVerticalGroup(
             bookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bookingLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(43, 43, 43)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
 
         penggunaan.add(booking, "booking");
 
+        jTabbedPane2.setFont(new java.awt.Font("Meiryo", 0, 18)); // NOI18N
+        jTabbedPane2.setPreferredSize(new java.awt.Dimension(940, 493));
+
+        formPemakaian.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setFont(new java.awt.Font("Vrinda", 0, 18)); // NOI18N
         jLabel4.setText("NIM/NIP");
 
+        jLabel5.setFont(new java.awt.Font("Vrinda", 0, 18)); // NOI18N
         jLabel5.setText("Tanggal Pesan");
 
+        jLabel6.setFont(new java.awt.Font("Vrinda", 0, 18)); // NOI18N
         jLabel6.setText("Jumlah Jenis ATK");
 
+        prosesPemakaian.setBackground(new java.awt.Color(112, 112, 255));
+        prosesPemakaian.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
+        prosesPemakaian.setForeground(new java.awt.Color(255, 255, 255));
         prosesPemakaian.setText("Proses");
+        prosesPemakaian.setBorderPainted(false);
+        prosesPemakaian.setContentAreaFilled(false);
+        prosesPemakaian.setFocusPainted(false);
+        prosesPemakaian.setOpaque(true);
         prosesPemakaian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prosesPemakaianActionPerformed(evt);
@@ -300,14 +368,21 @@ public class Pemakaian extends javax.swing.JFrame {
         atkOrders2.setLayout(atkOrders2Layout);
         atkOrders2Layout.setHorizontalGroup(
             atkOrders2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 358, Short.MAX_VALUE)
+            .addGap(0, 425, Short.MAX_VALUE)
         );
         atkOrders2Layout.setVerticalGroup(
             atkOrders2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 285, Short.MAX_VALUE)
         );
 
+        okButton2.setBackground(new java.awt.Color(112, 112, 255));
+        okButton2.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
+        okButton2.setForeground(new java.awt.Color(255, 255, 255));
         okButton2.setText("OK");
+        okButton2.setBorderPainted(false);
+        okButton2.setContentAreaFilled(false);
+        okButton2.setFocusPainted(false);
+        okButton2.setOpaque(true);
         okButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okButton2ActionPerformed(evt);
@@ -319,51 +394,56 @@ public class Pemakaian extends javax.swing.JFrame {
         formPemakaianLayout.setHorizontalGroup(
             formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formPemakaianLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
                 .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(okButton2)
-                    .addComponent(atkOrders2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(formPemakaianLayout.createSequentialGroup()
-                            .addGap(33, 33, 33)
-                            .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5))
-                            .addGap(42, 42, 42)
-                            .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jumlahPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(userIdPemakaian)
-                                .addComponent(tanggalPemakaian, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))
-                        .addGroup(formPemakaianLayout.createSequentialGroup()
-                            .addGap(292, 292, 292)
-                            .addComponent(prosesPemakaian))))
-                .addContainerGap(698, Short.MAX_VALUE))
+                    .addComponent(okButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(formPemakaianLayout.createSequentialGroup()
+                        .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(formPemakaianLayout.createSequentialGroup()
+                                .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(42, 42, 42)
+                                .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jumlahPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(userIdPemakaian)
+                                    .addComponent(tanggalPemakaian, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))
+                            .addComponent(prosesPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addComponent(atkOrders2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         formPemakaianLayout.setVerticalGroup(
             formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formPemakaianLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(userIdPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(tanggalPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jumlahPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(prosesPemakaian)
-                .addGap(18, 18, 18)
-                .addComponent(atkOrders2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(okButton2)
-                .addContainerGap(11, Short.MAX_VALUE))
+                    .addGroup(formPemakaianLayout.createSequentialGroup()
+                        .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(userIdPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tanggalPemakaian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(formPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel6)
+                            .addGroup(formPemakaianLayout.createSequentialGroup()
+                                .addComponent(jumlahPemakaian)
+                                .addGap(2, 2, 2)))
+                        .addGap(24, 24, 24)
+                        .addComponent(prosesPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(atkOrders2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(okButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("formPemakaian", formPemakaian);
+        jTabbedPane2.addTab("  Form  ", formPemakaian);
+
+        viewPemakaian.setBackground(new java.awt.Color(255, 255, 255));
 
         tabelPemakaian.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -383,7 +463,19 @@ public class Pemakaian extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tabelPemakaian);
 
+        jButton3.setBackground(new java.awt.Color(112, 112, 255));
+        jButton3.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Hapus");
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setFocusPainted(false);
+        jButton3.setOpaque(true);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         detailPemakaian.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -398,139 +490,161 @@ public class Pemakaian extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(detailPemakaian);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Detail Pemakaian");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Daftar Pemakaian");
 
         javax.swing.GroupLayout viewPemakaianLayout = new javax.swing.GroupLayout(viewPemakaian);
         viewPemakaian.setLayout(viewPemakaianLayout);
         viewPemakaianLayout.setHorizontalGroup(
             viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPemakaianLayout.createSequentialGroup()
+            .addGroup(viewPemakaianLayout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
                 .addGroup(viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(viewPemakaianLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3))
-                    .addGroup(viewPemakaianLayout.createSequentialGroup()
-                        .addGap(61, 61, 61)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPemakaianLayout.createSequentialGroup()
                         .addGroup(viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPemakaianLayout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                             .addGroup(viewPemakaianLayout.createSequentialGroup()
                                 .addComponent(jLabel8)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(viewPemakaianLayout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49))
+                                .addGap(311, 311, 311)))
+                        .addGroup(viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPemakaianLayout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(407, 407, 407))))
         );
         viewPemakaianLayout.setVerticalGroup(
             viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewPemakaianLayout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addGroup(viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(viewPemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(438, 438, 438))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("viewPemakaian", viewPemakaian);
+        jTabbedPane2.addTab("  View  ", viewPemakaian);
 
         javax.swing.GroupLayout pemakaianLayout = new javax.swing.GroupLayout(pemakaian);
         pemakaian.setLayout(pemakaianLayout);
         pemakaianLayout.setHorizontalGroup(
             pemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pemakaianLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1096, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 940, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(178, Short.MAX_VALUE))
         );
         pemakaianLayout.setVerticalGroup(
             pemakaianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pemakaianLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(233, Short.MAX_VALUE))
         );
 
         penggunaan.add(pemakaian, "pemakaian");
 
-        bookingButton.setText("Booking");
-        bookingButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bookingButtonActionPerformed(evt);
-            }
-        });
+        submenu.setBackground(new java.awt.Color(153, 153, 153));
 
-        pemakaianButton.setText("Pemakaian");
-        pemakaianButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pemakaianButtonActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Home");
+        jButton1.setBackground(new java.awt.Color(255, 51, 102));
+        jButton1.setFont(new java.awt.Font("DokChampa", 1, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Logo");
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.setOpaque(true);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        bookingButton.setBackground(new java.awt.Color(102, 102, 102));
+        bookingButton.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        bookingButton.setForeground(new java.awt.Color(255, 255, 255));
+        bookingButton.setText("Booking");
+        bookingButton.setBorderPainted(false);
+        bookingButton.setContentAreaFilled(false);
+        bookingButton.setFocusPainted(false);
+        bookingButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        bookingButton.setOpaque(true);
+        bookingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookingButtonActionPerformed(evt);
+            }
+        });
+
+        pemakaianButton.setBackground(new java.awt.Color(153, 153, 153));
+        pemakaianButton.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        pemakaianButton.setForeground(new java.awt.Color(204, 204, 204));
+        pemakaianButton.setText("Pemakaian");
+        pemakaianButton.setBorderPainted(false);
+        pemakaianButton.setContentAreaFilled(false);
+        pemakaianButton.setFocusPainted(false);
+        pemakaianButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        pemakaianButton.setOpaque(true);
+        pemakaianButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pemakaianButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout submenuLayout = new javax.swing.GroupLayout(submenu);
+        submenu.setLayout(submenuLayout);
+        submenuLayout.setHorizontalGroup(
+            submenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bookingButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pemakaianButton, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+        );
+        submenuLayout.setVerticalGroup(
+            submenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(submenuLayout.createSequentialGroup()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pemakaianButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(bookingButton)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addComponent(pemakaianButton))
-                        .addGap(18, 18, 18)))
-                .addComponent(penggunaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(submenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(penggunaan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jButton1)
-                .addGap(132, 132, 132)
-                .addComponent(bookingButton)
-                .addGap(18, 18, 18)
-                .addComponent(pemakaianButton)
-                .addContainerGap(504, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 145, Short.MAX_VALUE)
-                .addComponent(penggunaan, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(submenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(penggunaan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -538,6 +652,10 @@ public class Pemakaian extends javax.swing.JFrame {
 
     private void bookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingButtonActionPerformed
         pemakaianController.openBooking();
+        this.bookingButton.setBackground(Color.darkGray);
+        this.bookingButton.setForeground(Color.white);
+        this.pemakaianButton.setBackground(new Color(153,153,153));
+        this.pemakaianButton.setForeground(new Color(204,204,204));
     }//GEN-LAST:event_bookingButtonActionPerformed
 
     private void prosesBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prosesBookingActionPerformed
@@ -550,6 +668,7 @@ public class Pemakaian extends javax.swing.JFrame {
         booking.revalidate();
         booking.repaint();
         okButton1.setVisible(true);
+        okButton1.setOpaque(true);
     }//GEN-LAST:event_prosesBookingActionPerformed
 
     private void prosesPemakaianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prosesPemakaianActionPerformed
@@ -601,6 +720,10 @@ public class Pemakaian extends javax.swing.JFrame {
 
     private void pemakaianButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pemakaianButtonActionPerformed
        pemakaianController.openPemakaian();
+        this.pemakaianButton.setBackground(Color.darkGray);
+        this.pemakaianButton.setForeground(Color.white);
+        this.bookingButton.setBackground(new Color(153,153,153));
+        this.bookingButton.setForeground(new Color(204,204,204));
     }//GEN-LAST:event_pemakaianButtonActionPerformed
 
     private void okButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButton2ActionPerformed
@@ -682,6 +805,14 @@ public class Pemakaian extends javax.swing.JFrame {
         MainMenu main = new MainMenu();
         pemakaianController.changeFrame(main);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hapusActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
     public String getNameFromTable(int row){
         return (String) tabelPemakaian.getValueAt(row,1 );
     }
@@ -765,12 +896,7 @@ public class Pemakaian extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Pemakaian.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -805,6 +931,7 @@ public class Pemakaian extends javax.swing.JFrame {
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -812,6 +939,7 @@ public class Pemakaian extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -828,6 +956,7 @@ public class Pemakaian extends javax.swing.JFrame {
     private javax.swing.JPanel penggunaan;
     private javax.swing.JButton prosesBooking;
     private javax.swing.JButton prosesPemakaian;
+    private javax.swing.JPanel submenu;
     private javax.swing.JTable tabelBooking;
     private javax.swing.JTable tabelPemakaian;
     private com.toedter.calendar.JDateChooser tanggalBooking;
