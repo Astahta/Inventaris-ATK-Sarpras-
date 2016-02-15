@@ -123,4 +123,12 @@ public class PengadaanController {
         openKedatangan();
     }
     
+    public void hapusPengadaan(int row){
+        String tanggal_pesan= (String) pengadaanModel.getPengadaanTableModel().getValueAt(row, 7);
+        Integer id_pemasok= (Integer) pengadaanModel.getPengadaanTableModel().getValueAt(row, 8);
+        Integer id_atk= (Integer) pengadaanModel.getPengadaanTableModel().getValueAt(row, 9);
+        deletePengadaan(id_atk, tanggal_pesan, id_pemasok);
+        openKedatangan();
+    }
+    
 }

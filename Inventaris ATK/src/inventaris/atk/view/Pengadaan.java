@@ -62,7 +62,7 @@ public class Pengadaan extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jumlahJenisAtkLabel = new javax.swing.JLabel();
         namaPemasokLabel = new javax.swing.JLabel();
-        namaPemasokComboBox = new javax.swing.JComboBox<String>();
+        namaPemasokComboBox = new javax.swing.JComboBox<>();
         jumlahJenisAtkSpinner = new javax.swing.JSpinner();
         prosesButton = new javax.swing.JButton();
         kedatanganPanel = new javax.swing.JPanel();
@@ -87,7 +87,6 @@ public class Pengadaan extends javax.swing.JFrame {
 
         kedatanganMainPanel.setLayout(new java.awt.CardLayout());
 
-        formDetilATKScrollPane.setBackground(new java.awt.Color(255, 255, 255));
         formDetilATKScrollPane.setBorder(null);
         formDetilATKScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -125,14 +124,14 @@ public class Pengadaan extends javax.swing.JFrame {
         namaPemasokLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         namaPemasokLabel.setText("Nama Pemasok");
 
-        namaPemasokComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        namaPemasokComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         namaPemasokComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 namaPemasokComboBoxActionPerformed(evt);
             }
         });
 
-        jumlahJenisAtkSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        jumlahJenisAtkSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jumlahJenisAtkSpinner.setMinimumSize(new java.awt.Dimension(50, 30));
 
         prosesButton.setBackground(new java.awt.Color(112, 112, 255));
@@ -472,7 +471,7 @@ public class Pengadaan extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kedatanganMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 901, Short.MAX_VALUE)
+                .addComponent(kedatanganMainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 901, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -602,27 +601,13 @@ public class Pengadaan extends javax.swing.JFrame {
     private void buttonHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHapusActionPerformed
         if(kedatanganTable.getSelectedRow() != -1){
             pengadaanController.hapusKedatangan(kedatanganTable.getSelectedRow());
-            
-            
-            //initKinitedatanganTable(kedatanganTableModel);
-            /*SwingUtilities.updateComponentTreeUI(this);
-            invalidate();
-            validate();
-            repaint();*/
         }
     }//GEN-LAST:event_buttonHapusActionPerformed
 
     private void hapus2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapus2ButtonActionPerformed
         if(pengadaanTable.getSelectedRow() != -1){
-            String tanggal_pesan= (String) pengadaanTable.getValueAt(pengadaanTable.getSelectedRow(),3);
-            Integer id_pemasok= (Integer) pengadaanTable.getValueAt(pengadaanTable.getSelectedRow(),5);
-            Integer id_atk= (Integer) pengadaanTable.getValueAt(pengadaanTable.getSelectedRow(),6);
-
-            pengadaanController.deletePengadaan(id_atk, tanggal_pesan, id_pemasok);
-            javax.swing.JOptionPane.showMessageDialog(this, "Hapus berhasil", "Success!", javax.swing.JOptionPane.PLAIN_MESSAGE);
-            pengadaanController.openView();
+            pengadaanController.hapusPengadaan(pengadaanTable.getSelectedRow());
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_hapus2ButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -681,7 +666,19 @@ public class Pengadaan extends javax.swing.JFrame {
         kedatanganTable.getColumnModel().getColumn(2).setPreferredWidth(100);
         kedatanganTable.getColumnModel().getColumn(3).setPreferredWidth(100);
         kedatanganTable.getColumnModel().getColumn(4).setPreferredWidth(100);
-        //kedatanganTable.getColumnModel().removeColumn(kedatanganTable.getCol);
+        kedatanganTable.getColumnModel().getColumn(5).setPreferredWidth(100);
+        kedatanganTable.getColumnModel().getColumn(6).setPreferredWidth(100);
+        kedatanganTable.getColumnModel().getColumn(7).setPreferredWidth(100);
+        
+        //dari belakang
+        kedatanganTable.removeColumn(kedatanganTable.getColumnModel().getColumn(7));
+        kedatanganTable.removeColumn(kedatanganTable.getColumnModel().getColumn(6));
+        kedatanganTable.removeColumn(kedatanganTable.getColumnModel().getColumn(5));
+         //kedatanganTable.removeColumn(kedatanganTable.getColumnModel().getColumn(7));
+         
+        //kedatanganTable.getColumnModel().removeColumn(kedatanganTable.getColumn(3));
+        //kedatanganTable.getColumnModel().removeColumn(kedatanganTable.getColumn(6));
+        //kedatanganTable.getColumnModel().removeColumn(kedatanganTable.getColumn(5));
     }
     
     public void initPengadaanTable(DefaultTableModel model) {
@@ -693,6 +690,13 @@ public class Pengadaan extends javax.swing.JFrame {
         pengadaanTable.getColumnModel().getColumn(4).setPreferredWidth(100);
         pengadaanTable.getColumnModel().getColumn(5).setPreferredWidth(100);
         pengadaanTable.getColumnModel().getColumn(6).setPreferredWidth(100);
+        pengadaanTable.getColumnModel().getColumn(7).setPreferredWidth(100);
+        pengadaanTable.getColumnModel().getColumn(8).setPreferredWidth(100);
+        pengadaanTable.getColumnModel().getColumn(9).setPreferredWidth(100);
+        
+        //pengadaanTable.removeColumn(pengadaanTable.getColumnModel().getColumn(9));
+        //pengadaanTable.removeColumn(pengadaanTable.getColumnModel().getColumn(8));
+        //pengadaanTable.removeColumn(pengadaanTable.getColumnModel().getColumn(7));
     }
     
     public void showDialogBox(String message, String message2){
