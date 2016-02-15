@@ -11,6 +11,10 @@ public class Statistik extends javax.swing.JFrame {
     public Statistik() {
         initComponents();
         statistikController = new StatistikController(this);
+        int selectedYear = (int) year.getYear();
+        int selectedMonth = (int) month.getMonth();
+        statistikController.openPeriode(selectedMonth, selectedYear);
+        
     }
     
     public void changeScreen(String screenName) {

@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 
 /**
@@ -68,6 +69,7 @@ public class Pengadaan extends javax.swing.JFrame {
         viewPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         pengadaanTable = new javax.swing.JTable();
+        hapus2Button = new javax.swing.JButton();
         menuPanel = new javax.swing.JPanel();
         formMenuButton = new javax.swing.JButton();
         kedatanganMenuButton = new javax.swing.JButton();
@@ -201,11 +203,11 @@ public class Pengadaan extends javax.swing.JFrame {
         kedatanganPanelLayout.setHorizontalGroup(
             kedatanganPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kedatanganPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(validasiButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonHapus)
-                .addGap(89, 89, 89))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(kedatanganPanelLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 85, Short.MAX_VALUE))
@@ -235,19 +237,32 @@ public class Pengadaan extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(pengadaanTable);
 
+        hapus2Button.setText("hapus");
+        hapus2Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hapus2ButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
         viewPanel.setLayout(viewPanelLayout);
         viewPanelLayout.setHorizontalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewPanelLayout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 85, Short.MAX_VALUE))
+                .addGap(0, 693, Short.MAX_VALUE))
+            .addGroup(viewPanelLayout.createSequentialGroup()
+                .addGap(395, 395, 395)
+                .addComponent(hapus2Button)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         viewPanelLayout.setVerticalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewPanelLayout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 195, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(hapus2Button)
+                .addGap(0, 154, Short.MAX_VALUE))
         );
 
         kedatanganMainPanel.add(viewPanel, "viewPanel");
@@ -426,12 +441,34 @@ public class Pengadaan extends javax.swing.JFrame {
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void buttonHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHapusActionPerformed
-        String tanggal_pesan= (String) kedatanganTable.getValueAt(kedatanganTable.getSelectedRow(),2);
-        Integer id_pemasok= (Integer) kedatanganTable.getValueAt(kedatanganTable.getSelectedRow(),3);
-        Integer id_atk= (Integer) kedatanganTable.getValueAt(kedatanganTable.getSelectedRow(),4);
-        
-        pengadaanController.deletePengadaan(id_atk, tanggal_pesan, id_pemasok);
+        if(kedatanganTable.getSelectedRow() != -1){
+            String tanggal_pesan= (String) kedatanganTable.getValueAt(kedatanganTable.getSelectedRow(),2);
+            Integer id_pemasok= (Integer) kedatanganTable.getValueAt(kedatanganTable.getSelectedRow(),3);
+            Integer id_atk= (Integer) kedatanganTable.getValueAt(kedatanganTable.getSelectedRow(),4);
+
+            pengadaanController.deletePengadaan(id_atk, tanggal_pesan, id_pemasok);
+            javax.swing.JOptionPane.showMessageDialog(this, "Hapus berhasil", "Success!", javax.swing.JOptionPane.PLAIN_MESSAGE);
+            pengadaanController.openKedatangan();
+            //initKinitedatanganTable(kedatanganTableModel);
+            /*SwingUtilities.updateComponentTreeUI(this);
+            invalidate();
+            validate();
+            repaint();*/
+        }
     }//GEN-LAST:event_buttonHapusActionPerformed
+
+    private void hapus2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapus2ButtonActionPerformed
+        if(pengadaanTable.getSelectedRow() != -1){
+            String tanggal_pesan= (String) pengadaanTable.getValueAt(pengadaanTable.getSelectedRow(),3);
+            Integer id_pemasok= (Integer) pengadaanTable.getValueAt(pengadaanTable.getSelectedRow(),5);
+            Integer id_atk= (Integer) pengadaanTable.getValueAt(pengadaanTable.getSelectedRow(),6);
+
+            pengadaanController.deletePengadaan(id_atk, tanggal_pesan, id_pemasok);
+            javax.swing.JOptionPane.showMessageDialog(this, "Hapus berhasil", "Success!", javax.swing.JOptionPane.PLAIN_MESSAGE);
+            pengadaanController.openView();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hapus2ButtonActionPerformed
     
     private void createOrders(int count, Vector<String> supplierName){
         dummyPanel.setLayout(new GridLayout(10,1));
@@ -538,6 +575,7 @@ public class Pengadaan extends javax.swing.JFrame {
     private javax.swing.JScrollPane formDetilATKScrollPane;
     private javax.swing.JButton formMenuButton;
     private javax.swing.JPanel formPanel;
+    private javax.swing.JButton hapus2Button;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel jumlahJenisAtkLabel;
