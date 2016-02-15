@@ -769,17 +769,34 @@ public class Inventaris extends javax.swing.JFrame {
     private void addATKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addATKActionPerformed
         String nama= namaAtk.getText();
         int jml= (Integer)stok.getValue();
-        inventarisController.addAtk(nama, jml);
+        if(nama.equals("")){
+            javax.swing.JOptionPane.showMessageDialog(this, "Isi seluruh form terlebih dahulu",
+                "Penambahan ATK Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            inventarisController.addAtk(nama, jml);
+            javax.swing.JOptionPane.showMessageDialog(this, "ATK Berhasil Ditambahkan", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+        }
     }//GEN-LAST:event_addATKActionPerformed
 
     private void editATKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editATKActionPerformed
         String nama= namaAtk.getText();
         int jml= (Integer)stok.getValue();
-        inventarisController.updateAtk(nama, jml, idTemp);
+        if(nama.equals("")){
+            javax.swing.JOptionPane.showMessageDialog(this, "Isi seluruh form terlebih dahulu",
+                "Edit ATK Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            inventarisController.updateAtk(nama, jml, idTemp);
+            javax.swing.JOptionPane.showMessageDialog(this, "ATK Berhasil Diubah", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+        }
+        
     }//GEN-LAST:event_editATKActionPerformed
 
     private void HapusATKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusATKActionPerformed
+
         inventarisController.deleteAtk(idTemp);
+        javax.swing.JOptionPane.showMessageDialog(this, "ATK Berhasil Dihapus", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_HapusATKActionPerformed
 
     private void atkTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atkTableMouseClicked
@@ -792,18 +809,34 @@ public class Inventaris extends javax.swing.JFrame {
         String nama= namaPemasok.getText();
         String almt= alamat.getText();
         String no = noTelp.getText();
-        inventarisController.addSupplier(nama, almt, no);
+        if(nama.equals("") || almt.equals("") || no.equals("")){
+            javax.swing.JOptionPane.showMessageDialog(this, "Isi seluruh form terlebih dahulu",
+                "Penambahan Supplier Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            inventarisController.addSupplier(nama, almt, no);
+            javax.swing.JOptionPane.showMessageDialog(this, "Supplier Berhasil Ditambahkan", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+            
+        }
     }//GEN-LAST:event_addSupplierActionPerformed
 
     private void editSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSupplierActionPerformed
         String nama= namaPemasok.getText();
         String almt= alamat.getText();
         String no = noTelp.getText();
-        inventarisController.updateSupplier(nama, almt, idTemp, no);
+        if(nama.equals("") || almt.equals("") || no.equals("")){
+            javax.swing.JOptionPane.showMessageDialog(this, "Isi seluruh form terlebih dahulu",
+                "Edit Supplier Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            inventarisController.updateSupplier(nama, almt, idTemp, no);
+            javax.swing.JOptionPane.showMessageDialog(this, "Supplier Berhasil Diubah", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+        }
     }//GEN-LAST:event_editSupplierActionPerformed
 
     private void deleteSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSupplierActionPerformed
         inventarisController.deleteSupplier(idTemp);
+        javax.swing.JOptionPane.showMessageDialog(this, "Supplier Berhasil Dihapus", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_deleteSupplierActionPerformed
 
     private void supplierTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_supplierTableMouseClicked
@@ -823,20 +856,35 @@ public class Inventaris extends javax.swing.JFrame {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         String id = idUser.getText();
         inventarisController.deleteUser(id);
+        javax.swing.JOptionPane.showMessageDialog(this, "Pengguna Berhasil Dihapus", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         String nama= userName.getText();
         String kategori= (String) category.getSelectedItem();
         String id = idUser.getText();
-        inventarisController.updateUser(nama, id, kategori);
+        if(nama.equals("") || kategori.equals("") || id.equals("")){
+            javax.swing.JOptionPane.showMessageDialog(this, "Isi seluruh form terlebih dahulu",
+                "Edit Pengguna Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            inventarisController.updateUser(nama, id, kategori);
+            javax.swing.JOptionPane.showMessageDialog(this, "Pengguna Berhasil Diubah", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+        }
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         String nama= userName.getText();
         String kategori= (String) category.getSelectedItem();
         String id = idUser.getText();
-        inventarisController.addUser(nama, id, kategori);
+        if(nama.equals("") || kategori.equals("") || id.equals("")){
+            javax.swing.JOptionPane.showMessageDialog(this, "Isi seluruh form terlebih dahulu",
+                "Penambahan Pengguna Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            inventarisController.addUser(nama, id, kategori);
+            javax.swing.JOptionPane.showMessageDialog(this, "Pengguna Berhasil Ditambahkan", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+        }
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void categoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryActionPerformed
