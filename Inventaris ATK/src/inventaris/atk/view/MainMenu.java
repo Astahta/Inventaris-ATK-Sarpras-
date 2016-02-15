@@ -30,7 +30,9 @@ public class MainMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         Login = new javax.swing.JFrame();
-        jLabel1 = new javax.swing.JLabel();
+        Bar = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         tombolInventaris = new javax.swing.JButton();
         tombolPemakaian = new javax.swing.JButton();
         tombolPengadaan = new javax.swing.JButton();
@@ -48,75 +50,135 @@ public class MainMenu extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1366, 769));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setText("JUDUL");
+        Bar.setBackground(new java.awt.Color(255, 51, 102));
 
-        tombolInventaris.setText("INVENTARIS");
+        jLabel7.setBackground(new java.awt.Color(255, 51, 102));
+        jLabel7.setFont(new java.awt.Font("Marion", 1, 36)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Main Menu");
+
+        javax.swing.GroupLayout BarLayout = new javax.swing.GroupLayout(Bar);
+        Bar.setLayout(BarLayout);
+        BarLayout.setHorizontalGroup(
+            BarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BarLayout.createSequentialGroup()
+                .addGap(541, 541, 541)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        BarLayout.setVerticalGroup(
+            BarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BarLayout.createSequentialGroup()
+                .addContainerGap(56, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(32, 32, 32))
+        );
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(204, 204, 255))); // NOI18N
+
+        tombolInventaris.setFont(new java.awt.Font("Meiryo", 1, 18)); // NOI18N
+        tombolInventaris.setForeground(new java.awt.Color(112, 112, 255));
+        tombolInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Button1.jpg"))); // NOI18N
+        tombolInventaris.setActionCommand("");
+        tombolInventaris.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tombolInventaris.setOpaque(true);
         tombolInventaris.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tombolInventarisActionPerformed(evt);
             }
         });
 
-        tombolPemakaian.setText("PEMAKAIAN");
+        tombolPemakaian.setFont(new java.awt.Font("Meiryo", 1, 18)); // NOI18N
+        tombolPemakaian.setForeground(new java.awt.Color(112, 112, 255));
+        tombolPemakaian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Button3.jpg"))); // NOI18N
+        tombolPemakaian.setBorderPainted(false);
+        tombolPemakaian.setContentAreaFilled(false);
+        tombolPemakaian.setFocusPainted(false);
+        tombolPemakaian.setOpaque(true);
         tombolPemakaian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tombolPemakaianActionPerformed(evt);
             }
         });
 
-        tombolPengadaan.setText("PENGADAAN");
+        tombolPengadaan.setFont(new java.awt.Font("Meiryo", 1, 18)); // NOI18N
+        tombolPengadaan.setForeground(new java.awt.Color(112, 112, 255));
+        tombolPengadaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Button2.jpg"))); // NOI18N
+        tombolPengadaan.setBorder(null);
+        tombolPengadaan.setContentAreaFilled(false);
+        tombolPengadaan.setFocusPainted(false);
+        tombolPengadaan.setOpaque(true);
         tombolPengadaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tombolPengadaanActionPerformed(evt);
             }
         });
 
-        tombolStatistik.setText("STATISTIK");
+        tombolStatistik.setFont(new java.awt.Font("Meiryo", 1, 18)); // NOI18N
+        tombolStatistik.setForeground(new java.awt.Color(112, 112, 255));
+        tombolStatistik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Button4.jpg"))); // NOI18N
+        tombolStatistik.setBorderPainted(false);
+        tombolStatistik.setContentAreaFilled(false);
+        tombolStatistik.setFocusPainted(false);
+        tombolStatistik.setOpaque(true);
         tombolStatistik.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tombolStatistikActionPerformed(evt);
             }
         });
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tombolInventaris, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolPengadaan))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tombolPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolStatistik, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(48, 48, 48))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tombolPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolInventaris, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(73, 73, 73)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tombolStatistik, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolPengadaan))
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(611, 611, 611)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(411, 411, 411)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tombolPengadaan)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tombolStatistik))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tombolInventaris)
-                                .addGap(361, 361, 361)
-                                .addComponent(tombolPemakaian)))))
-                .addContainerGap(410, Short.MAX_VALUE))
+                .addComponent(Bar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(279, 279, 279)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(392, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tombolInventaris)
-                    .addComponent(tombolPemakaian))
-                .addGap(89, 89, 89)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tombolPengadaan)
-                    .addComponent(tombolStatistik))
-                .addContainerGap(388, Short.MAX_VALUE))
+                .addComponent(Bar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         pack();
@@ -178,8 +240,10 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Bar;
     private javax.swing.JFrame Login;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton tombolInventaris;
     private javax.swing.JButton tombolPemakaian;
     private javax.swing.JButton tombolPengadaan;
