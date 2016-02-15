@@ -30,7 +30,7 @@ public class PengadaanModel {
     [id_atk] INTEGER REFERENCES ATK([id_atk]) ON DELETE CASCADE ON UPDATE CASCADE,*/
     private DefaultTableModel form = new DefaultTableModel(new Object[]{"No", "Nama ATK", "Jumlah"},0);
     private DefaultTableModel pengadaan = new DefaultTableModel(new Object[]{"No","Jumlah", "Status", "Tanggal Pesan", "Tanggal Datang", "ID Pemasok", "ID ATK"},0);
-    private DefaultTableModel kedatangan = new DefaultTableModel(new Object[]{"No","Jumlah", "Tanggal Pesan", "ID Pemasok", "ID ATK"},0);
+    private DefaultTableModel kedatangan = new DefaultTableModel(new Object[]{"No","Jumlah", "blah", "blah2", "blah3", "Tanggal Pesan", "ID Pemasok", "ID ATK"},0);
     public DefaultTableModel getFormTableModel() {
         return form;
     }
@@ -88,17 +88,24 @@ public class PengadaanModel {
     public void initKedatanganModel() {
          try {
              kedatangan.setRowCount(0);
-             String sql = "SELECT stok, tanggal_pesan, id_pemasok, id_atk FROM pengadaan WHERE status = 0";
+             String sql = "SELECT stok, tanggal_pesan, nama_pemasok, nama_atk, id_pemasok, id_atk FROM pengadaan NATURAL JOIN pemasok NATURAL JOIN atk WHERE status = 0";
              PreparedStatement dbStatement = conn.prepareStatement(sql);
              ResultSet rs = dbStatement.executeQuery();
              int i=1;
              while (rs.next()) {
-                 Object[] object = new Object[5];
+                 Object[] object = new Object[8];
                  object[0]=i;
                  object[1]=rs.getInt("stok");
-                 object[2]=rs.getString("tanggal_pesan");
-                 object[3]=rs.getInt("id_pemasok");
-                 object[4]=rs.getInt("id_atk");
+                 object[3]=rs.getInt("nama_pemasok");
+                 object[4]=rs.getInt("nama_atk");
+                 object[5]=rs.getString("tanggal_pesan");
+                 object[6]=rs.getInt("id_pemasok");
+                 object[7]=rs.getInt("id_atk");
+                 
+                 String[] array_tanggal_pesan = ((String) object[5]).split("\\ ", -1);
+                 
+                 object[2]=array_tanggal_pesan[0];
+                 
                  i++;
                  kedatangan.addRow(object); 
              }

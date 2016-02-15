@@ -66,14 +66,17 @@ public class PengadaanController {
         if(pengadaanModel.deletePengadaan(id_atk, tanggal_pesan, id_pemasok)){
         }
         else{
+            frame.showDialogBox("Hapus", "Success");
             System.out.println("Hapus pengadaan gagal");
         }
     }
     
     public void updatePengadaanAddKedatangan(int id_atk, String tanggal_pesan, int id_pemasok){
         if(pengadaanModel.updatePengadaanAddKedatangan(id_atk, tanggal_pesan, id_pemasok)){
+            frame.showDialogBox("Validasi", "Success");
         }
         else{
+            frame.showDialogBox("Validasi", "Failed");
             System.out.println("Gagal update");
         }
     }
@@ -97,5 +100,21 @@ public class PengadaanController {
         return supplierModel.getSupplierIdName();  
     }
     
+    public void validasi(int row){
+        //String pengadaanModel.getKedatanganTableModel().getValueAt(row, 5);
+        String tanggal_pesan= (String) pengadaanModel.getKedatanganTableModel().getValueAt(row, 5);
+        Integer id_pemasok= (Integer) pengadaanModel.getKedatanganTableModel().getValueAt(row, 6);
+        Integer id_atk= (Integer) pengadaanModel.getKedatanganTableModel().getValueAt(row, 7);
+        updatePengadaanAddKedatangan(id_atk, tanggal_pesan, id_pemasok);
+        openKedatangan();
+    }
+    
+    public void hapusKedatangan(int row){
+        String tanggal_pesan= (String) pengadaanModel.getKedatanganTableModel().getValueAt(row, 5);
+        Integer id_pemasok= (Integer) pengadaanModel.getKedatanganTableModel().getValueAt(row, 6);
+        Integer id_atk= (Integer) pengadaanModel.getKedatanganTableModel().getValueAt(row, 7);
+        deletePengadaan(id_atk, tanggal_pesan, id_pemasok);
+        openKedatangan();
+    }
     
 }

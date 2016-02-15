@@ -356,15 +356,10 @@ public class Pengadaan extends javax.swing.JFrame {
     }//GEN-LAST:event_viewMenuButtonActionPerformed
 
     private void validasiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validasiButtonActionPerformed
-        //String id = idUser.getText();
-        //inventarisController.deleteUser(id);
-        String tanggal_pesan= (String) kedatanganTable.getValueAt(kedatanganTable.getSelectedRow(),2);
-        Integer id_pemasok= (Integer) kedatanganTable.getValueAt(kedatanganTable.getSelectedRow(),3);
-        Integer id_atk= (Integer) kedatanganTable.getValueAt(kedatanganTable.getSelectedRow(),4);
-        System.out.println(tanggal_pesan);
-        System.out.println(id_pemasok);
-        System.out.println(id_atk);
-        pengadaanController.updatePengadaanAddKedatangan(id_atk, tanggal_pesan, id_pemasok);
+
+        
+        pengadaanController.validasi(kedatanganTable.getSelectedRow());
+        
         
         /*String kategori= (String) category.getSelectedItem();
         String id = idUser.getText();
@@ -442,13 +437,9 @@ public class Pengadaan extends javax.swing.JFrame {
 
     private void buttonHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHapusActionPerformed
         if(kedatanganTable.getSelectedRow() != -1){
-            String tanggal_pesan= (String) kedatanganTable.getValueAt(kedatanganTable.getSelectedRow(),2);
-            Integer id_pemasok= (Integer) kedatanganTable.getValueAt(kedatanganTable.getSelectedRow(),3);
-            Integer id_atk= (Integer) kedatanganTable.getValueAt(kedatanganTable.getSelectedRow(),4);
-
-            pengadaanController.deletePengadaan(id_atk, tanggal_pesan, id_pemasok);
-            javax.swing.JOptionPane.showMessageDialog(this, "Hapus berhasil", "Success!", javax.swing.JOptionPane.PLAIN_MESSAGE);
-            pengadaanController.openKedatangan();
+            pengadaanController.hapusKedatangan(kedatanganTable.getSelectedRow());
+            
+            
             //initKinitedatanganTable(kedatanganTableModel);
             /*SwingUtilities.updateComponentTreeUI(this);
             invalidate();
@@ -532,6 +523,11 @@ public class Pengadaan extends javax.swing.JFrame {
         pengadaanTable.getColumnModel().getColumn(5).setPreferredWidth(100);
         pengadaanTable.getColumnModel().getColumn(6).setPreferredWidth(100);
     }
+    
+    public void showDialogBox(String message, String message2){
+        javax.swing.JOptionPane.showMessageDialog(this, message, message2, javax.swing.JOptionPane.PLAIN_MESSAGE);
+    }
+            
     
     
     /**
