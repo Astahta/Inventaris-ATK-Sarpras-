@@ -90,4 +90,28 @@ public class InventarisUserModel {
             return false;
         }  
     }
+    
+    public boolean isUserValid(String userId){
+        boolean valid;
+        try {
+            String sql = "SELECT * FROM pengguna WHERE id_pengguna=?";
+            PreparedStatement dbStatement = conn.prepareStatement(sql);
+            dbStatement.setString(1, userId);
+            ResultSet result = dbStatement.executeQuery();
+            if (result.next()){
+               valid= true;
+            }
+            else {
+                valid= false;
+            }
+            
+            result.close();
+            dbStatement.close();
+            return valid;
+            
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

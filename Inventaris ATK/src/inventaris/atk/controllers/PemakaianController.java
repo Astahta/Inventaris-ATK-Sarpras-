@@ -6,6 +6,7 @@
 package inventaris.atk.controllers;
 import inventaris.atk.models.BookingModel;
 import inventaris.atk.models.InventarisAtkModel;
+import inventaris.atk.models.InventarisUserModel;
 import inventaris.atk.models.PemakaianModel;
 import inventaris.atk.view.Pemakaian;
 import java.util.*;
@@ -21,6 +22,7 @@ public class PemakaianController {
     private final BookingModel bookingModel = new BookingModel();
     private final PemakaianModel pemakaianModel = new PemakaianModel();
     private final InventarisAtkModel atkModel = new InventarisAtkModel();
+    private final InventarisUserModel userModel = new InventarisUserModel();
     private DefaultTableModel atkTable = new DefaultTableModel(new Object[]{"No","ID ATK", "Nama ATK", "Stok"},0);
     
     public PemakaianController(Pemakaian frame) {
@@ -81,6 +83,15 @@ public class PemakaianController {
             return true;
         }
         else{
+            return false;
+        }
+    }
+    
+    public boolean isUserValid(String userId) {
+        if(userModel.isUserValid(userId)){
+            return true;
+        }
+        else {
             return false;
         }
     }

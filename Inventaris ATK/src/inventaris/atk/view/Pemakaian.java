@@ -565,25 +565,37 @@ public class Pemakaian extends javax.swing.JFrame {
     }//GEN-LAST:event_prosesPemakaianActionPerformed
 
     private void okButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButton1ActionPerformed
+        
         int count= (Integer)jumlahBooking.getValue();
         Component[] components = atkOrders1.getComponents();
        
-        
         String userId= userIdBooking.getText();
         java.util.Date date= (java.util.Date) tanggalBooking.getDate();
       
-        for(int i=0; i<count; i++) {
-            javax.swing.JPanel panel = (javax.swing.JPanel) components[i];
-            javax.swing.JComboBox itemComp = (javax.swing.JComboBox) panel.getComponent(1);
-            javax.swing.JSpinner jumlahComp = (javax.swing.JSpinner) panel.getComponent(3);
-            
-            String ATKname = (String) itemComp.getSelectedItem();
-            int sum = (Integer) jumlahComp.getValue(); 
-            
-            pemakaianController.addBooking(userId,date,ATKname, sum);       
+        if(userId.equals("") || date==null){
+            javax.swing.JOptionPane.showMessageDialog(this, "Isi seluruh form terlebih dahulu",
+                "Pemakaian Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
-        
-        javax.swing.JOptionPane.showMessageDialog(this, "Booking Berhasil Dimasukkan", "Success!", javax.swing.JOptionPane.PLAIN_MESSAGE);
+        else {
+            if(pemakaianController.isUserValid(userId)){
+                for(int i=0; i<count; i++) {
+                    javax.swing.JPanel panel = (javax.swing.JPanel) components[i];
+                    javax.swing.JComboBox itemComp = (javax.swing.JComboBox) panel.getComponent(1);
+                    javax.swing.JSpinner jumlahComp = (javax.swing.JSpinner) panel.getComponent(3);
+            
+                    String ATKname = (String) itemComp.getSelectedItem();
+                    int sum = (Integer) jumlahComp.getValue(); 
+            
+                    pemakaianController.addBooking(userId,date,ATKname, sum);       
+                }  
+                javax.swing.JOptionPane.showMessageDialog(this, "Booking Berhasil Dimasukkan", "Success!", javax.swing.JOptionPane.PLAIN_MESSAGE);
+            }
+            else {
+                javax.swing.JOptionPane.showMessageDialog(this, "User belum terdaftar",
+                "Pemakaian Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+        }
+       
    
     }//GEN-LAST:event_okButton1ActionPerformed
 
@@ -594,47 +606,60 @@ public class Pemakaian extends javax.swing.JFrame {
     private void okButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButton2ActionPerformed
         int count= (Integer)jumlahPemakaian.getValue();
         Component[] components = atkOrders2.getComponents();
-       
-        int j=0;
-        boolean available=true;
         
-        while(j<count && available) {
-            javax.swing.JPanel panel = (javax.swing.JPanel) components[j];
-            javax.swing.JComboBox itemComp = (javax.swing.JComboBox) panel.getComponent(1);
-            javax.swing.JSpinner jumlahComp = (javax.swing.JSpinner) panel.getComponent(3);
-            
-            String ATKname = (String) itemComp.getSelectedItem();
-            int sum = (Integer) jumlahComp.getValue(); 
-            
-            if(pemakaianController.isPemakaianAvailable(ATKname,sum)) {
-                j++;
-            }
-            else {  
-                available=false;
-            }
-        }
-      
-        if(!available) {
-                 javax.swing.JOptionPane.showMessageDialog(this, "Jumlah pemakaian melebih stok tersedia",
-                "Pemakaian Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);  
+        String userId= userIdPemakaian.getText();
+        java.util.Date date= (java.util.Date) tanggalPemakaian.getDate();
+       
+        if(userId.equals("") || date==null){
+            javax.swing.JOptionPane.showMessageDialog(this, "Isi seluruh form terlebih dahulu",
+                "Pemakaian Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
         else {
-            String userId= userIdPemakaian.getText();
-            java.util.Date date= (java.util.Date) tanggalPemakaian.getDate();
+            int j=0;
+            boolean available=true;
 
-            for(int i=0; i<count; i++) {
-                javax.swing.JPanel panel = (javax.swing.JPanel) components[i];
+            while(j<count && available) {
+                javax.swing.JPanel panel = (javax.swing.JPanel) components[j];
                 javax.swing.JComboBox itemComp = (javax.swing.JComboBox) panel.getComponent(1);
                 javax.swing.JSpinner jumlahComp = (javax.swing.JSpinner) panel.getComponent(3);
 
                 String ATKname = (String) itemComp.getSelectedItem();
                 int sum = (Integer) jumlahComp.getValue(); 
 
-                pemakaianController.addPemakaian(userId,date,ATKname, sum); 
+                if(pemakaianController.isPemakaianAvailable(ATKname,sum)) {
+                    j++;
+                }
+                else {  
+                    available=false;
+                }
             }
-            javax.swing.JOptionPane.showMessageDialog(this, "Pemakain Berhasil Dimasukkan", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
 
-        }
+            if(!available) {
+                     javax.swing.JOptionPane.showMessageDialog(this, "Jumlah pemakaian melebih stok tersedia",
+                    "Pemakaian Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);  
+            }
+            else {
+
+                if(pemakaianController.isUserValid(userId)) {
+                    for(int i=0; i<count; i++) {
+                        javax.swing.JPanel panel = (javax.swing.JPanel) components[i];
+                        javax.swing.JComboBox itemComp = (javax.swing.JComboBox) panel.getComponent(1);
+                        javax.swing.JSpinner jumlahComp = (javax.swing.JSpinner) panel.getComponent(3);
+
+                        String ATKname = (String) itemComp.getSelectedItem();
+                        int sum = (Integer) jumlahComp.getValue(); 
+
+                        pemakaianController.addPemakaian(userId,date,ATKname, sum); 
+                    }
+                    javax.swing.JOptionPane.showMessageDialog(this, "Pemakain Berhasil Dimasukkan", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+                }
+                else {
+                    javax.swing.JOptionPane.showMessageDialog(this, "User belum terdaftar",
+                    "Pemakaian Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
+                }
+
+            }  
+        }   
     }//GEN-LAST:event_okButton2ActionPerformed
 
     private void tabelPemakaianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelPemakaianMouseClicked
@@ -711,6 +736,7 @@ public class Pemakaian extends javax.swing.JFrame {
             String jumlahname = "jumlah" +i;
             javax.swing.JComboBox item = new javax.swing.JComboBox(atkName);
             javax.swing.JSpinner jumlah = new javax.swing.JSpinner();
+            jumlah.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
             javax.swing.JLabel itemLabel = new javax.swing.JLabel("Item: ");
             javax.swing.JLabel jumlahLabel = new javax.swing.JLabel("Jumlah: ");
             
