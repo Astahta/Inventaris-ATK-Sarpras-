@@ -13,6 +13,7 @@ import inventaris.atk.models.PengadaanModel;
 import inventaris.atk.view.Pemakaian;
 import inventaris.atk.view.Pengadaan;
 import java.util.Vector;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -32,6 +33,11 @@ public class PengadaanController {
         //frame.initFormTable(pengadaanModel.getFormTableModel());
         frame.initPengadaanTable(pengadaanModel.getPengadaanTableModel());
         frame.initKedatanganTable(pengadaanModel.getKedatanganTableModel());
+    }
+    
+    public void changeFrame(JFrame frame){
+        this.frame.setVisible(false);
+        frame.setVisible(true);
     }
     
     public void prosesForm(int n){
