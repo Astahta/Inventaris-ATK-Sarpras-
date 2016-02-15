@@ -62,7 +62,7 @@ public class Pengadaan extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jumlahJenisAtkLabel = new javax.swing.JLabel();
         namaPemasokLabel = new javax.swing.JLabel();
-        namaPemasokComboBox = new javax.swing.JComboBox<>();
+        namaPemasokComboBox = new javax.swing.JComboBox<String>();
         jumlahJenisAtkSpinner = new javax.swing.JSpinner();
         prosesButton = new javax.swing.JButton();
         kedatanganPanel = new javax.swing.JPanel();
@@ -124,14 +124,14 @@ public class Pengadaan extends javax.swing.JFrame {
         namaPemasokLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         namaPemasokLabel.setText("Nama Pemasok");
 
-        namaPemasokComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        namaPemasokComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         namaPemasokComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 namaPemasokComboBoxActionPerformed(evt);
             }
         });
 
-        jumlahJenisAtkSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jumlahJenisAtkSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         jumlahJenisAtkSpinner.setMinimumSize(new java.awt.Dimension(50, 30));
 
         prosesButton.setBackground(new java.awt.Color(112, 112, 255));

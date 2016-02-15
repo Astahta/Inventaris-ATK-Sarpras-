@@ -843,6 +843,10 @@ public class Pemakaian extends javax.swing.JFrame {
         tabelBooking.getColumnModel().getColumn(3).setPreferredWidth(100);
         tabelBooking.getColumnModel().getColumn(4).setPreferredWidth(100);
         tabelBooking.getColumnModel().getColumn(5).setPreferredWidth(100);
+        
+        //dari belakang
+        tabelBooking.removeColumn(tabelBooking.getColumnModel().getColumn(5));
+        tabelBooking.removeColumn(tabelBooking.getColumnModel().getColumn(4));
     }
     public void initPemakaianTable(DefaultTableModel model) {
         tabelPemakaian.setModel(model);
@@ -852,6 +856,10 @@ public class Pemakaian extends javax.swing.JFrame {
         tabelPemakaian.getColumnModel().getColumn(3).setPreferredWidth(100);
         tabelPemakaian.getColumnModel().getColumn(4).setPreferredWidth(100);
         tabelPemakaian.getColumnModel().getColumn(5).setPreferredWidth(100);
+        
+        //dari belakang
+        tabelPemakaian.removeColumn(tabelPemakaian.getColumnModel().getColumn(5));
+        tabelPemakaian.removeColumn(tabelPemakaian.getColumnModel().getColumn(4));
     }
     public void initDetailPemakaianTable(DefaultTableModel model) {
         detailPemakaian.setModel(model);
@@ -859,6 +867,9 @@ public class Pemakaian extends javax.swing.JFrame {
         detailPemakaian.getColumnModel().getColumn(1).setPreferredWidth(100);
         detailPemakaian.getColumnModel().getColumn(2).setPreferredWidth(100);
         detailPemakaian.getColumnModel().getColumn(3).setPreferredWidth(100);
+        
+        //dari belakang
+        detailPemakaian.removeColumn(detailPemakaian.getColumnModel().getColumn(3));
     }
     public void initDetailBookingTable(DefaultTableModel model) {
         detailBooking.setModel(model);
@@ -866,6 +877,9 @@ public class Pemakaian extends javax.swing.JFrame {
         detailBooking.getColumnModel().getColumn(1).setPreferredWidth(100);
         detailBooking.getColumnModel().getColumn(2).setPreferredWidth(100);
         detailBooking.getColumnModel().getColumn(3).setPreferredWidth(100);
+        
+        //dari belakang
+        detailBooking.removeColumn(detailBooking.getColumnModel().getColumn(3));
     }
     private void createOrders(int count, Vector<String> atkName, int state){
         atkOrders1.setLayout(new GridLayout(10,1));
