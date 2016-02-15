@@ -171,10 +171,10 @@ public class PengadaanModel {
         }  
     }*/
     
-    public boolean deleteKedatangan(int id_atk, String tanggal_pesan, int id_pemasok){
+    public boolean deletePengadaan(int id_atk, String tanggal_pesan, int id_pemasok){
         try {
             Statement stmt = conn.createStatement();
-            String sql = "DELETE FROM ATK WHERE id_atk=?, tanggal_pesan=?, id_pemasok=?";
+            String sql = "DELETE FROM Pengadaan WHERE id_atk = ? AND tanggal_pesan = ? AND id_pemasok=?";
             PreparedStatement dbStatement = conn.prepareStatement(sql);
             dbStatement.setInt(1, id_atk);
             dbStatement.setString(2, tanggal_pesan);

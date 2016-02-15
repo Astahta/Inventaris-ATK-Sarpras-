@@ -62,6 +62,14 @@ public class PengadaanController {
         }
     }
     
+    public void deletePengadaan(int id_atk, String tanggal_pesan, int id_pemasok){
+        if(pengadaanModel.deletePengadaan(id_atk, tanggal_pesan, id_pemasok)){
+        }
+        else{
+            System.out.println("Hapus pengadaan gagal");
+        }
+    }
+    
     public void updatePengadaanAddKedatangan(int id_atk, String tanggal_pesan, int id_pemasok){
         if(pengadaanModel.updatePengadaanAddKedatangan(id_atk, tanggal_pesan, id_pemasok)){
         }
