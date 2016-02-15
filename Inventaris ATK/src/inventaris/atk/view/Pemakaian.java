@@ -807,11 +807,17 @@ public class Pemakaian extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
-        // TODO add your handling code here:
+        if(tabelBooking.getSelectedRow() != -1){
+            pemakaianController.hapusBooking(tabelBooking.getSelectedRow());
+        }
     }//GEN-LAST:event_hapusActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        System.out.println("hapusPemakaian");
+        if(tabelPemakaian.getSelectedRow() != -1){
+            pemakaianController.hapusPemakaian(tabelPemakaian.getSelectedRow());
+        }
+        System.out.println(tabelBooking.getSelectedRow());
     }//GEN-LAST:event_jButton3ActionPerformed
     public String getNameFromTable(int row){
         return (String) tabelPemakaian.getValueAt(row,1 );
@@ -835,6 +841,8 @@ public class Pemakaian extends javax.swing.JFrame {
         tabelBooking.getColumnModel().getColumn(1).setPreferredWidth(100);
         tabelBooking.getColumnModel().getColumn(2).setPreferredWidth(100);
         tabelBooking.getColumnModel().getColumn(3).setPreferredWidth(100);
+        tabelBooking.getColumnModel().getColumn(4).setPreferredWidth(100);
+        tabelBooking.getColumnModel().getColumn(5).setPreferredWidth(100);
     }
     public void initPemakaianTable(DefaultTableModel model) {
         tabelPemakaian.setModel(model);
@@ -842,18 +850,22 @@ public class Pemakaian extends javax.swing.JFrame {
         tabelPemakaian.getColumnModel().getColumn(1).setPreferredWidth(100);
         tabelPemakaian.getColumnModel().getColumn(2).setPreferredWidth(100);
         tabelPemakaian.getColumnModel().getColumn(3).setPreferredWidth(100);
+        tabelPemakaian.getColumnModel().getColumn(4).setPreferredWidth(100);
+        tabelPemakaian.getColumnModel().getColumn(5).setPreferredWidth(100);
     }
     public void initDetailPemakaianTable(DefaultTableModel model) {
         detailPemakaian.setModel(model);
         detailPemakaian.getColumnModel().getColumn(0).setPreferredWidth(100);
         detailPemakaian.getColumnModel().getColumn(1).setPreferredWidth(100);
         detailPemakaian.getColumnModel().getColumn(2).setPreferredWidth(100);
+        detailPemakaian.getColumnModel().getColumn(3).setPreferredWidth(100);
     }
     public void initDetailBookingTable(DefaultTableModel model) {
         detailBooking.setModel(model);
         detailBooking.getColumnModel().getColumn(0).setPreferredWidth(100);
         detailBooking.getColumnModel().getColumn(1).setPreferredWidth(100);
         detailBooking.getColumnModel().getColumn(2).setPreferredWidth(100);
+        detailBooking.getColumnModel().getColumn(3).setPreferredWidth(100);
     }
     private void createOrders(int count, Vector<String> atkName, int state){
         atkOrders1.setLayout(new GridLayout(10,1));

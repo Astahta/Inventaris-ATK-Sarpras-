@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -18,8 +19,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PemakaianModel {
     private static Connection conn = DatabaseConnector.connect();
-    private DefaultTableModel pemakaian = new DefaultTableModel(new Object[]{"No","Nama Pengguna", "Tanggal Pemakain", "Banyak Jenis"},0);
-    private DefaultTableModel detail = new DefaultTableModel(new Object[]{"No", "Jenis ATK", "Jumlah"},0);
+    private DefaultTableModel pemakaian = new DefaultTableModel(new Object[]{"No","Nama Pengguna", "Tanggal Pemakaian", "Banyak Jenis", "ID Pengguna", "Tanggal Pemakaian Asli"},0);
+    private DefaultTableModel detail = new DefaultTableModel(new Object[]{"No", "Jenis ATK", "Jumlah", "ID ATK"},0);
     public DefaultTableModel getTableModel() {
         return pemakaian;
     }
@@ -30,7 +31,7 @@ public class PemakaianModel {
     public void initDetail(String nama, String tanggal){
         try {
             detail.setRowCount(0);
-            String sql ="SELECT a.nama_atk as atk,  p.jumlah as jumlah  FROM Pemakaian p NATURAL JOIN ATK a NATURAL JOIN Pengguna p WHERE p.nama_pengguna= ? AND p.tanggal_pemakaian = ? ";
+            String sql ="SELECT a.nama_atk as atk,  p.jumlah as jumlah, p.id_atk as id  FROM Pemakaian p NATURAL JOIN ATK a NATURAL JOIN Pengguna p WHERE p.nama_pengguna= ? AND p.tanggal_pemakaian = ? ";
             PreparedStatement dbStatement = conn.prepareStatement(sql);
             dbStatement.setString(1, nama);
             dbStatement.setString(2, tanggal);
@@ -38,10 +39,11 @@ public class PemakaianModel {
             int i=1;
             
             while (rs.next()) {
-                 Object[] o = new Object[3];
+                 Object[] o = new Object[4];
                  o[0]=i;
                  o[1]=rs.getString("atk");
                  o[2]=rs.getInt("jumlah");
+                 o[3]=rs.getInt("id");
                  detail.addRow(o); 
                  i++;
              }
@@ -50,19 +52,28 @@ public class PemakaianModel {
             Logger.getLogger(PemakaianModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void emptyDetail(){
+        while(detail.getRowCount()>0){
+            detail.removeRow(0);
+        }
+    }
+    
     public void initModel() {
          try {
              pemakaian.setRowCount(0);
-             String sql = "SELECT p.nama_pengguna as pengguna,  p.tanggal_pemakaian as tanggal, count(*) as jumlah  FROM Pemakaian p NATURAL JOIN ATK a NATURAL JOIN Pengguna p GROUP BY pengguna, tanggal ";
+             String sql = "SELECT p.nama_pengguna as pengguna,  p.tanggal_pemakaian as tanggal, p.id_pengguna as id, count(*) as jumlah  FROM Pemakaian p NATURAL JOIN ATK a NATURAL JOIN Pengguna p GROUP BY pengguna, tanggal ";
              PreparedStatement dbStatement = conn.prepareStatement(sql);
              ResultSet rs = dbStatement.executeQuery();
              int i=1;
              while (rs.next()) {
-                 Object[] o = new Object[4];
+                 Object[] o = new Object[6];
                  o[0]=i;
                  o[1]=rs.getString("pengguna");
                  o[2]=rs.getString("tanggal");
                  o[3]=rs.getInt("jumlah");
+                 o[4]=rs.getInt("id");
+                 o[5]=rs.getString("tanggal");
                  pemakaian.addRow(o); 
                  i++;
              }
@@ -136,4 +147,23 @@ public class PemakaianModel {
         }
               
     }    
+    
+    public boolean deletePemakaian(int id_pengguna, String tanggal_pemakaian, int id_atk){
+        try {
+            Statement stmt = conn.createStatement();
+            String sql = "DELETE FROM Pemakaian WHERE id_pengguna = ? AND tanggal_pemakaian = ? AND id_atk=?";
+            System.out.println(sql+" "+id_pengguna+" "+tanggal_pemakaian+" "+id_atk);
+            
+            PreparedStatement dbStatement = conn.prepareStatement(sql);
+            dbStatement.setInt(1, id_pengguna);
+            dbStatement.setString(2, tanggal_pemakaian);
+            dbStatement.setInt(3, id_atk);
+            dbStatement.executeUpdate();
+            
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        } 
+    }
 }

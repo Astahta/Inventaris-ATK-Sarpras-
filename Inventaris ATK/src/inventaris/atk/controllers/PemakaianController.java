@@ -95,6 +95,39 @@ public class PemakaianController {
             return false;
         }
     }
+
+    
+    public void hapusBooking(int row){
+        Integer id_pengguna = (Integer) bookingModel.getTableModel().getValueAt(row, 4);
+        String tanggal_pemesanan = (String) bookingModel.getTableModel().getValueAt(row, 5);
+        int n = bookingModel.getDetailTableModel().getRowCount();
+        for(int i = 0; i < n ; i++){
+            Integer id_atk= (Integer) bookingModel.getDetailTableModel().getValueAt(i, 3);
+            bookingModel.deleteBooking(id_pengguna, tanggal_pemesanan, id_atk);
+        }
+        //frame.initBookingTable(bookingModel.getTableModel());
+        //frame.initDetailBookingTable(bookingModel.getDetailTableModel());
+        bookingModel.initModel();
+        bookingModel.emptyDetail();
+        frame.changeScreen("booking");
+        //openKedatangan();
+    }
+    
+    public void hapusPemakaian(int row){
+        Integer id_pengguna = (Integer) pemakaianModel.getTableModel().getValueAt(row, 4);
+        String tanggal_pemakaian = (String) pemakaianModel.getTableModel().getValueAt(row, 5);
+        int n = pemakaianModel.getDetailModel().getRowCount();
+        for(int i = 0; i < n ; i++){
+            Integer id_atk= (Integer) pemakaianModel.getDetailModel().getValueAt(i, 3);
+            pemakaianModel.deletePemakaian(id_pengguna, tanggal_pemakaian, id_atk);
+        }
+        //frame.initPemakaianTable(pemakaianModel.getTableModel());
+        //frame.initDetailPemakaianTable(pemakaianModel.getDetailModel());
+        pemakaianModel.initModel();
+        pemakaianModel.emptyDetail();
+        frame.changeScreen("pemakaian");
+        //openKedatangan();
+    }
     
         
 }
