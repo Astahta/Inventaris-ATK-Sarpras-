@@ -70,8 +70,7 @@ public class BookingModel {
                  Object[] o = new Object[6];
                  o[0]=i;
                  o[1]=rs.getString("pengguna");
-                 String[] array = ((rs.getString("tanggal")).split("\\ ", -1));
-                 o[2]=array[0];
+                 o[2]=rs.getString("tanggal");
                  o[3]=rs.getInt("jumlah");
                  o[4]=rs.getInt("id");
                  o[5]=rs.getString("tanggal");

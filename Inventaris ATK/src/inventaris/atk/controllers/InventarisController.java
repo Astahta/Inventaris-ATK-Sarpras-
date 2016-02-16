@@ -49,66 +49,75 @@ public class InventarisController {
         frame.changeScreen("supplier");
     }
     public void addUser(String nama, String id, String kategori){
-        if(userModel.addUser(nama, kategori, id))
+        if(userModel.addUser(nama, kategori, id)){
+            frame.showDialogBox("Input user berhasil", "success");
             userModel.initModel();
-        else{
-            System.out.println("Input user gagal");
+        }else{
+            frame.showDialogBox("Input user gagal", "failed");
         }
     }
     public void updateUser(String nama,String id, String kategori){
         if(userModel.editUser(nama, kategori, id)){
+            frame.showDialogBox("Update user berhasil", "success");
             userModel.initModel();
         }else{
-            System.out.println("Edit user gagal");
+            frame.showDialogBox("Update user gagal", "failed");
         }
     }
     public void deleteUser(String id){
         if(userModel.deleteUser(id)){
+            frame.showDialogBox("Delete user berhasil", "success");
             userModel.initModel();
         }else{
-            System.out.println("Delete gagal");
+            frame.showDialogBox("Delete user gagal", "failed");
         }
     }
     public void addSupplier(String nama, String alamat, String telpon){
-        if(supplierModel.addSupplier(nama, alamat, telpon))
+        if(supplierModel.addSupplier(nama, alamat, telpon)){
+            frame.showDialogBox("Input user berhasil", "success");
             supplierModel.initModel();
-        else{
-            System.out.println("Input supplier gagal");
+        }else{
+            frame.showDialogBox("Input user gagal", "failed");
         }
     }
     public void updateSupplier(String nama,String alamat, int id, String telpon){
         if(supplierModel.editSupplier(nama, alamat, id, telpon)){
+            frame.showDialogBox("Edit supplier berhasil", "success");
             supplierModel.initModel();
         }else{
-            System.out.println("Edit supplier gagal");
+            frame.showDialogBox("Edit supplier gagal", "failed");
         }
     }
     public void deleteSupplier(int id){
         if(supplierModel.deleteSupplier(id)){
+            frame.showDialogBox("Hapus supplier berhasil", "success");
             supplierModel.initModel();
         }else{
-            System.out.println("Delete gagal");
+            frame.showDialogBox("Hapus supplier gagal", "failed");
         }
     }
     public void addAtk(String nama, int stok){
-        if(atkModel.addAtk(nama, stok))
+        if(atkModel.addAtk(nama, stok)){
+            frame.showDialogBox("Input ATK berhasil", "success");
             atkModel.initModel();
-        else{
-            System.out.println("Input atk gagal");
+        }else{
+            frame.showDialogBox("Input ATK gagal", "failed");
         }
     }
     public void updateAtk(String nama, int stok, int id){
         if(atkModel.editAtk(nama, stok, id)){
+            frame.showDialogBox("Edit ATK berhasil", "success");
             atkModel.initModel();
         }else{
-            System.out.println("Edit atk gagal");
+            frame.showDialogBox("Edit ATK gagal", "failed");
         }
     }
     public void deleteAtk(int id){
         if(atkModel.deleteAtk(id)){
+            frame.showDialogBox("Delete ATK berhasil", "success");
             atkModel.initModel();
         }else{
-            System.out.println("Delete gagal");
+            frame.showDialogBox("Delete ATK gagal", "failed");
         }
     }
 }

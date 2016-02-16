@@ -348,6 +348,8 @@ public class Pemakaian extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Vrinda", 0, 18)); // NOI18N
         jLabel6.setText("Jumlah Jenis ATK");
 
+        jumlahPemakaian.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
+
         prosesPemakaian.setBackground(new java.awt.Color(112, 112, 255));
         prosesPemakaian.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
         prosesPemakaian.setForeground(new java.awt.Color(255, 255, 255));
@@ -628,7 +630,7 @@ public class Pemakaian extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(submenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(penggunaan, javax.swing.GroupLayout.DEFAULT_SIZE, 1116, Short.MAX_VALUE))
+                .addComponent(penggunaan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -843,10 +845,6 @@ public class Pemakaian extends javax.swing.JFrame {
         tabelBooking.getColumnModel().getColumn(3).setPreferredWidth(100);
         tabelBooking.getColumnModel().getColumn(4).setPreferredWidth(100);
         tabelBooking.getColumnModel().getColumn(5).setPreferredWidth(100);
-        
-        //dari belakang
-        tabelBooking.removeColumn(tabelBooking.getColumnModel().getColumn(5));
-        tabelBooking.removeColumn(tabelBooking.getColumnModel().getColumn(4));
     }
     public void initPemakaianTable(DefaultTableModel model) {
         tabelPemakaian.setModel(model);
@@ -856,10 +854,6 @@ public class Pemakaian extends javax.swing.JFrame {
         tabelPemakaian.getColumnModel().getColumn(3).setPreferredWidth(100);
         tabelPemakaian.getColumnModel().getColumn(4).setPreferredWidth(100);
         tabelPemakaian.getColumnModel().getColumn(5).setPreferredWidth(100);
-        
-        //dari belakang
-        tabelPemakaian.removeColumn(tabelPemakaian.getColumnModel().getColumn(5));
-        tabelPemakaian.removeColumn(tabelPemakaian.getColumnModel().getColumn(4));
     }
     public void initDetailPemakaianTable(DefaultTableModel model) {
         detailPemakaian.setModel(model);
@@ -867,9 +861,6 @@ public class Pemakaian extends javax.swing.JFrame {
         detailPemakaian.getColumnModel().getColumn(1).setPreferredWidth(100);
         detailPemakaian.getColumnModel().getColumn(2).setPreferredWidth(100);
         detailPemakaian.getColumnModel().getColumn(3).setPreferredWidth(100);
-        
-        //dari belakang
-        detailPemakaian.removeColumn(detailPemakaian.getColumnModel().getColumn(3));
     }
     public void initDetailBookingTable(DefaultTableModel model) {
         detailBooking.setModel(model);
@@ -877,9 +868,6 @@ public class Pemakaian extends javax.swing.JFrame {
         detailBooking.getColumnModel().getColumn(1).setPreferredWidth(100);
         detailBooking.getColumnModel().getColumn(2).setPreferredWidth(100);
         detailBooking.getColumnModel().getColumn(3).setPreferredWidth(100);
-        
-        //dari belakang
-        detailBooking.removeColumn(detailBooking.getColumnModel().getColumn(3));
     }
     private void createOrders(int count, Vector<String> atkName, int state){
         atkOrders1.setLayout(new GridLayout(10,1));

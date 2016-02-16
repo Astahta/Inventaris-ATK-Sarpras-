@@ -78,7 +78,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <Component id="submenu" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="penggunaan" pref="1116" max="32767" attributes="0"/>
+                  <Component id="penggunaan" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -605,6 +605,11 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JSpinner" name="jumlahPemakaian">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="0" maximum="10" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                            </Property>
+                          </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="userIdPemakaian">
                         </Component>

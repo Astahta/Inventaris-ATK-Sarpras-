@@ -22,6 +22,7 @@ public class Inventaris extends javax.swing.JFrame {
     public Inventaris() {
         initComponents();
         inventarisController = new InventarisController(this);
+        inventarisController.openAtk();
     }
 
     /**
@@ -102,6 +103,8 @@ public class Inventaris extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Vrinda", 0, 18)); // NOI18N
         jLabel10.setText("Stok");
+
+        stok.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
 
         addATK.setBackground(new java.awt.Color(112, 112, 255));
         addATK.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
@@ -775,7 +778,6 @@ public class Inventaris extends javax.swing.JFrame {
         }
         else {
             inventarisController.addAtk(nama, jml);
-            javax.swing.JOptionPane.showMessageDialog(this, "ATK Berhasil Ditambahkan", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
         }
     }//GEN-LAST:event_addATKActionPerformed
 
@@ -788,7 +790,7 @@ public class Inventaris extends javax.swing.JFrame {
         }
         else {
             inventarisController.updateAtk(nama, jml, idTemp);
-            javax.swing.JOptionPane.showMessageDialog(this, "ATK Berhasil Diubah", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+            
         }
         
     }//GEN-LAST:event_editATKActionPerformed
@@ -815,7 +817,6 @@ public class Inventaris extends javax.swing.JFrame {
         }
         else {
             inventarisController.addSupplier(nama, almt, no);
-            javax.swing.JOptionPane.showMessageDialog(this, "Supplier Berhasil Ditambahkan", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
             
         }
     }//GEN-LAST:event_addSupplierActionPerformed
@@ -830,13 +831,13 @@ public class Inventaris extends javax.swing.JFrame {
         }
         else {
             inventarisController.updateSupplier(nama, almt, idTemp, no);
-            javax.swing.JOptionPane.showMessageDialog(this, "Supplier Berhasil Diubah", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+            
         }
     }//GEN-LAST:event_editSupplierActionPerformed
 
     private void deleteSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSupplierActionPerformed
         inventarisController.deleteSupplier(idTemp);
-        javax.swing.JOptionPane.showMessageDialog(this, "Supplier Berhasil Dihapus", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+        
     }//GEN-LAST:event_deleteSupplierActionPerformed
 
     private void supplierTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_supplierTableMouseClicked
@@ -869,7 +870,7 @@ public class Inventaris extends javax.swing.JFrame {
         }
         else {
             inventarisController.updateUser(nama, id, kategori);
-            javax.swing.JOptionPane.showMessageDialog(this, "Pengguna Berhasil Diubah", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+            
         }
     }//GEN-LAST:event_editButtonActionPerformed
 
@@ -883,7 +884,7 @@ public class Inventaris extends javax.swing.JFrame {
         }
         else {
             inventarisController.addUser(nama, id, kategori);
-            javax.swing.JOptionPane.showMessageDialog(this, "Pengguna Berhasil Ditambahkan", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+            
         }
     }//GEN-LAST:event_addButtonActionPerformed
 
@@ -984,6 +985,11 @@ public class Inventaris extends javax.swing.JFrame {
         supplierTable.getColumnModel().getColumn(3).setPreferredWidth(100);
         supplierTable.getColumnModel().getColumn(4).setPreferredWidth(100);
     }
+    public void showDialogBox(String message, String message2){
+        javax.swing.JOptionPane.showMessageDialog(this, message, message2, javax.swing.JOptionPane.PLAIN_MESSAGE);
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ATKpage;
     private javax.swing.JButton HapusATK;
