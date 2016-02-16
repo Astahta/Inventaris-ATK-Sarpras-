@@ -139,7 +139,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="year" min="-2" pref="80" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="periodeShow" min="-2" pref="99" max="-2" attributes="0"/>
+                              <Component id="periodeShowButton" min="-2" pref="99" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -153,7 +153,7 @@
                                   <Component id="month" min="-2" pref="32" max="-2" attributes="0"/>
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <Component id="year" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="periodeShow" alignment="0" pref="33" max="32767" attributes="0"/>
+                                  <Component id="periodeShowButton" alignment="0" pref="33" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace pref="27" max="32767" attributes="0"/>
                           </Group>
@@ -184,7 +184,7 @@
                         <Property name="doubleBuffered" type="boolean" value="false"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="periodeShow">
+                    <Component class="javax.swing.JButton" name="periodeShowButton">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="70" red="70" type="rgb"/>
@@ -202,7 +202,7 @@
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="periodeShowActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="periodeShowButtonActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -419,7 +419,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="username" min="-2" pref="133" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="userShow" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="userShowButton" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -432,7 +432,7 @@
                                   <Component id="username" max="32767" attributes="0"/>
                                   <Component id="year_user" alignment="0" max="32767" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                      <Component id="userShow" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Component id="userShowButton" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                                       <Component id="jLabel3" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                                       <Component id="jLabel4" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
                                   </Group>
@@ -443,7 +443,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="userShow">
+                    <Component class="javax.swing.JButton" name="userShowButton">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="66" red="66" type="rgb"/>
@@ -460,7 +460,7 @@
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userShowActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userShowButtonActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -526,10 +526,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jButton2" alignment="0" min="-2" pref="244" max="-2" attributes="0"/>
+                          <Component id="statPenggunaMenuButton" alignment="0" min="-2" pref="244" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jButton3" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jButton1" alignment="0" pref="199" max="32767" attributes="0"/>
+                              <Component id="statPeriodeMenuButton" alignment="0" pref="199" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -541,16 +541,16 @@
                   <Group type="102" attributes="0">
                       <Component id="jButton3" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="statPeriodeMenuButton" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="statPenggunaMenuButton" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace pref="537" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="statPeriodeMenuButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="33" type="rgb"/>
@@ -569,10 +569,10 @@
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="statPeriodeMenuButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="statPenggunaMenuButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="99" type="rgb"/>
@@ -591,7 +591,7 @@
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="statPenggunaMenuButtonActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton3">

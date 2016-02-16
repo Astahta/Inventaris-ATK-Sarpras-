@@ -19,7 +19,7 @@ public class Login extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         passwordPanel = new javax.swing.JPanel();
         passwordField = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
+        enterPassword = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         LogIn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -28,7 +28,6 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1366, 769));
 
         Bar.setBackground(new java.awt.Color(255, 51, 102));
 
@@ -50,10 +49,10 @@ public class Login extends javax.swing.JFrame {
         passwordPanel.setBackground(new java.awt.Color(255, 255, 255));
         passwordPanel.setPreferredSize(new java.awt.Dimension(1366, 769));
 
-        jLabel1.setBackground(new java.awt.Color(112, 112, 255));
-        jLabel1.setFont(new java.awt.Font("Meiryo", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(112, 112, 255));
-        jLabel1.setText("Masukkan Password");
+        enterPassword.setBackground(new java.awt.Color(112, 112, 255));
+        enterPassword.setFont(new java.awt.Font("Meiryo", 1, 18)); // NOI18N
+        enterPassword.setForeground(new java.awt.Color(112, 112, 255));
+        enterPassword.setText("Masukkan Password");
 
         LogIn.setBackground(new java.awt.Color(112, 112, 255));
         LogIn.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
@@ -82,7 +81,7 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(passwordPanelLayout.createSequentialGroup()
                         .addGap(130, 130, 130)
                         .addGroup(passwordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addComponent(enterPassword)
                             .addComponent(jLabel2)))
                     .addGroup(passwordPanelLayout.createSequentialGroup()
                         .addGap(170, 170, 170)
@@ -93,7 +92,7 @@ public class Login extends javax.swing.JFrame {
             passwordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(passwordPanelLayout.createSequentialGroup()
                 .addGap(74, 74, 74)
-                .addComponent(jLabel1)
+                .addComponent(enterPassword)
                 .addGap(43, 43, 43)
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -215,7 +214,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bar;
     private javax.swing.JButton LogIn;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel enterPassword;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

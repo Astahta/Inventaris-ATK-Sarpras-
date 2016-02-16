@@ -52,7 +52,7 @@ public class Statistik extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         year = new com.toedter.calendar.JYearChooser();
         month = new com.toedter.calendar.JMonthChooser();
-        periodeShow = new javax.swing.JButton();
+        periodeShowButton = new javax.swing.JButton();
         result_periode = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         periodeTable = new javax.swing.JTable();
@@ -62,15 +62,15 @@ public class Statistik extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         userTable = new javax.swing.JTable();
         form_user = new javax.swing.JPanel();
-        userShow = new javax.swing.JButton();
+        userShowButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         year_user = new com.toedter.calendar.JYearChooser();
         jLabel4 = new javax.swing.JLabel();
         username = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         subMenu = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        statPeriodeMenuButton = new javax.swing.JButton();
+        statPenggunaMenuButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -92,17 +92,17 @@ public class Statistik extends javax.swing.JFrame {
 
         month.setDoubleBuffered(false);
 
-        periodeShow.setBackground(new java.awt.Color(112, 112, 255));
-        periodeShow.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
-        periodeShow.setForeground(new java.awt.Color(255, 255, 255));
-        periodeShow.setText("Tampilkan");
-        periodeShow.setBorderPainted(false);
-        periodeShow.setContentAreaFilled(false);
-        periodeShow.setFocusPainted(false);
-        periodeShow.setOpaque(true);
-        periodeShow.addActionListener(new java.awt.event.ActionListener() {
+        periodeShowButton.setBackground(new java.awt.Color(112, 112, 255));
+        periodeShowButton.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
+        periodeShowButton.setForeground(new java.awt.Color(255, 255, 255));
+        periodeShowButton.setText("Tampilkan");
+        periodeShowButton.setBorderPainted(false);
+        periodeShowButton.setContentAreaFilled(false);
+        periodeShowButton.setFocusPainted(false);
+        periodeShowButton.setOpaque(true);
+        periodeShowButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                periodeShowActionPerformed(evt);
+                periodeShowButtonActionPerformed(evt);
             }
         });
 
@@ -120,7 +120,7 @@ public class Statistik extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(periodeShow, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(periodeShowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
         form_periodeLayout.setVerticalGroup(
@@ -132,7 +132,7 @@ public class Statistik extends javax.swing.JFrame {
                     .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(year, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(periodeShow, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                    .addComponent(periodeShowButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -251,16 +251,16 @@ public class Statistik extends javax.swing.JFrame {
 
         form_user.setBackground(new java.awt.Color(255, 255, 255));
 
-        userShow.setBackground(new java.awt.Color(102, 102, 255));
-        userShow.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
-        userShow.setForeground(new java.awt.Color(255, 255, 255));
-        userShow.setText("Tampilkan");
-        userShow.setContentAreaFilled(false);
-        userShow.setFocusPainted(false);
-        userShow.setOpaque(true);
-        userShow.addActionListener(new java.awt.event.ActionListener() {
+        userShowButton.setBackground(new java.awt.Color(102, 102, 255));
+        userShowButton.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
+        userShowButton.setForeground(new java.awt.Color(255, 255, 255));
+        userShowButton.setText("Tampilkan");
+        userShowButton.setContentAreaFilled(false);
+        userShowButton.setFocusPainted(false);
+        userShowButton.setOpaque(true);
+        userShowButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userShowActionPerformed(evt);
+                userShowButtonActionPerformed(evt);
             }
         });
 
@@ -288,7 +288,7 @@ public class Statistik extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(userShow, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(userShowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
         form_userLayout.setVerticalGroup(
@@ -299,7 +299,7 @@ public class Statistik extends javax.swing.JFrame {
                     .addComponent(username)
                     .addComponent(year_user, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(form_userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(userShow, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(userShowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -338,33 +338,33 @@ public class Statistik extends javax.swing.JFrame {
         subMenu.setBackground(new java.awt.Color(153, 153, 153));
         subMenu.setPreferredSize(new java.awt.Dimension(200, 769));
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 51));
-        jButton1.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Pemakaian ATK per Periode");
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setFocusPainted(false);
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton1.setOpaque(true);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        statPeriodeMenuButton.setBackground(new java.awt.Color(51, 51, 51));
+        statPeriodeMenuButton.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        statPeriodeMenuButton.setForeground(new java.awt.Color(255, 255, 255));
+        statPeriodeMenuButton.setText("Pemakaian ATK per Periode");
+        statPeriodeMenuButton.setBorderPainted(false);
+        statPeriodeMenuButton.setContentAreaFilled(false);
+        statPeriodeMenuButton.setFocusPainted(false);
+        statPeriodeMenuButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        statPeriodeMenuButton.setOpaque(true);
+        statPeriodeMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                statPeriodeMenuButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(153, 153, 153));
-        jButton2.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 204, 204));
-        jButton2.setText("Pemakaian ATK per User");
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setFocusPainted(false);
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.setOpaque(true);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        statPenggunaMenuButton.setBackground(new java.awt.Color(153, 153, 153));
+        statPenggunaMenuButton.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        statPenggunaMenuButton.setForeground(new java.awt.Color(204, 204, 204));
+        statPenggunaMenuButton.setText("Pemakaian ATK per User");
+        statPenggunaMenuButton.setBorderPainted(false);
+        statPenggunaMenuButton.setContentAreaFilled(false);
+        statPenggunaMenuButton.setFocusPainted(false);
+        statPenggunaMenuButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        statPenggunaMenuButton.setOpaque(true);
+        statPenggunaMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                statPenggunaMenuButtonActionPerformed(evt);
             }
         });
 
@@ -389,10 +389,10 @@ public class Statistik extends javax.swing.JFrame {
             subMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(subMenuLayout.createSequentialGroup()
                 .addGroup(subMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(statPenggunaMenuButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, subMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)))
+                        .addComponent(statPeriodeMenuButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         subMenuLayout.setVerticalGroup(
@@ -400,9 +400,9 @@ public class Statistik extends javax.swing.JFrame {
             .addGroup(subMenuLayout.createSequentialGroup()
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(statPeriodeMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(statPenggunaMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(537, Short.MAX_VALUE))
         );
 
@@ -440,41 +440,41 @@ public class Statistik extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void statPenggunaMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statPenggunaMenuButtonActionPerformed
         // TODO add your handling code here:
         int selectedYear = (int) year_user.getYear();
         String selectedKategori = (String) username.getSelectedItem();
         statistikController.openUser(selectedKategori, selectedYear);
-        this.jButton2.setBackground(Color.darkGray);
-        this.jButton2.setForeground(Color.white);
-        this.jButton1.setBackground(new Color(153,153,153));
-        this.jButton1.setForeground(new Color(204,204,204));
-    }//GEN-LAST:event_jButton2ActionPerformed
+        this.statPenggunaMenuButton.setBackground(Color.darkGray);
+        this.statPenggunaMenuButton.setForeground(Color.white);
+        this.statPeriodeMenuButton.setBackground(new Color(153,153,153));
+        this.statPeriodeMenuButton.setForeground(new Color(204,204,204));
+    }//GEN-LAST:event_statPenggunaMenuButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void statPeriodeMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statPeriodeMenuButtonActionPerformed
         // TODO add your handling code here:
         int selectedYear = (int) year.getYear();
         int selectedMonth = (int) month.getMonth();
         statistikController.openPeriode(selectedMonth, selectedYear);
-        this.jButton1.setBackground(Color.darkGray);
-        this.jButton1.setForeground(Color.white);
-        this.jButton2.setBackground(new Color(153,153,153));
-        this.jButton2.setForeground(new Color(204,204,204));
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.statPeriodeMenuButton.setBackground(Color.darkGray);
+        this.statPeriodeMenuButton.setForeground(Color.white);
+        this.statPenggunaMenuButton.setBackground(new Color(153,153,153));
+        this.statPenggunaMenuButton.setForeground(new Color(204,204,204));
+    }//GEN-LAST:event_statPeriodeMenuButtonActionPerformed
 
-    private void userShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userShowActionPerformed
+    private void userShowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userShowButtonActionPerformed
         // TODO add your handling code here:
         int selectedYear = (int) year_user.getYear();
         String selectedKategori = (String) username.getSelectedItem();
         statistikController.showAtSpesificUser(selectedKategori, selectedYear);
-    }//GEN-LAST:event_userShowActionPerformed
+    }//GEN-LAST:event_userShowButtonActionPerformed
 
-    private void periodeShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodeShowActionPerformed
+    private void periodeShowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodeShowButtonActionPerformed
         // TODO add your handling code here:
         int selectedYear = (int) year.getYear();
         int selectedMonth = (int) month.getMonth();
         statistikController.showAtSpesificTime(selectedMonth, selectedYear);
-    }//GEN-LAST:event_periodeShowActionPerformed
+    }//GEN-LAST:event_periodeShowButtonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -517,8 +517,6 @@ public class Statistik extends javax.swing.JFrame {
     private javax.swing.JPanel User;
     private javax.swing.JPanel form_periode;
     private javax.swing.JPanel form_user;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -530,13 +528,15 @@ public class Statistik extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private com.toedter.calendar.JMonthChooser month;
-    private javax.swing.JButton periodeShow;
+    private javax.swing.JButton periodeShowButton;
     private javax.swing.JTable periodeTable;
     private javax.swing.JPanel result_periode;
     private javax.swing.JPanel result_user;
+    private javax.swing.JButton statPenggunaMenuButton;
+    private javax.swing.JButton statPeriodeMenuButton;
     private javax.swing.JPanel statistik;
     private javax.swing.JPanel subMenu;
-    private javax.swing.JButton userShow;
+    private javax.swing.JButton userShowButton;
     private javax.swing.JTable userTable;
     private javax.swing.JComboBox username;
     private com.toedter.calendar.JYearChooser year;

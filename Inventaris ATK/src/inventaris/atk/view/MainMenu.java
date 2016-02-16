@@ -33,10 +33,10 @@ public class MainMenu extends javax.swing.JFrame {
         Bar = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        tombolInventaris = new javax.swing.JButton();
-        tombolPemakaian = new javax.swing.JButton();
-        tombolPengadaan = new javax.swing.JButton();
-        tombolStatistik = new javax.swing.JButton();
+        inventarisButton = new javax.swing.JButton();
+        pemakaianButton = new javax.swing.JButton();
+        pengadaanButton = new javax.swing.JButton();
+        statistikButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login.getContentPane());
         Login.getContentPane().setLayout(LoginLayout);
@@ -51,7 +51,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1366, 769));
 
         Bar.setBackground(new java.awt.Color(255, 51, 102));
 
@@ -78,56 +77,54 @@ public class MainMenu extends javax.swing.JFrame {
         );
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(204, 204, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 255))); // NOI18N
 
-        tombolInventaris.setFont(new java.awt.Font("Meiryo", 1, 18)); // NOI18N
-        tombolInventaris.setForeground(new java.awt.Color(112, 112, 255));
-        tombolInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Button1.jpg"))); // NOI18N
-        tombolInventaris.setActionCommand("");
-        tombolInventaris.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tombolInventaris.setOpaque(true);
-        tombolInventaris.addActionListener(new java.awt.event.ActionListener() {
+        inventarisButton.setFont(new java.awt.Font("Meiryo", 1, 18)); // NOI18N
+        inventarisButton.setForeground(new java.awt.Color(112, 112, 255));
+        inventarisButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Button1.jpg"))); // NOI18N
+        inventarisButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        inventarisButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolInventarisActionPerformed(evt);
+                inventarisButtonActionPerformed(evt);
             }
         });
 
-        tombolPemakaian.setFont(new java.awt.Font("Meiryo", 1, 18)); // NOI18N
-        tombolPemakaian.setForeground(new java.awt.Color(112, 112, 255));
-        tombolPemakaian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Button3.jpg"))); // NOI18N
-        tombolPemakaian.setBorderPainted(false);
-        tombolPemakaian.setContentAreaFilled(false);
-        tombolPemakaian.setFocusPainted(false);
-        tombolPemakaian.setOpaque(true);
-        tombolPemakaian.addActionListener(new java.awt.event.ActionListener() {
+        pemakaianButton.setFont(new java.awt.Font("Meiryo", 1, 18)); // NOI18N
+        pemakaianButton.setForeground(new java.awt.Color(112, 112, 255));
+        pemakaianButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Button3.jpg"))); // NOI18N
+        pemakaianButton.setBorderPainted(false);
+        pemakaianButton.setContentAreaFilled(false);
+        pemakaianButton.setFocusPainted(false);
+        pemakaianButton.setOpaque(true);
+        pemakaianButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolPemakaianActionPerformed(evt);
+                pemakaianButtonActionPerformed(evt);
             }
         });
 
-        tombolPengadaan.setFont(new java.awt.Font("Meiryo", 1, 18)); // NOI18N
-        tombolPengadaan.setForeground(new java.awt.Color(112, 112, 255));
-        tombolPengadaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Button2.jpg"))); // NOI18N
-        tombolPengadaan.setBorder(null);
-        tombolPengadaan.setContentAreaFilled(false);
-        tombolPengadaan.setFocusPainted(false);
-        tombolPengadaan.setOpaque(true);
-        tombolPengadaan.addActionListener(new java.awt.event.ActionListener() {
+        pengadaanButton.setFont(new java.awt.Font("Meiryo", 1, 18)); // NOI18N
+        pengadaanButton.setForeground(new java.awt.Color(112, 112, 255));
+        pengadaanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Button2.jpg"))); // NOI18N
+        pengadaanButton.setBorder(null);
+        pengadaanButton.setContentAreaFilled(false);
+        pengadaanButton.setFocusPainted(false);
+        pengadaanButton.setOpaque(true);
+        pengadaanButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolPengadaanActionPerformed(evt);
+                pengadaanButtonActionPerformed(evt);
             }
         });
 
-        tombolStatistik.setFont(new java.awt.Font("Meiryo", 1, 18)); // NOI18N
-        tombolStatistik.setForeground(new java.awt.Color(112, 112, 255));
-        tombolStatistik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Button4.jpg"))); // NOI18N
-        tombolStatistik.setBorderPainted(false);
-        tombolStatistik.setContentAreaFilled(false);
-        tombolStatistik.setFocusPainted(false);
-        tombolStatistik.setOpaque(true);
-        tombolStatistik.addActionListener(new java.awt.event.ActionListener() {
+        statistikButton.setFont(new java.awt.Font("Meiryo", 1, 18)); // NOI18N
+        statistikButton.setForeground(new java.awt.Color(112, 112, 255));
+        statistikButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Button4.jpg"))); // NOI18N
+        statistikButton.setBorderPainted(false);
+        statistikButton.setContentAreaFilled(false);
+        statistikButton.setFocusPainted(false);
+        statistikButton.setOpaque(true);
+        statistikButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolStatistikActionPerformed(evt);
+                statistikButtonActionPerformed(evt);
             }
         });
 
@@ -138,12 +135,12 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tombolInventaris, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tombolPengadaan))
+                    .addComponent(inventarisButton, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pengadaanButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tombolPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tombolStatistik, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(pemakaianButton, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(statistikButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(48, 48, 48))
         );
         jPanel1Layout.setVerticalGroup(
@@ -151,12 +148,12 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tombolPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tombolInventaris, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pemakaianButton, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inventarisButton, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(73, 73, 73)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tombolStatistik, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tombolPengadaan))
+                    .addComponent(statistikButton, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pengadaanButton))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
@@ -184,25 +181,25 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tombolStatistikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolStatistikActionPerformed
+    private void statistikButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statistikButtonActionPerformed
         Statistik statistik = new Statistik();
         controller.changeFrame(statistik);
-    }//GEN-LAST:event_tombolStatistikActionPerformed
+    }//GEN-LAST:event_statistikButtonActionPerformed
 
-    private void tombolInventarisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolInventarisActionPerformed
+    private void inventarisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventarisButtonActionPerformed
         Inventaris inventaris = new Inventaris();
         controller.changeFrame(inventaris);
-    }//GEN-LAST:event_tombolInventarisActionPerformed
+    }//GEN-LAST:event_inventarisButtonActionPerformed
 
-    private void tombolPengadaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolPengadaanActionPerformed
+    private void pengadaanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pengadaanButtonActionPerformed
         Pengadaan pengadaan = new Pengadaan();
         controller.changeFrame(pengadaan);
-    }//GEN-LAST:event_tombolPengadaanActionPerformed
+    }//GEN-LAST:event_pengadaanButtonActionPerformed
 
-    private void tombolPemakaianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolPemakaianActionPerformed
+    private void pemakaianButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pemakaianButtonActionPerformed
         Pemakaian pemakaian = new Pemakaian();
         controller.changeFrame(pemakaian);
-    }//GEN-LAST:event_tombolPemakaianActionPerformed
+    }//GEN-LAST:event_pemakaianButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,11 +239,11 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bar;
     private javax.swing.JFrame Login;
+    private javax.swing.JButton inventarisButton;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton tombolInventaris;
-    private javax.swing.JButton tombolPemakaian;
-    private javax.swing.JButton tombolPengadaan;
-    private javax.swing.JButton tombolStatistik;
+    private javax.swing.JButton pemakaianButton;
+    private javax.swing.JButton pengadaanButton;
+    private javax.swing.JButton statistikButton;
     // End of variables declaration//GEN-END:variables
 }

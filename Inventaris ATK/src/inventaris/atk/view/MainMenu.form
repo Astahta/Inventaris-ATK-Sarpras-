@@ -23,9 +23,6 @@
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="ff" green="ff" red="ff" type="rgb"/>
     </Property>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1366, 769]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -133,13 +130,13 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tombolInventaris" min="-2" pref="236" max="-2" attributes="0"/>
-                      <Component id="tombolPengadaan" min="-2" max="-2" attributes="0"/>
+                      <Component id="inventarisButton" min="-2" pref="236" max="-2" attributes="0"/>
+                      <Component id="pengadaanButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="108" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="tombolPemakaian" min="-2" pref="238" max="-2" attributes="0"/>
-                      <Component id="tombolStatistik" pref="0" max="32767" attributes="0"/>
+                      <Component id="pemakaianButton" min="-2" pref="238" max="-2" attributes="0"/>
+                      <Component id="statistikButton" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               </Group>
@@ -150,13 +147,13 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tombolPemakaian" min="-2" pref="164" max="-2" attributes="0"/>
-                      <Component id="tombolInventaris" min="-2" pref="164" max="-2" attributes="0"/>
+                      <Component id="pemakaianButton" min="-2" pref="164" max="-2" attributes="0"/>
+                      <Component id="inventarisButton" min="-2" pref="164" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tombolStatistik" min="-2" pref="164" max="-2" attributes="0"/>
-                      <Component id="tombolPengadaan" min="-2" max="-2" attributes="0"/>
+                      <Component id="statistikButton" min="-2" pref="164" max="-2" attributes="0"/>
+                      <Component id="pengadaanButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="52" max="32767" attributes="0"/>
               </Group>
@@ -164,7 +161,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="tombolInventaris">
+        <Component class="javax.swing.JButton" name="inventarisButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Meiryo" size="18" style="1"/>
@@ -175,17 +172,15 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/image/Button1.jpg"/>
             </Property>
-            <Property name="actionCommand" type="java.lang.String" value=""/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Default Cursor"/>
             </Property>
-            <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolInventarisActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inventarisButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="tombolPemakaian">
+        <Component class="javax.swing.JButton" name="pemakaianButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Meiryo" size="18" style="1"/>
@@ -202,10 +197,10 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolPemakaianActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pemakaianButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="tombolPengadaan">
+        <Component class="javax.swing.JButton" name="pengadaanButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Meiryo" size="18" style="1"/>
@@ -224,10 +219,10 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolPengadaanActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pengadaanButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="tombolStatistik">
+        <Component class="javax.swing.JButton" name="statistikButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Meiryo" size="18" style="1"/>
@@ -244,7 +239,7 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolStatistikActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="statistikButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
