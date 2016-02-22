@@ -796,9 +796,11 @@ public class Inventaris extends javax.swing.JFrame {
     }//GEN-LAST:event_editATKActionPerformed
 
     private void HapusATKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusATKActionPerformed
-
-        inventarisController.deleteAtk(idTemp);
-        javax.swing.JOptionPane.showMessageDialog(this, "ATK Berhasil Dihapus", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+        int dialogButton = javax.swing.JOptionPane.showConfirmDialog(this, "Apakah Anda yakin untuk menghapus data ini?",
+    "Konfirmasi Penghapusan", javax.swing.JOptionPane.YES_NO_OPTION);
+        if(dialogButton == javax.swing.JOptionPane.YES_OPTION) {
+            inventarisController.deleteAtk(idTemp);
+        }
     }//GEN-LAST:event_HapusATKActionPerformed
 
     private void atkTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atkTableMouseClicked
@@ -836,8 +838,11 @@ public class Inventaris extends javax.swing.JFrame {
     }//GEN-LAST:event_editSupplierActionPerformed
 
     private void deleteSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSupplierActionPerformed
-        inventarisController.deleteSupplier(idTemp);
-        
+        int dialogButton = javax.swing.JOptionPane.showConfirmDialog(this, "Apakah Anda yakin untuk menghapus data ini?",
+    "Konfirmasi Penghapusan", javax.swing.JOptionPane.YES_NO_OPTION);
+        if(dialogButton == javax.swing.JOptionPane.YES_OPTION) {
+            inventarisController.deleteSupplier(idTemp);
+        }
     }//GEN-LAST:event_deleteSupplierActionPerformed
 
     private void supplierTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_supplierTableMouseClicked
@@ -855,9 +860,13 @@ public class Inventaris extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        String id = idUser.getText();
-        inventarisController.deleteUser(id);
-        javax.swing.JOptionPane.showMessageDialog(this, "Pengguna Berhasil Dihapus", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+        int dialogButton = javax.swing.JOptionPane.showConfirmDialog(this, "Apakah Anda yakin untuk menghapus data ini?",
+    "Konfirmasi Penghapusan", javax.swing.JOptionPane.YES_NO_OPTION);
+        if(dialogButton == javax.swing.JOptionPane.YES_OPTION) {
+            String id = idUser.getText();
+            inventarisController.deleteUser(id);
+        }
+        
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed

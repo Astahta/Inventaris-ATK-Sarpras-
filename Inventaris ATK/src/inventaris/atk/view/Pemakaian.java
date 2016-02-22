@@ -81,7 +81,7 @@ public class Pemakaian extends javax.swing.JFrame {
         viewPemakaian = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelPemakaian = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
+        hapusPemakaian = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         detailPemakaian = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
@@ -465,17 +465,17 @@ public class Pemakaian extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tabelPemakaian);
 
-        jButton3.setBackground(new java.awt.Color(112, 112, 255));
-        jButton3.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Hapus");
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setFocusPainted(false);
-        jButton3.setOpaque(true);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        hapusPemakaian.setBackground(new java.awt.Color(112, 112, 255));
+        hapusPemakaian.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
+        hapusPemakaian.setForeground(new java.awt.Color(255, 255, 255));
+        hapusPemakaian.setText("Hapus");
+        hapusPemakaian.setBorderPainted(false);
+        hapusPemakaian.setContentAreaFilled(false);
+        hapusPemakaian.setFocusPainted(false);
+        hapusPemakaian.setOpaque(true);
+        hapusPemakaian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                hapusPemakaianActionPerformed(evt);
             }
         });
 
@@ -518,7 +518,7 @@ public class Pemakaian extends javax.swing.JFrame {
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPemakaianLayout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(hapusPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(407, 407, 407))))
         );
         viewPemakaianLayout.setVerticalGroup(
@@ -533,7 +533,7 @@ public class Pemakaian extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(hapusPemakaian, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
@@ -630,7 +630,7 @@ public class Pemakaian extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(submenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(penggunaan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(penggunaan, javax.swing.GroupLayout.DEFAULT_SIZE, 1132, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -695,7 +695,7 @@ public class Pemakaian extends javax.swing.JFrame {
       
         if(userId.equals("") || date==null){
             javax.swing.JOptionPane.showMessageDialog(this, "Isi seluruh form terlebih dahulu",
-                "Pemakaian Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
+                "Booking Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
         else {
             if(pemakaianController.isUserValid(userId)){
@@ -709,11 +709,12 @@ public class Pemakaian extends javax.swing.JFrame {
             
                     pemakaianController.addBooking(userId,date,ATKname, sum);       
                 }  
-                javax.swing.JOptionPane.showMessageDialog(this, "Booking Berhasil Dimasukkan", "Success!", javax.swing.JOptionPane.PLAIN_MESSAGE);
+                showDialogBox("Input Booking Berhasil", "success");
+                
             }
             else {
                 javax.swing.JOptionPane.showMessageDialog(this, "User belum terdaftar",
-                "Pemakaian Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
+                "Booking Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         }
        
@@ -776,7 +777,7 @@ public class Pemakaian extends javax.swing.JFrame {
 
                         pemakaianController.addPemakaian(userId,date,ATKname, sum); 
                     }
-                    javax.swing.JOptionPane.showMessageDialog(this, "Pemakain Berhasil Dimasukkan", "Sucess", javax.swing.JOptionPane.PLAIN_MESSAGE);
+                    showDialogBox("Input Pemakaian Berhasil", "success");
                 }
                 else {
                     javax.swing.JOptionPane.showMessageDialog(this, "User belum terdaftar",
@@ -809,18 +810,25 @@ public class Pemakaian extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
-        if(tabelBooking.getSelectedRow() != -1){
-            pemakaianController.hapusBooking(tabelBooking.getSelectedRow());
+        int dialogButton = javax.swing.JOptionPane.showConfirmDialog(this, "Apakah Anda yakin untuk menghapus data ini?",
+    "Konfirmasi Penghapusan", javax.swing.JOptionPane.YES_NO_OPTION);
+        if(dialogButton == javax.swing.JOptionPane.YES_OPTION) {
+            if(tabelBooking.getSelectedRow() != -1){
+                pemakaianController.hapusBooking(tabelBooking.getSelectedRow());
+            }
         }
     }//GEN-LAST:event_hapusActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        System.out.println("hapusPemakaian");
-        if(tabelPemakaian.getSelectedRow() != -1){
-            pemakaianController.hapusPemakaian(tabelPemakaian.getSelectedRow());
+    private void hapusPemakaianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusPemakaianActionPerformed
+        int dialogButton = javax.swing.JOptionPane.showConfirmDialog(this, "Apakah Anda yakin untuk menghapus data ini?",
+    "Konfirmasi Penghapusan", javax.swing.JOptionPane.YES_NO_OPTION);
+        if(dialogButton == javax.swing.JOptionPane.YES_OPTION) {
+            if(tabelPemakaian.getSelectedRow() != -1){
+                pemakaianController.hapusPemakaian(tabelPemakaian.getSelectedRow());
+            }
         }
-        System.out.println(tabelBooking.getSelectedRow());
-    }//GEN-LAST:event_jButton3ActionPerformed
+        
+    }//GEN-LAST:event_hapusPemakaianActionPerformed
     public String getNameFromTable(int row){
         return (String) tabelPemakaian.getValueAt(row,1 );
     }
@@ -900,6 +908,10 @@ public class Pemakaian extends javax.swing.JFrame {
                 atkOrders2.add(panel);
         }
     }
+    
+    public void showDialogBox(String message, String message2){
+        javax.swing.JOptionPane.showMessageDialog(this, message, message2, javax.swing.JOptionPane.PLAIN_MESSAGE);
+    }
     /**
      * @param args the command line arguments
      */
@@ -940,8 +952,8 @@ public class Pemakaian extends javax.swing.JFrame {
     private javax.swing.JPanel formBooking;
     private javax.swing.JPanel formPemakaian;
     private javax.swing.JButton hapus;
+    private javax.swing.JButton hapusPemakaian;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog4;
     private javax.swing.JLabel jLabel1;

@@ -600,14 +600,22 @@ public class Pengadaan extends javax.swing.JFrame {
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void buttonHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHapusActionPerformed
-        if(kedatanganTable.getSelectedRow() != -1){
-            pengadaanController.hapusKedatangan(kedatanganTable.getSelectedRow());
+        int dialogButton = javax.swing.JOptionPane.showConfirmDialog(this, "Apakah Anda yakin untuk menghapus data ini?",
+    "Konfirmasi Penghapusan", javax.swing.JOptionPane.YES_NO_OPTION);
+        if(dialogButton == javax.swing.JOptionPane.YES_OPTION) {
+            if(kedatanganTable.getSelectedRow() != -1){
+                pengadaanController.hapusKedatangan(kedatanganTable.getSelectedRow());
+            }
         }
     }//GEN-LAST:event_buttonHapusActionPerformed
 
     private void hapus2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapus2ButtonActionPerformed
-        if(pengadaanTable.getSelectedRow() != -1){
-            pengadaanController.hapusPengadaan(pengadaanTable.getSelectedRow());
+        int dialogButton = javax.swing.JOptionPane.showConfirmDialog(this, "Apakah Anda yakin untuk menghapus data ini?",
+    "Konfirmasi Penghapusan", javax.swing.JOptionPane.YES_NO_OPTION);
+        if(dialogButton == javax.swing.JOptionPane.YES_OPTION) {
+            if(pengadaanTable.getSelectedRow() != -1){
+                pengadaanController.hapusPengadaan(pengadaanTable.getSelectedRow());
+            }
         }
     }//GEN-LAST:event_hapus2ButtonActionPerformed
 
