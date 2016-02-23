@@ -83,8 +83,8 @@ public class PengadaanController {
         }
     }
     
-    public void updatePengadaanAddKedatangan(int id_atk, String tanggal_pesan, int id_pemasok){
-        if(pengadaanModel.updatePengadaanAddKedatangan(id_atk, tanggal_pesan, id_pemasok)){
+    public void updatePengadaanAddKedatangan(int id_atk, String tanggal_pesan, int id_pemasok, int stok){
+        if(pengadaanModel.updatePengadaanAddKedatangan(id_atk, tanggal_pesan, id_pemasok, stok)){
             frame.showDialogBox("Validasi", "Success");
         }
         else{
@@ -117,7 +117,8 @@ public class PengadaanController {
         String tanggal_pesan= (String) pengadaanModel.getKedatanganTableModel().getValueAt(row, 5);
         Integer id_pemasok= (Integer) pengadaanModel.getKedatanganTableModel().getValueAt(row, 6);
         Integer id_atk= (Integer) pengadaanModel.getKedatanganTableModel().getValueAt(row, 7);
-        updatePengadaanAddKedatangan(id_atk, tanggal_pesan, id_pemasok);
+        Integer stok = (Integer) pengadaanModel.getKedatanganTableModel().getValueAt(row,1);
+        updatePengadaanAddKedatangan(id_atk, tanggal_pesan, id_pemasok, stok);
         openKedatangan();
     }
     
