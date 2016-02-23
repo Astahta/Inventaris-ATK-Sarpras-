@@ -54,11 +54,25 @@ public class InventarisAtkModel {
     }
     public boolean addAtk(String nama, int stok ){
         try {
-            String sql = "INSERT INTO ATK (nama_atk, stok) VALUES (?, ?)";
+            String sql = "SELECT stok FROM ATK WHERE nama_atk = ?";
             PreparedStatement dbStatement = conn.prepareStatement(sql);
             dbStatement.setString(1, nama);
-            dbStatement.setInt(2, stok);
-            dbStatement.executeUpdate();
+            ResultSet rs = dbStatement.executeQuery();
+            if (rs.next()) {
+                sql = "UPDATE ATK SET stok = ? WHERE nama_atk = ?";
+                int new_stok = stok + rs.getInt("stok");
+                dbStatement = conn.prepareStatement(sql);
+                dbStatement.setInt(1, new_stok);
+                dbStatement.setString(2, nama);
+                dbStatement.executeUpdate(); 
+            }
+            else {       
+                sql = "INSERT INTO ATK (nama_atk, stok) VALUES (?, ?)";
+                dbStatement = conn.prepareStatement(sql);
+                dbStatement.setString(1, nama);
+                dbStatement.setInt(2, stok);
+                dbStatement.executeUpdate();
+            }
             return true;
         } catch(Exception e) {
             e.printStackTrace();
