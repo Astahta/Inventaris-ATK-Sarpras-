@@ -76,10 +76,15 @@ public class Pengadaan extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         pengadaanTable = new javax.swing.JTable();
+        listPanel = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listTable = new javax.swing.JTable();
         menuPanel = new javax.swing.JPanel();
         formMenuButton = new javax.swing.JButton();
         kedatanganMenuButton = new javax.swing.JButton();
         viewMenuButton = new javax.swing.JButton();
+        listMenuButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -345,15 +350,15 @@ public class Pengadaan extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
@@ -361,11 +366,11 @@ public class Pengadaan extends javax.swing.JFrame {
         viewPanelLayout.setHorizontalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(hapus2Button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(719, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
         viewPanelLayout.setVerticalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,10 +379,61 @@ public class Pengadaan extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(hapus2Button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addContainerGap(242, Short.MAX_VALUE))
         );
 
         kedatanganMainPanel.add(viewPanel, "viewPanel");
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        listTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(listTable);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout listPanelLayout = new javax.swing.GroupLayout(listPanel);
+        listPanel.setLayout(listPanelLayout);
+        listPanelLayout.setHorizontalGroup(
+            listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(181, Short.MAX_VALUE))
+        );
+        listPanelLayout.setVerticalGroup(
+            listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(278, Short.MAX_VALUE))
+        );
+
+        kedatanganMainPanel.add(listPanel, "listPanel");
 
         menuPanel.setBackground(new java.awt.Color(153, 153, 153));
         menuPanel.setPreferredSize(new java.awt.Dimension(200, 769));
@@ -427,6 +483,20 @@ public class Pengadaan extends javax.swing.JFrame {
             }
         });
 
+        listMenuButton.setBackground(new java.awt.Color(153, 153, 153));
+        listMenuButton.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        listMenuButton.setForeground(new java.awt.Color(204, 204, 204));
+        listMenuButton.setText("List Barang Habis");
+        listMenuButton.setBorderPainted(false);
+        listMenuButton.setContentAreaFilled(false);
+        listMenuButton.setFocusPainted(false);
+        listMenuButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        listMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listMenuButtonActionPerformed(evt);
+            }
+        });
+
         jButton1.setBackground(new java.awt.Color(250, 108, 125));
         jButton1.setFont(new java.awt.Font("DokChampa", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -451,6 +521,7 @@ public class Pengadaan extends javax.swing.JFrame {
             .addGroup(menuPanelLayout.createSequentialGroup()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(listMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -462,6 +533,8 @@ public class Pengadaan extends javax.swing.JFrame {
                 .addComponent(kedatanganMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(viewMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(listMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -472,7 +545,7 @@ public class Pengadaan extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addComponent(kedatanganMainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 901, Short.MAX_VALUE)
+                .addComponent(kedatanganMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 901, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -497,6 +570,8 @@ public class Pengadaan extends javax.swing.JFrame {
         this.kedatanganMenuButton.setForeground(new Color(204,204,204));
         this.viewMenuButton.setBackground(new Color(153,153,153));
         this.viewMenuButton.setForeground(new Color(204,204,204));
+        this.listMenuButton.setBackground(new Color(153,153,153));
+        this.listMenuButton.setForeground(new Color(204,204,204));
     }//GEN-LAST:event_formMenuButtonActionPerformed
 
     private void kedatanganMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kedatanganMenuButtonActionPerformed
@@ -507,6 +582,8 @@ public class Pengadaan extends javax.swing.JFrame {
         this.kedatanganMenuButton.setForeground(Color.white);
         this.viewMenuButton.setBackground(new Color(153,153,153));
         this.viewMenuButton.setForeground(new Color(204,204,204));
+        this.listMenuButton.setBackground(new Color(153,153,153));
+        this.listMenuButton.setForeground(new Color(204,204,204));
     }//GEN-LAST:event_kedatanganMenuButtonActionPerformed
 
     private void viewMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMenuButtonActionPerformed
@@ -517,6 +594,8 @@ public class Pengadaan extends javax.swing.JFrame {
         this.kedatanganMenuButton.setForeground(new Color(204,204,204));
         this.viewMenuButton.setBackground(Color.darkGray);
         this.viewMenuButton.setForeground(Color.white);
+        this.listMenuButton.setBackground(new Color(153,153,153));
+        this.listMenuButton.setForeground(new Color(204,204,204));
     }//GEN-LAST:event_viewMenuButtonActionPerformed
 
     private void validasiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validasiButtonActionPerformed
@@ -624,6 +703,20 @@ public class Pengadaan extends javax.swing.JFrame {
         MainMenu main = new MainMenu();
         pengadaanController.changeFrame(main);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void listMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listMenuButtonActionPerformed
+                                 
+        pengadaanController.openList();
+        this.formMenuButton.setBackground(new Color(153,153,153));
+        this.formMenuButton.setForeground(new Color(204,204,204));
+        this.kedatanganMenuButton.setBackground(new Color(153,153,153));
+        this.kedatanganMenuButton.setForeground(new Color(204,204,204));
+        this.viewMenuButton.setBackground(new Color(153,153,153));
+        this.viewMenuButton.setForeground(new Color(204,204,204));
+        this.listMenuButton.setOpaque(true);
+        this.listMenuButton.setBackground(Color.darkGray);
+        this.listMenuButton.setForeground(Color.white);
+    }//GEN-LAST:event_listMenuButtonActionPerformed
     
     private void createOrders(int count, Vector<String> supplierName){
         dummyPanel.setLayout(new GridLayout(10,1));
@@ -708,6 +801,13 @@ public class Pengadaan extends javax.swing.JFrame {
         //pengadaanTable.removeColumn(pengadaanTable.getColumnModel().getColumn(7));
     }
     
+    public void initListTable(DefaultTableModel model) {
+        listTable.setModel(model);
+        listTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+        listTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        listTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+    }
+    
     public void showDialogBox(String message, String message2){
         javax.swing.JOptionPane.showMessageDialog(this, message, message2, javax.swing.JOptionPane.PLAIN_MESSAGE);
     }
@@ -755,14 +855,19 @@ public class Pengadaan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel jumlahJenisAtkLabel;
     private javax.swing.JSpinner jumlahJenisAtkSpinner;
     private javax.swing.JPanel kedatanganMainPanel;
     private javax.swing.JButton kedatanganMenuButton;
     private javax.swing.JPanel kedatanganPanel;
     private javax.swing.JTable kedatanganTable;
+    private javax.swing.JButton listMenuButton;
+    private javax.swing.JPanel listPanel;
+    private javax.swing.JTable listTable;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JComboBox<String> namaPemasokComboBox;
     private javax.swing.JLabel namaPemasokLabel;

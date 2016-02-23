@@ -33,6 +33,7 @@ public class PengadaanController {
         //frame.initFormTable(pengadaanModel.getFormTableModel());
         frame.initPengadaanTable(pengadaanModel.getPengadaanTableModel());
         frame.initKedatanganTable(pengadaanModel.getKedatanganTableModel());
+        frame.initListTable(pengadaanModel.getListTableModel());
     }
     
     public void changeFrame(JFrame frame){
@@ -58,6 +59,11 @@ public class PengadaanController {
     public void openView(){
         pengadaanModel.initPengadaanModel();
         frame.changeScreen("viewPanel");
+    }
+    
+    public void openList(){
+        pengadaanModel.initListModel();
+        frame.changeScreen("listPanel");
     }
     
     public void createPengadaan(int stok, String tanggal_pesan, int id_pemasok, int id_atk) {

@@ -31,6 +31,8 @@ public class PengadaanModel {
     private DefaultTableModel form = new DefaultTableModel(new Object[]{"No", "Nama ATK", "Jumlah"},0);
     private DefaultTableModel pengadaan = new DefaultTableModel(new Object[]{"No","Jumlah", "Status", "Tanggal Pesan", "Tanggal Datang", "Nama Pemasok", "Nama ATK", "Tanggal Pesan Asli", "ID Pemasok", "ID ATK"},0);
     private DefaultTableModel kedatangan = new DefaultTableModel(new Object[]{"No","Jumlah", "Tanggal Pesan", "Nama Pemasok", "Nama ATK", "Tanggal Pesan Asli", "ID Pemasok", "ID ATK"},0);
+    private DefaultTableModel listBarang = new DefaultTableModel(new Object[]{"No","Nama ATK","Stok"},0);
+    
     public DefaultTableModel getFormTableModel() {
         return form;
     }
@@ -41,6 +43,10 @@ public class PengadaanModel {
     
     public DefaultTableModel getKedatanganTableModel() {
         return kedatangan;
+    }
+    
+    public DefaultTableModel getListTableModel() {
+        return listBarang;
     }
     
     public void initFormModel(int n) {
@@ -122,10 +128,7 @@ public class PengadaanModel {
                  object[5]=rs.getString("tanggal_pesan");
                  object[6]=rs.getInt("id_pemasok");
                  object[7]=rs.getInt("id_atk");
-                 
-                 
-                 
-                 
+
                  i++;
                  kedatangan.addRow(object); 
              }
@@ -133,6 +136,26 @@ public class PengadaanModel {
          } catch (SQLException ex) {
              Logger.getLogger(PengadaanModel.class.getName()).log(Level.SEVERE, null, ex);
          }
+    }
+    
+    public void initListModel() {
+        try {
+            listBarang.setRowCount(0);
+            String sql = "SELECT nama_atk, stok from ATK where stok=0";
+            PreparedStatement dbStatement = conn.prepareStatement(sql);
+            ResultSet rs = dbStatement.executeQuery();
+            int i=1;
+            while (rs.next()) {
+                Object[] object = new Object[4];
+                object[0]=i;
+                object[1]=rs.getString("nama_atk");;
+                object[2]=rs.getInt("stok");
+                i++;
+                listBarang.addRow(object); 
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PengadaanModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public boolean createPengadaan(int stok, String tanggal_pesan, int id_pemasok, int id_atk) {
