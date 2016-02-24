@@ -7,6 +7,8 @@ import inventaris.atk.models.InventarisSupplierModel;
 import inventaris.atk.models.InventarisUserModel;
 import inventaris.atk.view.Inventaris;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.YES_OPTION;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -65,12 +67,16 @@ public class InventarisController {
         }
     }
     public void deleteUser(String id){
-        if(userModel.deleteUser(id)){
-            frame.showDialogBox("Delete user berhasil", "success");
-            userModel.initModel();
-        }else{
-            frame.showDialogBox("Delete user gagal", "failed");
-        }
+        //int n = JOptionPane.showConfirmDialog(frame,"Apakah anda yakin akan menghapus data tersebut?","Konfirmasi Penghapusan",JOptionPane.YES_NO_OPTION);
+        //if(n==YES_OPTION){
+            if(userModel.deleteUser(id)){
+                frame.showDialogBox("Delete user berhasil", "success");
+                userModel.initModel();
+            }else{
+                frame.showDialogBox("Delete user gagal", "failed");
+            }
+        //}
+        
     }
     public void addSupplier(String nama, String alamat, String telpon){
         if(supplierModel.addSupplier(nama, alamat, telpon)){

@@ -44,9 +44,11 @@ public class InventarisAtkModel {
                  o[1]=rs.getInt("id_atk");
                  o[2]=rs.getString("nama_atk");
                  o[3]=rs.getInt("stok");
+                 o[4]="Hapus";
                  i++;
                  atk.addRow(o); 
              }
+             
 
          } catch (SQLException ex) {
              Logger.getLogger(InventarisAtkModel.class.getName()).log(Level.SEVERE, null, ex);

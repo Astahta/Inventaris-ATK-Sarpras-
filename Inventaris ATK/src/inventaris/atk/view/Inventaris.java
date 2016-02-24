@@ -7,6 +7,13 @@ package inventaris.atk.view;
 
 import inventaris.atk.controllers.InventarisController;
 import java.awt.Color;
+import javax.swing.Box;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Inventaris extends javax.swing.JFrame {
     private final InventarisController inventarisController;
-    private int idTemp=0;
+    private int idTemp=0, id=-99, iduser=-99, idpemasok=-99;
     /**
      * Creates new form Inventaris
      */
@@ -44,11 +51,11 @@ public class Inventaris extends javax.swing.JFrame {
         namaAtk = new javax.swing.JTextField();
         stok = new javax.swing.JSpinner();
         addATK = new javax.swing.JButton();
-        editATK = new javax.swing.JButton();
-        HapusATK = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         atkTable = new javax.swing.JTable();
+        editATK = new javax.swing.JButton();
+        HapusATK = new javax.swing.JButton();
         Userpage = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -59,11 +66,11 @@ public class Inventaris extends javax.swing.JFrame {
         category = new javax.swing.JComboBox();
         idUser = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
-        editButton = new javax.swing.JButton();
-        deleteButton = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         userTable = new javax.swing.JTable();
+        editButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
         Supplier = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -74,11 +81,11 @@ public class Inventaris extends javax.swing.JFrame {
         alamat = new javax.swing.JTextField();
         noTelp = new javax.swing.JTextField();
         addSupplier = new javax.swing.JButton();
-        editSupplier = new javax.swing.JButton();
-        deleteSupplier = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         supplierTable = new javax.swing.JTable();
+        editSupplier = new javax.swing.JButton();
+        deleteSupplier = new javax.swing.JButton();
         submenu = new javax.swing.JPanel();
         atk = new javax.swing.JButton();
         user = new javax.swing.JButton();
@@ -119,34 +126,6 @@ public class Inventaris extends javax.swing.JFrame {
             }
         });
 
-        editATK.setBackground(new java.awt.Color(112, 112, 250));
-        editATK.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
-        editATK.setForeground(new java.awt.Color(255, 255, 255));
-        editATK.setText("Ubah");
-        editATK.setBorderPainted(false);
-        editATK.setContentAreaFilled(false);
-        editATK.setFocusPainted(false);
-        editATK.setOpaque(true);
-        editATK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editATKActionPerformed(evt);
-            }
-        });
-
-        HapusATK.setBackground(new java.awt.Color(112, 112, 250));
-        HapusATK.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
-        HapusATK.setForeground(new java.awt.Color(255, 255, 255));
-        HapusATK.setText("Hapus");
-        HapusATK.setBorderPainted(false);
-        HapusATK.setContentAreaFilled(false);
-        HapusATK.setFocusPainted(false);
-        HapusATK.setOpaque(true);
-        HapusATK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HapusATKActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -157,20 +136,12 @@ public class Inventaris extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(jLabel9))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(namaAtk, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addComponent(HapusATK, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(addATK, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(stok, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editATK, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(97, 97, 97)
+                        .addComponent(addATK, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(stok, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(90, 90, 90))
         );
         jPanel3Layout.setVerticalGroup(
@@ -188,11 +159,7 @@ public class Inventaris extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(37, Short.MAX_VALUE)
                 .addComponent(addATK, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(editATK, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(HapusATK, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
+                .addGap(130, 130, 130))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -236,16 +203,51 @@ public class Inventaris extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
+        editATK.setBackground(new java.awt.Color(112, 112, 250));
+        editATK.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
+        editATK.setForeground(new java.awt.Color(255, 255, 255));
+        editATK.setText("Ubah");
+        editATK.setBorderPainted(false);
+        editATK.setContentAreaFilled(false);
+        editATK.setFocusPainted(false);
+        editATK.setOpaque(true);
+        editATK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editATKActionPerformed(evt);
+            }
+        });
+
+        HapusATK.setBackground(new java.awt.Color(112, 112, 250));
+        HapusATK.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
+        HapusATK.setForeground(new java.awt.Color(255, 255, 255));
+        HapusATK.setText("Hapus");
+        HapusATK.setBorderPainted(false);
+        HapusATK.setContentAreaFilled(false);
+        HapusATK.setFocusPainted(false);
+        HapusATK.setOpaque(true);
+        HapusATK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HapusATKActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ATKpageLayout = new javax.swing.GroupLayout(ATKpage);
         ATKpage.setLayout(ATKpageLayout);
         ATKpageLayout.setHorizontalGroup(
             ATKpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ATKpageLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ATKpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(ATKpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ATKpageLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(ATKpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(ATKpageLayout.createSequentialGroup()
+                        .addGap(421, 421, 421)
+                        .addComponent(editATK, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(HapusATK, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(506, Short.MAX_VALUE))
         );
         ATKpageLayout.setVerticalGroup(
@@ -257,7 +259,11 @@ public class Inventaris extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(ATKpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editATK, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HapusATK, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         inventaris.add(ATKpage, "ATK");
@@ -305,34 +311,6 @@ public class Inventaris extends javax.swing.JFrame {
             }
         });
 
-        editButton.setBackground(new java.awt.Color(112, 112, 255));
-        editButton.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
-        editButton.setForeground(new java.awt.Color(255, 255, 255));
-        editButton.setText("Ubah");
-        editButton.setBorderPainted(false);
-        editButton.setContentAreaFilled(false);
-        editButton.setFocusPainted(false);
-        editButton.setOpaque(true);
-        editButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editButtonActionPerformed(evt);
-            }
-        });
-
-        deleteButton.setBackground(new java.awt.Color(112, 112, 255));
-        deleteButton.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
-        deleteButton.setForeground(new java.awt.Color(255, 255, 255));
-        deleteButton.setText("Hapus");
-        deleteButton.setBorderPainted(false);
-        deleteButton.setContentAreaFilled(false);
-        deleteButton.setFocusPainted(false);
-        deleteButton.setOpaque(true);
-        deleteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -349,10 +327,7 @@ public class Inventaris extends javax.swing.JFrame {
                     .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(90, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -364,20 +339,14 @@ public class Inventaris extends javax.swing.JFrame {
                     .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(idUser, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idUser, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -417,16 +386,51 @@ public class Inventaris extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        editButton.setBackground(new java.awt.Color(112, 112, 255));
+        editButton.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
+        editButton.setForeground(new java.awt.Color(255, 255, 255));
+        editButton.setText("Ubah");
+        editButton.setBorderPainted(false);
+        editButton.setContentAreaFilled(false);
+        editButton.setFocusPainted(false);
+        editButton.setOpaque(true);
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
+
+        deleteButton.setBackground(new java.awt.Color(112, 112, 255));
+        deleteButton.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
+        deleteButton.setForeground(new java.awt.Color(255, 255, 255));
+        deleteButton.setText("Hapus");
+        deleteButton.setBorderPainted(false);
+        deleteButton.setContentAreaFilled(false);
+        deleteButton.setFocusPainted(false);
+        deleteButton.setOpaque(true);
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout UserpageLayout = new javax.swing.GroupLayout(Userpage);
         Userpage.setLayout(UserpageLayout);
         UserpageLayout.setHorizontalGroup(
             UserpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UserpageLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(UserpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(UserpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(UserpageLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(UserpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(UserpageLayout.createSequentialGroup()
+                        .addGap(434, 434, 434)
+                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(506, Short.MAX_VALUE))
         );
         UserpageLayout.setVerticalGroup(
@@ -438,7 +442,11 @@ public class Inventaris extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(UserpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         inventaris.add(Userpage, "user");
@@ -472,34 +480,6 @@ public class Inventaris extends javax.swing.JFrame {
             }
         });
 
-        editSupplier.setBackground(new java.awt.Color(112, 112, 255));
-        editSupplier.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
-        editSupplier.setForeground(new java.awt.Color(255, 255, 255));
-        editSupplier.setText("Ubah");
-        editSupplier.setBorderPainted(false);
-        editSupplier.setContentAreaFilled(false);
-        editSupplier.setFocusPainted(false);
-        editSupplier.setOpaque(true);
-        editSupplier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editSupplierActionPerformed(evt);
-            }
-        });
-
-        deleteSupplier.setBackground(new java.awt.Color(112, 112, 255));
-        deleteSupplier.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
-        deleteSupplier.setForeground(new java.awt.Color(255, 255, 255));
-        deleteSupplier.setText("Hapus");
-        deleteSupplier.setBorderPainted(false);
-        deleteSupplier.setContentAreaFilled(false);
-        deleteSupplier.setFocusPainted(false);
-        deleteSupplier.setOpaque(true);
-        deleteSupplier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteSupplierActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -519,25 +499,14 @@ public class Inventaris extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(namaPemasok, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(85, 85, 85)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(addSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(deleteSupplier, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(90, 90, 90))
+                .addGap(82, 82, 82)
+                .addComponent(addSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(addSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(editSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleteSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -546,11 +515,14 @@ public class Inventaris extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
-                            .addComponent(alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(noTelp, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(addSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(noTelp, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
@@ -591,16 +563,51 @@ public class Inventaris extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        editSupplier.setBackground(new java.awt.Color(112, 112, 255));
+        editSupplier.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
+        editSupplier.setForeground(new java.awt.Color(255, 255, 255));
+        editSupplier.setText("Ubah");
+        editSupplier.setBorderPainted(false);
+        editSupplier.setContentAreaFilled(false);
+        editSupplier.setFocusPainted(false);
+        editSupplier.setOpaque(true);
+        editSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editSupplierActionPerformed(evt);
+            }
+        });
+
+        deleteSupplier.setBackground(new java.awt.Color(112, 112, 255));
+        deleteSupplier.setFont(new java.awt.Font("Meiryo", 1, 11)); // NOI18N
+        deleteSupplier.setForeground(new java.awt.Color(255, 255, 255));
+        deleteSupplier.setText("Hapus");
+        deleteSupplier.setBorderPainted(false);
+        deleteSupplier.setContentAreaFilled(false);
+        deleteSupplier.setFocusPainted(false);
+        deleteSupplier.setOpaque(true);
+        deleteSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteSupplierActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout SupplierLayout = new javax.swing.GroupLayout(Supplier);
         Supplier.setLayout(SupplierLayout);
         SupplierLayout.setHorizontalGroup(
             SupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SupplierLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(SupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(SupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SupplierLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(SupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(SupplierLayout.createSequentialGroup()
+                        .addGap(440, 440, 440)
+                        .addComponent(editSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(deleteSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(468, Short.MAX_VALUE))
         );
         SupplierLayout.setVerticalGroup(
@@ -612,7 +619,11 @@ public class Inventaris extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(SupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         inventaris.add(Supplier, "supplier");
@@ -763,8 +774,7 @@ public class Inventaris extends javax.swing.JFrame {
     }//GEN-LAST:event_supplierActionPerformed
 
     private void userTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTableMouseClicked
-        userName.setText((String)getUserNameFromTable(userTable.getSelectedRow()));
-        category.setSelectedItem(getUserCategoryFromTable(userTable.getSelectedRow() ));
+        iduser = userTable.getSelectedRow();
         idUser.setText((String)getUserIdFromTable(userTable.getSelectedRow()));
         //idTemp=(String)getUserIdFromTable(userTable.getSelectedRow()+1);
     }//GEN-LAST:event_userTableMouseClicked
@@ -782,16 +792,35 @@ public class Inventaris extends javax.swing.JFrame {
     }//GEN-LAST:event_addATKActionPerformed
 
     private void editATKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editATKActionPerformed
-        String nama= namaAtk.getText();
-        int jml= (Integer)stok.getValue();
-        if(nama.equals("")){
-            javax.swing.JOptionPane.showMessageDialog(this, "Isi seluruh form terlebih dahulu",
+       JTextField name = new JTextField(20);
+       JSpinner stok = new JSpinner();
+       name.setText((String)getAtkNameFromTable(id));
+       stok.setValue(getAtkStockFromTable(id));
+      JPanel myPanel = new JPanel();
+      myPanel.add(new JLabel("Nama"));
+      myPanel.add(name);
+      myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+      myPanel.add(new JLabel("Stok"));
+      myPanel.add(stok);
+
+      int result = JOptionPane.showConfirmDialog(null, myPanel, 
+               "Silahkan lakukan perubahan", JOptionPane.OK_CANCEL_OPTION);
+       if (result == JOptionPane.OK_OPTION) {
+            String nama= name.getText();
+            int jml= (Integer)stok.getValue();
+            if(nama.equals("")){
+                javax.swing.JOptionPane.showMessageDialog(this, "Isi seluruh form terlebih dahulu",
                 "Edit ATK Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
-        }
-        else {
-            inventarisController.updateAtk(nama, jml, idTemp);
-            
-        }
+            }else if(jml<0){
+                javax.swing.JOptionPane.showMessageDialog(this, "Stok tidak boleh kurang dari 0",
+                "Edit ATK Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+            else {
+                inventarisController.updateAtk(nama, jml, idTemp);
+            }
+      }
+        
+        
         
     }//GEN-LAST:event_editATKActionPerformed
 
@@ -804,8 +833,8 @@ public class Inventaris extends javax.swing.JFrame {
     }//GEN-LAST:event_HapusATKActionPerformed
 
     private void atkTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atkTableMouseClicked
-        namaAtk.setText((String)getAtkNameFromTable(atkTable.getSelectedRow()));
-        stok.setValue(getAtkStockFromTable(atkTable.getSelectedRow()));
+        id= atkTable.getSelectedRow();
+        
         idTemp=(int)getAtkIdFromTable(atkTable.getSelectedRow());
     }//GEN-LAST:event_atkTableMouseClicked
 
@@ -824,17 +853,41 @@ public class Inventaris extends javax.swing.JFrame {
     }//GEN-LAST:event_addSupplierActionPerformed
 
     private void editSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSupplierActionPerformed
-        String nama= namaPemasok.getText();
-        String almt= alamat.getText();
-        String no = noTelp.getText();
-        if(nama.equals("") || almt.equals("") || no.equals("")){
-            javax.swing.JOptionPane.showMessageDialog(this, "Isi seluruh form terlebih dahulu",
-                "Edit Supplier Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
-        }
-        else {
-            inventarisController.updateSupplier(nama, almt, idTemp, no);
+        JTextField name = new JTextField(15);
+        JTextField alamat = new JTextField(15);
+        JTextField nomor = new JTextField(15);
+        
+        name.setText((String)getSupplierNameFromTable(idpemasok));
+        alamat.setText((String)getSupplierAddressFromTable(idpemasok));
+        nomor.setText((String)getSupplierPhoneFromTable(idpemasok));
+        
+        
+        JPanel myPanel = new JPanel();
+        myPanel.add(new JLabel("Nama"));
+        myPanel.add(name);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("Alamat"));
+        myPanel.add(alamat);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("No. Telp"));
+        myPanel.add(nomor);
+
+      int result = JOptionPane.showConfirmDialog(null, myPanel, 
+               "Silahkan lakukan perubahan", JOptionPane.OK_CANCEL_OPTION);
+       if (result == JOptionPane.OK_OPTION) {
+            String nama= name.getText();
+            String almt= alamat.getText();
+            String no = nomor.getText();
+        
+            if(nama.equals("") || almt.equals("") || no.equals("")){
+                javax.swing.JOptionPane.showMessageDialog(this, "Isi seluruh form terlebih dahulu",
+                    "Edit Supplier Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }else {
+                inventarisController.updateSupplier(nama, almt, idTemp, no);
             
-        }
+            }
+       }
+        
     }//GEN-LAST:event_editSupplierActionPerformed
 
     private void deleteSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSupplierActionPerformed
@@ -846,10 +899,8 @@ public class Inventaris extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteSupplierActionPerformed
 
     private void supplierTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_supplierTableMouseClicked
-        namaPemasok.setText((String)getSupplierNameFromTable(supplierTable.getSelectedRow()));
-        alamat.setText((String)getSupplierAddressFromTable(supplierTable.getSelectedRow()));
-        noTelp.setText((String)getSupplierPhoneFromTable(supplierTable.getSelectedRow()));
         String temp=(String)getSupplierIdFromTable(supplierTable.getSelectedRow());
+        idpemasok = supplierTable.getSelectedRow();
         idTemp = Integer.parseInt(temp);
        
     }//GEN-LAST:event_supplierTableMouseClicked
@@ -870,17 +921,36 @@ public class Inventaris extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        String nama= userName.getText();
-        String kategori= (String) category.getSelectedItem();
-        String id = idUser.getText();
-        if(nama.equals("") || kategori.equals("") || id.equals("")){
-            javax.swing.JOptionPane.showMessageDialog(this, "Isi seluruh form terlebih dahulu",
-                "Edit Pengguna Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
-        }
-        else {
-            inventarisController.updateUser(nama, id, kategori);
+        JTextField name = new JTextField(15);
+        JComboBox kategori = new JComboBox();
+        kategori.addItem("Tata Usaha");
+        kategori.addItem("Dosen");
+        kategori.addItem("Lain-Lain");
+        name.setText((String)getUserNameFromTable(iduser));
+        kategori.setSelectedItem(getUserCategoryFromTable(iduser ));
+        JPanel myPanel = new JPanel();
+        myPanel.add(new JLabel("Nama"));
+        myPanel.add(name);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("Kategori"));
+        myPanel.add(kategori);
+
+      int result = JOptionPane.showConfirmDialog(null, myPanel, 
+               "Silahkan lakukan perubahan", JOptionPane.OK_CANCEL_OPTION);
+       if (result == JOptionPane.OK_OPTION) {
+            String nama= name.getText();
+            String kat= (String)kategori.getSelectedItem();
+            String id = idUser.getText();
+            if(nama.equals("") || kat.equals("") || id.equals("")){
+                javax.swing.JOptionPane.showMessageDialog(this, "Isi seluruh form terlebih dahulu",
+                    "Edit Pengguna Ditolak", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+            else {
+                inventarisController.updateUser(nama, id, kat);
             
-        }
+            }
+       }
+        
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
